@@ -1,0 +1,44 @@
+{
+  "schema_version": "vector-index-build-verification-contract-1.0",
+  "status": "CONTRACT_ONLY_PRODUCTION_DISABLED",
+  "preconditions": [
+    "Verify every model/tokenizer/runtime hash and exact manifest field before embedding.",
+    "Accept only explicit semantic embeddings from the pinned ONNX model; reject missing, hash, random, lexical, or bag-of-words vectors.",
+    "Accept only eligible chunk IDs supplied by the effective projection; reject duplicates and unresolved overlay order.",
+    "When human approval count is zero, build may target staging only and every vector row must have human_approved=0 and activated=0."
+  ],
+  "canonical_build": {
+    "input_order": "ascending chunk_id by raw Unicode scalar value, secondary section_id same order; duplicate composite IDs rejected",
+    "embedding_text_canonicalization": "CRLF/CR to LF only; preserve all remaining characters and whitespace; UTF-8",
+    "chunk_hash": "sha256(embedding_text_utf8)",
+    "batch_size": 32,
+    "device": "CPUExecutionProvider threads=4",
+    "vector_encoding": "512 float32 little-endian, finite, L2 norm 1±1e-5",
+    "persistence": "transactional staging SQLite; metadata and vectors committed together; production table/index untouched",
+    "ann_policy": "No ANN library is currently available. Exact cosine is permitted only for bounded staging/evaluation; production scale requires a separately installed, pinned and audited ANN backend or an accepted exact-scan latency budget."
+  },
+  "mandatory_verification": [
+    "model revision and every model/tokenizer SHA-256 match",
+    "row count equals eligible unique chunk count",
+    "each row chunk hash equals source embedding text hash",
+    "dimension/dtype/byte length/finite values/L2 norm checks pass",
+    "each vector byte hash is recorded and reproducible exactly in the locked local runtime",
+    "read-only reopen reproduces deterministic query rankings and cosine values within 1e-6",
+    "40-anchor evaluation emits per-anchor ranks, Recall@k, nDCG@k, MRR, no-answer and must-not-route violations",
+    "critical slices show no prohibited regression against the lexical baseline",
+    "human-approved production subset is non-empty and every returned row is human_verified and publishable before any activation request",
+    "independent audit passes and explicit human authorization is recorded before atomic activation"
+  ],
+  "failure_policy": "Fail closed; retain prior production state and do not activate, publish, or upload.",
+  "current_activation_authorized": false,
+  "flags": {
+    "human_verified": false,
+    "production": false,
+    "activated": false,
+    "rag_indexed": false,
+    "vector_indexed": false,
+    "kg_materialized": false,
+    "published": false,
+    "github_uploaded": false
+  }
+}

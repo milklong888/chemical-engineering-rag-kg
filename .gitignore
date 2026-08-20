@@ -1,0 +1,65 @@
+# Copyright/source payload
+*.pdf
+*.zip
+*.7z
+*.rar
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.webp
+*crop*
+*ocr*
+*raw_text*
+
+# Corpora, evidence, and generated media
+corpus/
+data/
+books/
+media/
+evidence/
+outputs/
+qa/
+audit_out_*/
+
+# Vector/model/database payload
+*.sqlite
+*.sqlite3
+*.db
+*.onnx
+*.safetensors
+*.npy
+*.npz
+model_cache/
+models/
+vectors/
+
+# Dependencies, caches, and temporary artifacts
+vendor/
+wheelhouse/
+*.whl
+__pycache__/
+*.py[cod]
+.tmp/
+tmp/
+.failed_builds/
+*_superseded_*/
+*failed_attempt*/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+secrets*
+
+# Local source lineage and private review material
+private/
+source_materials/
+normalized/
+pages/
+work/
+*.jsonl.private

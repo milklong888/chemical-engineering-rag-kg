@@ -1,0 +1,18 @@
+{
+  "activated": false,
+  "example_record_ids_included": false,
+  "github_uploaded": false,
+  "production": false,
+  "published": false,
+  "rules": [
+    "Apply source overlays in their frozen deterministic order before global merge.",
+    "Preserve source-specific chapter, knowledge-unit, evidence, map, and relation identifiers.",
+    "Reject forbidden semantic residue and generic placeholder explanations before indexing.",
+    "Require explicit retrieval and embedding eligibility; never infer missing eligibility fields.",
+    "Exclude discard, no-value, evidence-only, and unapproved protected content from embeddings.",
+    "Do not emit source text, page-level evidence, media, or reconstructive examples in public reports."
+  ],
+  "schema_version": "sanitized-global-projection-rules-1.0",
+  "source_phrases_included": false,
+  "status": "REFERENCE_ONLY_NONPRODUCTION"
+}

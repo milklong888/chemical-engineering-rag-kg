@@ -1,0 +1,63 @@
+name: 资料入库申请
+description: 提交新的化工资料元数据或申请处理一个明确范围
+title: "[Source] "
+labels:
+  - source-intake
+body:
+  - type: markdown
+    attributes:
+      value: |
+        不要上传 PDF、扫描页、OCR 全文或大段原文。只填写书目、哈希、页数、权限和计划范围。
+  - type: input
+    id: title
+    attributes:
+      label: 资料题名与版本
+    validations:
+      required: true
+  - type: input
+    id: pages
+    attributes:
+      label: PDF 总页数
+    validations:
+      required: true
+  - type: input
+    id: sha256
+    attributes:
+      label: 文件 SHA-256
+      description: 只填写哈希，不上传文件。
+    validations:
+      required: true
+  - type: dropdown
+    id: root
+    attributes:
+      label: 顶层主题
+      options:
+        - 化工原理 / chemical-engineering-principles
+        - 反应工程 / reaction-engineering
+    validations:
+      required: true
+  - type: dropdown
+    id: rights
+    attributes:
+      label: 权限状态
+      options:
+        - 自有原创或明确可公开授权
+        - 已获授权但需私下核验
+        - 仅本地研究，不允许公开载荷
+        - 尚不明确
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 计划处理范围
+      description: 请写章节、页段、对象类型和预期输出。
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: 确认
+      options:
+        - label: 我不会在公开 Issue 中上传受版权保护的源文件或可重建内容。
+          required: true

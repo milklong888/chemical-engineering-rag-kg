@@ -1,0 +1,36 @@
+{
+  "as_of": "2026-08-21",
+  "scope": "sanitized public engineering snapshot",
+  "source_identity": {
+    "known_pdf_sources": 8,
+    "known_pdf_pages": 3977,
+    "page_baseline_pages": 3977,
+    "original_archive_complete_membership_verified": false
+  },
+  "current_global_preview": {
+    "source_count": 2,
+    "packages": 24,
+    "rag_chunks": 2423,
+    "retrieval_eligible": 2350,
+    "embedding_eligible": 2326,
+    "evidence_records": 2217,
+    "kg_nodes": 2308,
+    "kg_edges": 2786,
+    "chunk_to_kg_maps": 2423,
+    "ordered_relations": 72
+  },
+  "production_gates": {
+    "full_eight_source_projection_complete": false,
+    "human_approved_anchor_count": 0,
+    "prior_six_slice_reject_cleared": false,
+    "production_activated": false
+  },
+  "payload_exclusions": {
+    "pdf_or_scan": true,
+    "page_crop_or_image": true,
+    "ocr_or_source_text": true,
+    "vector_or_database": true,
+    "model_weights": true,
+    "local_absolute_paths": true
+  }
+}

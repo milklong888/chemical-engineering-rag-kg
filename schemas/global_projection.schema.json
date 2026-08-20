@@ -1,0 +1,26 @@
+{
+  "schema_version": "global-canonical-output-schema-1.0",
+  "retrieval_corpus_required_fields": {
+    "chunk_id": "string",
+    "source_chain_id": "string",
+    "source_id": "string",
+    "package_id": "string",
+    "search_text": "string",
+    "evidence_refs": "array",
+    "knowledge_unit_id": "string|null",
+    "retrieval_eligible": "boolean",
+    "embedding_eligible": "boolean",
+    "embedding_exclusion_reason": "string|null; required nonempty when embedding_eligible=false",
+    "embedding_eligibility_basis": "object; explicit source routing/protection fields"
+  },
+  "embedding_projection_no_missing_field_inference": true,
+  "source_specific_ids_preserved": [
+    "chapter",
+    "coarse_knowledge_unit",
+    "knowledge_unit",
+    "evidence"
+  ],
+  "canonicalized_identifiers": [
+    "domain root only"
+  ]
+}

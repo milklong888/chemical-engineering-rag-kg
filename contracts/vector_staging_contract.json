@@ -1,0 +1,57 @@
+{
+  "activated": false,
+  "canonical_input": {
+    "chunk_canonical_json_sha256": "SHA-256 of the canonical JSON bytes for the entire effective global chunk record",
+    "corpus_root_sha256": "SHA-256 of sorted lines: chunk_id TAB chunk_canonical_json_sha256 LF",
+    "embedding_text_sha256": "SHA-256 of retrieval_corpus.search_text after CRLF/CR to LF only and UTF-8 encoding",
+    "order": "chunk_id ascending by Python Unicode scalar ordering; duplicate IDs are fatal",
+    "record_encoding": "UTF-8 JSON with keys sorted, separators comma/colon, ensure_ascii=false; no semantic normalization"
+  },
+  "eligibility": {
+    "exclude_even_if_mislabeled": [
+      "evidence-only chunk/type/disposition",
+      "discard or no-value disposition",
+      "protected/requires_human_approval/publication_protected object without human_verified or human_approved",
+      "empty search_text"
+    ],
+    "include": "embedding_eligible is exactly true",
+    "missing_eligibility": "fatal; builder never infers eligibility from source-specific legacy fields"
+  },
+  "embedding": {
+    "checksum": "SHA-256 per 2048-byte vector BLOB",
+    "model": "BAAI/bge-small-zh-v1.5",
+    "pooling": "FastEmbed 0.8.0 CLS token for rank-3 ONNX output; rank-2 passthrough",
+    "revision": "46fbe35fd4374a00fee7de77dfddaeb6dd6a2c59",
+    "runtime": "offline ONNX CPUExecutionProvider, 4 threads, batch 32",
+    "tokenization": "pinned Chinese BERT tokenizer; max 512 tokens; no query/document prefix",
+    "vector": "512 finite IEEE-754 float32 little-endian values, independently L2 normalized"
+  },
+  "evaluation_boundary": {
+    "calibration_pass": null,
+    "human_approved_anchor_count": 0,
+    "prior_six_slice_reject_preserved": true,
+    "production_pass": false,
+    "review_only_anchor_count": 40
+  },
+  "github_uploaded": false,
+  "payload_included": false,
+  "production": false,
+  "published": false,
+  "resume": {
+    "identity": "corpus root, config hash, model file hashes, chunk hash and text hash must match",
+    "on_match": "skip verified rows and continue in canonical ordinal order",
+    "on_mismatch": "fail closed; never reuse or silently delete an existing vector",
+    "unit": "one committed batch"
+  },
+  "schema_version": "sanitized-vector-staging-contract-1.0",
+  "status": "REFERENCE_ONLY_NONPRODUCTION",
+  "vector_indexed": false,
+  "verification": [
+    "database row count equals embedding-eligible count and no excluded chunk ID exists",
+    "every chunk/text/vector checksum matches",
+    "every vector has dimension 512, byte length 2048, finite values and norm 1 +/- 1e-5",
+    "read-only exact cosine returns deterministic score-desc/chunk_id-asc tie-broken rankings",
+    "model/runtime/config/global input locks match",
+    "all database and manifest activation/production/publish/GitHub flags are false"
+  ]
+}

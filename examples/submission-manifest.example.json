@@ -1,0 +1,65 @@
+{
+  "schema_version": "contributor-intake-0.1",
+  "submission_id": "example-s009-ch01",
+  "source": {
+    "source_id": "S009",
+    "title": "Example source — no real content",
+    "edition": "example",
+    "total_pdf_pages": 12,
+    "bytes": 123456,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "rights_status": "metadata_only_example",
+    "public_payload_allowed": false
+  },
+  "subject_root": "chemical-engineering-principles",
+  "source_volume_id": "volume:s009",
+  "physical_containers": [
+    {
+      "physical_container_id": "s009-physical-001",
+      "page_start": 1,
+      "page_end": 12
+    }
+  ],
+  "semantic_packages": [
+    {
+      "semantic_package_id": "s009-front",
+      "content_class": "evidence_only",
+      "page_start": 1,
+      "page_end": 2,
+      "physical_container_id": "s009-physical-001"
+    },
+    {
+      "semantic_package_id": "s009-c01",
+      "content_class": "answerable",
+      "page_start": 3,
+      "page_end": 11,
+      "physical_container_id": "s009-physical-001"
+    },
+    {
+      "semantic_package_id": "s009-back",
+      "content_class": "no_value",
+      "page_start": 12,
+      "page_end": 12,
+      "physical_container_id": "s009-physical-001"
+    }
+  ],
+  "declared_files": [
+    "source_manifest.json",
+    "physical_containers.json",
+    "semantic_packages.json",
+    "page_ledger.jsonl",
+    "text_blocks.jsonl",
+    "visual_objects.jsonl",
+    "relations.jsonl",
+    "rag_chunks.jsonl",
+    "kg_nodes.jsonl",
+    "kg_edges.jsonl",
+    "chunk_to_kg.jsonl",
+    "evidence_registry.jsonl",
+    "qa/validation.json",
+    "qa/independent_audit.json"
+  ],
+  "activation": false,
+  "production": false,
+  "publish_source_payload": false
+}
