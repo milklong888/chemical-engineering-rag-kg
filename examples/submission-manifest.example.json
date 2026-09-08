@@ -1,5 +1,5 @@
 {
-  "schema_version": "contributor-intake-0.1",
+  "schema_version": "contributor-intake-0.2",
   "submission_id": "example-s009-ch01",
   "source": {
     "source_id": "S009",
@@ -12,7 +12,7 @@
     "public_payload_allowed": false
   },
   "subject_root": "chemical-engineering-principles",
-  "source_volume_id": "volume:s009",
+  "source_volume_id": "volume:s009:chemical-engineering-principles:example-source",
   "physical_containers": [
     {
       "physical_container_id": "s009-physical-001",
@@ -30,7 +30,7 @@
     },
     {
       "semantic_package_id": "s009-c01",
-      "content_class": "answerable",
+      "content_class": "answerable_content",
       "page_start": 3,
       "page_end": 11,
       "physical_container_id": "s009-physical-001"

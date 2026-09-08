@@ -1,4 +1,4 @@
-# 入库规范（Contributor Intake Spec v0.1）
+# 入库规范（Contributor Intake Spec v0.2）
 
 这是正式入库包的公开验收规范。只想提交解释或纠错，可以先使用 [简化贡献入口](../CONTRIBUTING.md#最简单的参与方式)，由维护者完成结构转换与整包验收。
 
@@ -43,12 +43,26 @@
 
 一个物理尾包可以拆成多个互斥语义包，例如：
 
-- 附录：`answerable`；
-- 习题答案：`supporting`；
+- 附录：`answerable_content`；
+- 习题答案：`supporting_content`；
 - 参考文献：`evidence_only`；
 - 封底或广告：`no_value`。
 
-每个语义包只能有一个 `content_class`。所有语义包的页范围合并后必须 exactly once 覆盖全书。未落入旧物理章节包的前置页要明确标为 `uncontained_front_matter`，不得静默丢弃。
+每个语义包只能有一个 `content_class`。允许的正式值及含义如下：
+
+| `content_class` | 用途 |
+|---|---|
+| `answerable_content` | 能直接回答工程问题的正文、公式、图表或附录 |
+| `supporting_content` | 依赖主内容理解的答案、补充说明等上下文 |
+| `evidence_only` | 仅保留证据、来源或书目信息 |
+| `relation_only` | 仅保留目录、顺序或引用关联 |
+| `front_matter` | 非直接回答内容的前置页 |
+| `back_matter` | 非直接回答内容的后置页 |
+| `no_value` | 无检索价值，但仍需保留页账本 |
+
+v0.1 中的简写 `answerable`、`supporting` 在正式整合时分别转为 `answerable_content`、`supporting_content`；普通文字投稿无需自己填写这些字段。
+
+物理容器清单和语义包清单必须分别 exactly once 覆盖全书。未落入旧物理章节包的前置页要使用保留的前置页记账容器，并明确标为 `uncontained_front_matter`，不得静默丢弃或当作可检索正文。
 
 ## 4. 顶层主题与层级
 
@@ -64,6 +78,8 @@ subject_root → source_volume → chapter_or_support_unit → coarse_KU → evi
 ```
 
 禁止章节直接挂在 root；禁止把书名、卷名或 `chemical_data` 变成新 root。
+
+正式来源卷 ID 使用 `volume:{source_id小写}:{subject_root}:{document_slug}`。同一资料涉及两个顶层主题时分别建来源卷，仍共用原始来源身份，不复制 PDF 或重复计算页数。
 
 ## 5. 文本块
 
@@ -144,14 +160,15 @@ subject_root → source_volume → chapter_or_support_unit → coarse_KU → evi
 
 所有资格必须显式布尔化，缺字段时 fail closed：
 
-- `answerable`：可作为直接答案；
-- `supporting`：可作上下文，但不进入 primary retrieval/embedding；
+- `answerable_content`：通过来源与内容验收后，才可能作为直接答案；类别本身不自动授予检索或嵌入资格；
+- `supporting_content`：可作关联展开的上下文，但不进入 primary retrieval/embedding；
 - `evidence_only`：只做证据；
+- `relation_only`、`front_matter`、`back_matter`：不进入 primary retrieval/embedding；
 - `no_value`：不检索；
 - `discard`：不检索、不嵌入；
 - 受保护且未人工批准的内容：不嵌入。
 
-缺失必填资格字段时记录为校验失败并阻止入库，不静默补为 true 或 false；也不得从来源类型猜测允许嵌入。`discard` 是对象处置状态，不是语义包的第五种 `content_class`。
+缺失必填资格字段时记录为校验失败并阻止入库，不静默补为 true 或 false；也不得从来源类型猜测允许嵌入。`discard` 是对象处置状态，不是语义包的 `content_class`。
 
 ## 9. 知识图谱粒度
 
@@ -165,7 +182,7 @@ KG 只建立：主题根、来源卷、章节/支持单元、粗知识单元、�
 - 软件 UI 字段；
 - 无独立语义的公式片段。
 
-每个进入知识单元层的 `answerable` / `supporting` chunk 必须映射到且只映射到一个 coarse KU；每个 KU 必须有证据。纯 `evidence_only` / `no_value` 记录保留证据或处置归属，不为满足映射数而虚构知识单元。
+每个进入知识单元层的 `answerable_content` / `supporting_content` chunk 必须映射到且只映射到一个 coarse KU；每个 KU 必须有证据。支持单元还需关联到同一来源、同一顶层主题下的可回答知识单元。纯 `evidence_only` / `relation_only` / `no_value` 记录保留证据、关系或处置归属，不为满足映射数而虚构知识单元。
 
 ## 10. 正式入库包
 
