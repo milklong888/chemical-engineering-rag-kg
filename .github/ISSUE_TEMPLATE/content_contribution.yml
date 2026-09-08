@@ -1,0 +1,55 @@
+name: 内容解释或纠错
+description: 为已有来源提交一段解释、一处纠错或一个遗漏对象
+title: "[Content] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        可以只提交一张图表或一条公式。不需要生成向量、图谱或审计报告；维护者会继续整合和核对。
+        请勿上传受保护的 PDF、截图、OCR 全文或大段原文，也不要填写本机路径或私密链接。
+  - type: input
+    id: source
+    attributes:
+      label: 来源 ID 或登记 Issue
+      description: 例如 S005；新资料请先使用“资料入库申请”。
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: PDF 页码与对象
+      description: PDF 页码从 1 开始；写明章节及图号、表号、式号，没有则说明。
+    validations:
+      required: true
+  - type: dropdown
+    id: contribution_type
+    attributes:
+      label: 本次类型
+      options:
+        - 新增解释
+        - 内容纠错
+        - 遗漏对象
+        - 裁图边界或跨页关系
+    validations:
+      required: true
+  - type: textarea
+    id: explanation
+    attributes:
+      label: 讲什么、怎么用，或哪里需要改
+      description: 用自己的话说明核心含义、用途和必要限制；不必扩写教程。
+    validations:
+      required: true
+  - type: textarea
+    id: uncertainty
+    attributes:
+      label: 核对范围与不确定之处
+      description: 阅读了哪些页和上下文？哪些部分看不清、尚未核对或本次未处理？
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: 确认
+      options:
+        - label: 我有权公开提交以上文字，且未附带受保护原文载荷、秘密或本机路径。
+          required: true

@@ -1,8 +1,6 @@
 name: 资料入库申请
 description: 提交新的化工资料元数据或申请处理一个明确范围
 title: "[Source] "
-labels:
-  - source-intake
 body:
   - type: markdown
     attributes:
@@ -34,6 +32,8 @@ body:
       options:
         - 化工原理 / chemical-engineering-principles
         - 反应工程 / reaction-engineering
+        - 同时涉及两者（在处理范围中分别说明）
+        - 尚不确定，请维护者协助归类
     validations:
       required: true
   - type: dropdown
