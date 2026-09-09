@@ -6,6 +6,8 @@
 
 不需要先理解全部内部格式，也不需要生成向量、知识图谱或独立审计报告。
 
+先说明一个实际用途：它能帮助解决什么工程问题，或避免什么误用？讲清核心内容和必要限制即可，不必扩写基础教程。纯导航、重复信息、装饰截图不做 RAG；只为理解其他内容而必要的信息可作关联支撑。为了保留出处而登记的记录，不因此获得检索资格。
+
 1. 新资料先开 [资料入库申请](https://github.com/milklong888/chemical-engineering-rag-kg/issues/new?template=source_submission.yml)，填写题名、版本、页数、哈希、权限和准备处理的范围；已有资料可直接提交 [内容解释或纠错](https://github.com/milklong888/chemical-engineering-rag-kg/issues/new?template=content_contribution.yml) 或 PR。
 2. 选一个小范围：一节正文、一条公式、一张图表或一处错误。复制 [单对象提交模板](examples/content-contribution.example.md)，给出来源页、自己的解释、未确定之处和实际改动。
 3. 阅读原页及必要上下文，把它讲什么、怎么用、限制是什么说明白即可；不需要面向初学者扩写教程。不要把看不清的符号或未注明的单位猜成事实。

@@ -36,7 +36,7 @@ body:
     id: explanation
     attributes:
       label: 讲什么、怎么用，或哪里需要改
-      description: 用自己的话说明核心含义、用途和必要限制；不必扩写教程。
+      description: 说明能解决什么实际工程问题、支持什么判断或避免什么误用，再写核心含义和必要限制；仅关联支撑或来源纠错请注明。纯导航和重复内容不做 RAG，不必扩写教程。
     validations:
       required: true
   - type: textarea
