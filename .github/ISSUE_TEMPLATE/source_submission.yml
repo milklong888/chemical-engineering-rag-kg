@@ -13,6 +13,13 @@ body:
     validations:
       required: true
   - type: input
+    id: provenance
+    attributes:
+      label: 取得渠道与来源核对方式
+      description: 只写可公开的渠道、书目信息或来源页面；不填本机路径、私密链接。尚未核实可明确说明。
+    validations:
+      required: true
+  - type: input
     id: pages
     attributes:
       label: PDF 总页数
