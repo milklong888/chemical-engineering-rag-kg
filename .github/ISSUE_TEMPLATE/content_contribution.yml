@@ -46,6 +46,13 @@ body:
       description: 阅读了哪些页和上下文？哪些部分看不清、尚未核对或本次未处理？
     validations:
       required: true
+  - type: textarea
+    id: verification_and_rights
+    attributes:
+      label: 来源核对方式与公开权限
+      description: 说明审阅者如何合法核对原页，以及本次文字允许公开的依据。已有来源可引用登记说明；不填写本机路径、私密链接，也不附原页。
+    validations:
+      required: true
   - type: checkboxes
     id: confirmation
     attributes:
