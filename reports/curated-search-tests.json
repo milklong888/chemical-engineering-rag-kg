@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "default_bundle_anchor": true,
+    "index": {
+      "chunks": 10,
+      "complete_ku_fields": true,
+      "knowledge_units": 2,
+      "matrix_shape": [
+        10,
+        512
+      ],
+      "search_text_equals_embedding_text": true
+    },
+    "input_guards": {
+      "empty_query_rejected": true,
+      "exact_node_scope_checked": true,
+      "illegal_source_rejected": true,
+      "overlong_dense_query_rejected": true
+    },
+    "integrity": {
+      "corrupt_matrix_rejected": true,
+      "dense_model_manifest_mismatch_rejected": true,
+      "identity_change_rejected": true,
+      "loose_norm_tolerance_rejected": true,
+      "nonfinite_norm_tolerance_rejected": true,
+      "normative_knowledge_units_hash_rejected": true,
+      "row_order_rejected": true
+    },
+    "search": {
+      "complete_ku_returned": true,
+      "deduplicated_by_knowledge_unit": true,
+      "dense_nonempty": true,
+      "dense_nonlexical_query": true,
+      "filters_before_scoring": true,
+      "hybrid_nonempty": true,
+      "lexical_nonempty": true,
+      "lexical_zero_scores_omitted": true
+    }
+  },
+  "development_query_evaluation_ready": true,
+  "errors": [],
+  "failures": [],
+  "old_holdout_read": false,
+  "production_activated": false,
+  "schema": "curated-search-module-development-v1",
+  "scope": "synthetic vector_probe only; no formal 69-KU build",
+  "source_hashes": {
+    "index_curated_bundle.py": "32a4ce476fb36b9c79a8af72f5eda37e3fc6e8ad7cd4f1f8acd69944a7e1c3bc",
+    "query_curated.py": "ff6663f565fab41ccf9ce418903dad73fa4f585b64fee33c3049b81caf75f88c",
+    "test_curated_search.py": "2d2dddb92ebe045cfcbe8d1ed75130ce646b2a2354d57d6e164fa566f815c181"
+  },
+  "status": "pass",
+  "tests": 5
+}

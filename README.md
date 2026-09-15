@@ -1,130 +1,88 @@
 # Chemical Engineering RAG / KG
 
-面向化工教材与工程资料的可追溯数字化、检索增强生成（RAG）与粗粒度知识图谱（KG）工程。
+面向独立项目 `chemical-engineering-rag-kg` 的化工知识检索与粗粒度知识图谱公开预览。公开内容以有实际用途、可完整复述并带必要条件的工程释义为核心，不把整本资料或无信息增量内容塞入检索。
 
-本仓库目前发布的是**阶段性、去版权载荷的工程规范与参考代码**，不是教材内容仓库，也不是已经开放的生产检索服务。公开内容不含 PDF、扫描页、裁图、OCR 全文、原文块、向量、数据库、模型权重或本机路径。
+## 四源公开预览
 
-一句话看进度：**8 份资料的 3,977 页已有页级处理基线；私有工作区的阶段性全局索引只纳入 S005 的部分内容和 S008，尚未完成八源全量入库。** 页数和全局索引数量沿用 2026-08-21 的已核验快照，逐源状态更新至 2026-09-09；修复稿交付不算验收完成。
+本批包含 4 个来源卷、69 个粗知识单元（KU）：
 
-想参与的话，从 [贡献指南](CONTRIBUTING.md#最简单的参与方式) 开始：可以先提交一个对象的解释或纠错，无须自己搭建向量库。
+| 来源 | 资料 | 版本/版次 | 选定 KU |
+|---|---|---|---:|
+| RE01 | 《化学反应工程》 | 第三版 | 14 |
+| OC02 | 《化工过程的优化设计与控制》 | 版次未核 | 13 |
+| TH03 | 《化工热力学》 | 第二版 | 25 |
+| EN04 | 《过程工业能量系统优化——换热网络与蒸汽动力系统》 | 第一版，第一次印刷 | 17 |
+| 合计 | **4 个来源卷** | **2 个主题根** | **69** |
 
-按需查看：[资料来源与提取进度](docs/SOURCE_STATUS.md) · [入库规范](docs/INGESTION_SPEC.md) · [单对象投稿模板](examples/content-contribution.example.md)。
+预览图谱包含 2 个主题根、4 个来源卷、29 个章节节点、4 个跨章节支持单元、177 个节点和 191 条内部边。外部 `related_to` 关系另存为 252 条 `external_references`，不混入内部图边。
 
-**实际应用价值优先，不是把整本书塞进 RAG。** 只有能帮助工程计算、选型、排错，或解释关键概念和适用条件的信息才进入检索候选。纯导航、重复说明、装饰性界面和无信息增量的内容不做 RAG；必要来源定位可留档，必要上下文只作关联支撑。完整数字化、来源留档与可检索知识是三件事，不为凑覆盖率或字段数扩写。
+主题根只有：
 
-## 项目要解决什么
+- `chemical-engineering-principles`（化工原理）
+- `reaction-engineering`（反应工程）
 
-传统 OCR 只能“把字扫出来”，但工程资料真正难处理的是：
+### 选择口径
 
-- 公式需要说明用途、变量、单位、适用范围和相邻公式关系；
-- 表格需要保留表题、表头、单位、续表顺序和有数据价值的完整表体；代表性行只用于解释，不能替代完整转写；
-- 曲线、列线图和选型图需要说明坐标、曲线族、趋势和查读方法；
-- 跨页表、组合图和扫描版页面不能被错误拼接；
-- 软件界面只有在含独立定量、诊断或选型价值时才保留；
-- 每条可检索内容必须能回到确定的来源、页码和证据哈希；
-- 知识图谱保持粗粒度，符号、单位、表格单元和曲线点留在 RAG/证据层。
+进入预览的内容必须对实际计算、设计、选型、排错或关键概念解释有独立用途，并能连同必要条件被读者无歧义复述。重复、纯导航、无信息增量和仅作证据的内容不另造 KU；知识单元按完整可复述的粗粒度组织，不设微粒度数量配额，也不把符号、单位、表格单元格或曲线点拆成图节点。
 
-## 资料来源
+KU 命中后应完整阅读标题、正文、适用范围、单位/基准、来源定位和证据。`related_to` 只表示有关联，不自动表示因果、计算先后或可以互相替代。实际项目数值、经验关联式、设备曲线和材料限值必须核实适用条件，并回到当前项目及可合法核对的来源确认；教材示例值不能直接当作项目输入。
 
-当前工作区登记了 8 份本地持有的化工资料，共 **3,977 页**。仓库只公开书目级来源说明和聚合进度，不分发原始资料或可重建原文的派生数据。
+## 包入口
 
-这些资料来自项目发起者提供的本地化工资料集合，当前处理对象是其中已登记的 8 份 PDF，并非本项目在线抓取。题名及版次按现有来源登记；已核对的出版信息见 [来源说明](docs/SOURCE_STATUS.md#来源说明)，未核实项不作补写。原压缩包目前不可复核，因此“8 份”仅指已知 PDF，不代表已证明压缩包的全部成员都已收齐。
+公开包入口为 [`knowledge/curated-four-books-v1/`](knowledge/curated-four-books-v1/)，关键文件如下：
 
-| ID | 资料 | 页数 | 当前阶段 |
-|---|---|---:|---|
-| S001 | 《化工原理（上）》 | 371 | 全书候选的结构与映射通过独立检查；蒸发章 31 页独审发现的 3 项问题已修复并通过独立复核，13 条来源疑点仍待核；整章正式准入与全文内容验收未完成 |
-| S002 | 《化工原理（下）》 | 316 | 全书候选的结构与映射通过独立检查；全文校订和逐题答案关联仍需核对 |
-| S003 | 《化工过程工程工业实践》 | 177 | 两章反应工程的 39 页正文独审发现的 49 项问题已分批修复并独立关闭；4 项来源冲突仍保留，未获整章准入 |
-| S004 | 《化工管路设计手册（第二版）》 | 1,159 | 前三章的指定修复已独立关闭；第四章 12 项限定修复的独立复核报告已交付，待维护方接收，80 条来源疑点未解；第五章 125 页独审进行中；全书未完成 |
-| S005 | 《化工数据》 | 427 | C02–C12/附录已进入阶段性全局索引；C01 的 3 处引用补漏、前后置页的 5 项书目修复均已独立复核；仍有 23 个书目字段待核，新内容尚未进入全局索引 |
-| S006 | 《化工计算与软件应用（第二版）》 | 547 | 第一章的 2 项修复已独立关闭；第二章 97 页独审已接收，4 项问题经原页确认，已安排定点修复；第三章 70 页独审进行中；各章来源疑点保留，软件案例未运行复现，尚未正式入库 |
-| S007 | 《化工设备设计全书·塔设备》 | 398 | 674 个对象分三批修复；第 1、2 批对象检查已通过，第 3 批待处理；不代表全书正文及完整表体已校订 |
-| S008 | 《换热器工艺设计（第二版）》 | 582 | 全书阶段性语义投影与独立审计已完成 |
+- [`source_manifest.json`](knowledge/curated-four-books-v1/source_manifest.json)：来源书目、来源卷、主题根、审核证明和发布边界；
+- [`knowledge_units.jsonl`](knowledge/curated-four-books-v1/knowledge_units.jsonl)：69 条完整 KU；
+- [`evidence_registry.jsonl`](knowledge/curated-four-books-v1/evidence_registry.jsonl)：来源页范围、定位和正文哈希；
+- [`kg_nodes.jsonl`](knowledge/curated-four-books-v1/kg_nodes.jsonl)、[`kg_edges.jsonl`](knowledge/curated-four-books-v1/kg_edges.jsonl)：主题根—来源卷—章节/支持单元—KU—证据的粗图；
+- [`external_references.jsonl`](knowledge/curated-four-books-v1/external_references.jsonl)：指向外部 Skills 项目的关联，不创建伪内部节点；
+- [`conversion_report.json`](knowledge/curated-four-books-v1/conversion_report.json)：确定性转换统计和输入/产物哈希。
 
-更细的覆盖口径见 [docs/SOURCE_STATUS.md](docs/SOURCE_STATUS.md)。
+预览包的语义向量随包公开；已生成 **82 个检索分段、82×512 维 BGE 语义向量**，完整覆盖 69 个 KU；13 个长知识块仅在索引层分段，不截断正文。向量预览遵循当前合同和模型锁，不公开模型权重。原始 PDF、扫描页、裁图和 OCR 全文不发布；公开内容限于获准的原创释义、书目/定位元数据、粗图及经校验的派生向量预览。
 
-## 已提取到什么程度
+向量与验证文件：[`rag_chunks.jsonl`](knowledge/curated-four-books-v1/rag_chunks.jsonl)、[`chunk_to_kg.jsonl`](knowledge/curated-four-books-v1/chunk_to_kg.jsonl)、[`embeddings.f32`](knowledge/curated-four-books-v1/embeddings.f32)、[`vector_manifest.json`](knowledge/curated-four-books-v1/vector_manifest.json)、[发布清单](knowledge/curated-four-books-v1/manifest.json)。向量不是哈希向量；模型为锁定的 `BAAI/bge-small-zh-v1.5`，权重不随库发布。
 
-页数与全局索引的已核验基准（**2026-08-21**，后续来源修复未计入这些索引数量）：
+16 个公开开发题中，lexical、dense、hybrid 的 hit@5、MRR@5 与首位命中率均为 1.0，见[实际评测报告](reports/curated-dev-evaluation.json)。这是公开正例集的开发检查，不是封存测试集，不验证无答案拒答能力或普遍正确性。[独立校验报告](reports/curated-independent-validation.json)记录来源身份、关系与向量字节复核；代理审阅和人类审核分开记录。
 
-- 8/8 份 PDF 已完成文件身份、页数、可读性和重复性核验；已知范围共 3,977 页。
-- 3,977/3,977 页均已有连续页级归一化/OCR/证据基线；这不等于每页语义解释已经完成人审。
-- 当前公开可描述的阶段性全局预览仅覆盖 S005 与 S008：24 个包、2,423 个 RAG chunks、2,217 条证据、2,308 个 KG 节点、2,786 条边。
-- 阶段性向量库包含 2,326 条合格向量，但**不会上传**；它将在八源投影完成后整体重建。
-- 当前人工批准的正式检索评测锚点为 0，旧的六分片回归门仍未解除，因此生产激活保持关闭。
+## 读取、验证与查询
 
-这些数字是工程快照，不应被理解为“八本资料已经全部入库”。完整范围仍在逐源解释、独立审计和重建全局索引。
+建议先阅读 [READING_GUIDE.md](docs/READING_GUIDE.md)，再按 [INGESTION_SPEC.md](docs/INGESTION_SPEC.md) 判断内容用途、证据和资格。选题知识合同见 [`contracts/curated_knowledge_contract.json`](contracts/curated_knowledge_contract.json)。资格字段必须显式给出；缺失字段不推断放行。代理审阅不写作人类逐条审核，检索命中也不是工程认证答案。
 
-最新修复与独审结果记录在 [2026-09-09 更新](docs/SOURCE_STATUS.md#2026-09-09-更新)，各章交付范围见 [补充进度](docs/SOURCE_STATUS.md#2026-09-08-补充进度)：生产者完成整理并冻结文件，只代表该版本已交付待审，不算独立验收通过；局部修复通过也不代表整章或整本书通过。
+在仓库根目录执行。结构校验仅需 Python 3.12+ 标准库；查询另需 NumPy，语义检索还需模型锁指定的 tokenizers / ONNX Runtime。当前已验证版本分别为 NumPy 2.5.1、tokenizers 0.23.1、ONNX Runtime 1.27.0。
 
-## 内容层级
-
-只允许两个并列的顶层主题：
-
-```text
-化工原理 / chemical-engineering-principles
-└── 来源卷 / source volume
-    └── 章节或支持单元
-        └── 粗知识单元 / coarse knowledge unit
-            └── 证据 / evidence
-
-反应工程 / reaction-engineering
-└── 来源卷 / source volume
-    └── 章节或支持单元
-        └── 粗知识单元 / coarse knowledge unit
-            └── 证据 / evidence
-```
-
-`化工数据`之类的名称只能作为来源卷或文档别名，不能升级成第三个顶层主题。
-
-## 仓库内容
-
-- `docs/INGESTION_SPEC.md`：外部提交者使用的入库规范。
-- `docs/SOURCE_STATUS.md`：来源与提取进度。
-- `CONTRIBUTING.md`：提交与独立审计流程。
-- `examples/submission-manifest.example.json`：不含真实资料的示例清单。
-- `schemas/`、`contracts/`：去敏后的结构和校验合同。
-- `src/retrieval_eval.py`：只评估调用方提供的 ranked IDs，不读取或重建索引。
-- `scripts/validate_public_release.py`：本公开仓库的基础文件安全与快照一致性检查，不替代贡献内容的完整入库校验。
-- `reports/stage_snapshot.json`：只含聚合数字的阶段快照。
-
-## 快速开始
-
-贡献内容可从 [单对象提交模板](examples/content-contribution.example.md) 开始；准备机器入库包时再读完整入库规范。参考评测器只接受调用方自有、已脱敏的 JSONL：
+公开结构及向量字节验证：
 
 ```powershell
-python src/retrieval_eval.py --queries queries.jsonl --ranked-results ranked.jsonl --route-name route_safe --k 20 --mrr-k 10 --ndcg-k 10
-```
-
-它不会生成 embedding、向量、SQLite、FTS 或融合结果。
-
-公开仓库自检：
-
-```powershell
+python scripts/validate_curated_bundle.py `
+  --bundle knowledge/curated-four-books-v1 `
+  --require-vectors
 python scripts/validate_public_release.py
 ```
 
-## 参与贡献
+公开预览的 lexical 查询：
 
-最小投稿是一段能对照原页核实的解释或纠错，写清六项即可：
+```powershell
+python src/query_curated.py `
+  --bundle knowledge/curated-four-books-v1 `
+  --query "换热网络中的夹点目标" `
+  --method lexical `
+  --limit 5
+```
 
-1. **来源**：已有资料 ID，或新资料的题名、版本及取得渠道说明。
-2. **位置**：PDF 页码；印刷页码可补充，不能替代 PDF 页码。
-3. **范围**：哪段正文、哪条公式、哪张图表，或本次修正什么。
-4. **解释**：它讲什么、怎么用；用自己的话说明即可。
-5. **边界**：必要条件、读过的上下文，以及看不清或尚未处理的部分。
-6. **权限**：哪些内容允许公开，审阅者如何合法核对来源。
+lexical 不加载模型；dense/hybrid 需要本地具备[模型锁](contracts/curated_model_lock.json)列出的六个文件，脚本核对哈希，不自动下载或换模型。把下面 `./local-model` 替换为你的模型目录：
 
-可以直接填写 [内容解释或纠错](https://github.com/milklong888/chemical-engineering-rag-kg/issues/new?template=content_contribution.yml)，或复制 [投稿模板](examples/content-contribution.example.md) 提交 PR；新资料先填 [资料入库申请](https://github.com/milklong888/chemical-engineering-rag-kg/issues/new?template=source_submission.yml)。也欢迎改进校验器、schema 和评测工具。
+```powershell
+python src/query_curated.py --query "固定床热点如何限制放大尺度？" --method hybrid --model-dir ./local-model --lock contracts/curated_model_lock.json
+```
 
-内容面向能够理解工程语境的读者和模型：读过原页及必要上下文后，把“讲什么、怎么用、有什么限制”写明白即可。不要求百科式扩写，不为凑字段猜测单位、条件或结论；看不清的地方明确标注待核对。
+输出按 KU 去重，携带完整正文、条件、单位和来源；不是只返回命中的片段。
 
-**正式入库的底线**：来源可追溯、声明范围无遗漏、公式图表忠实且说明清楚、关联不丢失、由另一位审阅者对照原页通过；影响答案可靠性的疑点继续待核或排除检索。知识图谱只保留主题—来源卷—章节—粗知识单元—证据，不把每个符号和单元格都拆成节点。
+维护者使用的源记录转换器位于 `src/build_curated_bundle.py`，其输入参数为 `--mapping`、`--source-audit`、`--records-root` 和 `--output-dir`；这些父级审阅输入不要求公众取得，也不写入公开包。
 
-投稿后依次经过登记、整理待审、独立核对和整合入库；文档 PR 合并不等于内容入库，入库也不等于已开放检索。审核和机器格式转换由维护者继续处理，投稿者无须生成向量。完整要求见 [贡献指南](CONTRIBUTING.md) 与 [入库规范](docs/INGESTION_SPEC.md)。请勿在公开 Issue 或 PR 中上传教材 PDF、扫描页、截图、OCR 全文或大段原文。
+## 状态边界
 
-## 法律与发布边界
+四个来源卷的 `full_source_digitization_complete=false`；`human_review=false`、`human_approved_anchor_count=0` 和 `production_activated=false` 保持不变。正式入库、独立审计、向量评测和生产激活分别有门禁，不能由文档、格式转换或一次检索命中互相替代。
 
-本仓库没有获得或授予对所列教材、扫描件或其可重建派生内容的再分发权。当前也尚未为原创代码和文档选择开源许可证；参见 [LICENSE-NOTICE.md](LICENSE-NOTICE.md) 与 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+旧八源阶段快照中的 3,977 页、2,326 条私有向量和 6 项未通过门槛只作为历史数据保留；它们不与本批 69 KU、177 节点或 191 条边相加，也不构成四源预览的当前准入结论。详细历史状态见 [来源与提取状态](docs/SOURCE_STATUS.md)。
 
-在许可证、人工评测和完整八源索引门禁完成前，本项目保持研究/工程阶段状态。
+本包不新增许可证或来源授权；既有合同和第三方边界继续适用。

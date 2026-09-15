@@ -1,0 +1,79 @@
+{
+  "schema_version": "curated-public-preview-release-1.0",
+  "status": "validated_public_preview",
+  "as_of": "2026-09-16",
+  "canonical_project": "chemical-engineering-rag-kg",
+  "bundle_id": "curated-four-books-v1",
+  "content_scope": "selected authored knowledge; original PDFs and reconstructive source payload excluded",
+  "production_activated": false,
+  "files": {
+    "chunk_to_kg.jsonl": {
+      "bytes": 5426,
+      "sha256": "e27aca78fc28bc35537b61d1c7c6eb0faa8d4e7b4ffbd449dc1d7b556a2fa517"
+    },
+    "conversion_report.json": {
+      "bytes": 23565,
+      "sha256": "08acfee326afb7e6050adab05eb9f75f8788ea6bb1f15d627ea18e8a10da2737"
+    },
+    "embeddings.f32": {
+      "bytes": 167936,
+      "sha256": "f1bf05bc01a4ec6bbb0aba6c55ef388201aa985b3abf688799be2503f7639eca"
+    },
+    "evidence_registry.jsonl": {
+      "bytes": 35458,
+      "sha256": "be5991222e0295dfbd2895ea63ee80cf04a47ea5812ee478e5018784c89a0066"
+    },
+    "external_references.jsonl": {
+      "bytes": 35323,
+      "sha256": "24e22e3adcae5cc2870b691ade341bf84298638cb7b31a9bea29a9d6584859ee"
+    },
+    "kg_edges.jsonl": {
+      "bytes": 32352,
+      "sha256": "d12671d3d4482628e7e57e1c7bbfcf8b220a88fc8564a14a26b8f2eedcf9769f"
+    },
+    "kg_nodes.jsonl": {
+      "bytes": 49810,
+      "sha256": "349fc3215e952500cca4bb889e29d9152d5abe7ded8d7b771ca3f9880200f9fb"
+    },
+    "knowledge_units.jsonl": {
+      "bytes": 174928,
+      "sha256": "0413d5ba942e6a66b9d8546f449a72e791028f9602db246e25ab709a01d51d6d"
+    },
+    "qa_summary.json": {
+      "bytes": 3347,
+      "sha256": "d4e06414b8dc29e4c774cc6ffd0b542e201b2fb1b74f0b6574993baa1410d7b2"
+    },
+    "rag_chunks.jsonl": {
+      "bytes": 420818,
+      "sha256": "925897d32c30d8fdf9b9b726abe6aa6c008e5511cf990612197fc0182eb35324"
+    },
+    "source_manifest.json": {
+      "bytes": 6846,
+      "sha256": "b277c58cadfd8f8b689e755ebd6b5a507532a190faf9130772abd7e53886f469"
+    },
+    "vector_manifest.json": {
+      "bytes": 26662,
+      "sha256": "014ed2c0a35b9b50cf034cd99adf868aa3c997868d406d9a50db066adaebcb63"
+    }
+  },
+  "reports": {
+    "reports/curated-independent-validation.json": {
+      "bytes": 2153,
+      "sha256": "c1737fa1f8e089723fb0852daf11df67a5b35e944a1bc3a6cf92b528c938fdad"
+    },
+    "reports/curated-search-tests.json": {
+      "bytes": 1717,
+      "sha256": "fcb9ad7015d12d971cf6b311de92dc74bdb7bcb3655f326c566f935b3f12b712"
+    },
+    "reports/curated-dev-evaluation.json": {
+      "bytes": 62187,
+      "sha256": "bbbb8a6eba73c78b72aa6edb5b9027259ed9b9654ba9be5888bdc1c89ab6fecd"
+    },
+    "reports/curated-search-replay.json": {
+      "bytes": 21582,
+      "sha256": "9b192faa6d7d7a4372aec6bd97f41d26f6cfaa89804ef3ac4f91fb8cdd9c270c"
+    }
+  },
+  "verification": "Run scripts/validate_public_release.py; detailed source recheck requires lawfully held private originals and review inputs.",
+  "legacy_snapshot_changed": false
+}

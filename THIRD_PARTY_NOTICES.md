@@ -1,7 +1,24 @@
-# Third-party notices and source boundary
+# 第三方通知与来源边界
 
-The project was developed against locally held copies of eight Chinese chemical-engineering references listed in `docs/SOURCE_STATUS.md`.
+本项目为独立的 `chemical-engineering-rag-kg`。本页不改变任何教材、扫描件、模型或运行时的许可，也不新增第三方授权。
 
-Those books and their page content are not included in this repository. Their titles are listed only to describe provenance and extraction coverage. No claim of ownership or redistribution permission is made.
+## 来源资料
 
-The repository also does not include model weights or vendored inference runtimes. Any future optional model integration must keep its own upstream license, revision, and checksum record.
+公开预览引用以下来源卷的书目和页定位：
+
+- `RE01`：《化学反应工程》（第三版）；
+- `OC02`：《化工过程的优化设计与控制》（版次未核）；
+- `TH03`：《化工热力学》（第二版）；
+- `EN04`：《过程工业能量系统优化——换热网络与蒸汽动力系统》（第一版，第一次印刷）。
+
+书名、版本和来源哈希仅用于身份与追溯。原始 PDF、扫描页、裁图、OCR 全文和可重建的源载荷不在公开包中；本项目不声明拥有这些资料，也不声明出版社、作者或其他权利人参与、授权或认可项目。公开文本是带来源定位的原创工程释义，不是原书全文替代物。
+
+## 派生模型与向量
+
+公开预览中的派生语义向量遵循 [`contracts/curated_knowledge_contract.json`](contracts/curated_knowledge_contract.json) 的公开范围和资格要求。模型身份、版本、文件哈希及不自动下载的模型边界以 [`contracts/curated_model_lock.json`](contracts/curated_model_lock.json) 为准；模型权重和推理运行时不随项目发布。
+
+`vector_staging_contract.json` 与 `vector_index_verification_contract.json` 仅属于旧批次的向量暂存/验证合同，不替代当前四源公开预览的知识合同和模型锁。未来向量预览仍需保留上游模型的许可、版本和哈希记录。
+
+## 许可边界
+
+本项目尚未选择开源许可证（见 [LICENSE-NOTICE.md](LICENSE-NOTICE.md)），不授予教材或扫描件再分发权；既有第三方通知继续适用。公开范围限于明确授权的原创释义、书目/定位元数据、粗粒度图谱和经过合同校验的派生向量预览；任何未获授权的源载荷、私人路径、凭据或模型权重均不进入公开包。

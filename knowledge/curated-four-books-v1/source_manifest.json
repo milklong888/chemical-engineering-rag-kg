@@ -1,0 +1,143 @@
+{
+  "canonical_project": "chemical-engineering-rag-kg",
+  "schema_version": "curated-selected-knowledge-1.0",
+  "scope": "authored-selected-knowledge-preview",
+  "sources": [
+    {
+      "bibliography": {
+        "authors": "郭锴、唐小恒、周绪美 编；冯元鼎 主审",
+        "bibliography_basis": "题名页/CIP 前置核对；文件名首作者字形为“郭铠”，未自行归一化。",
+        "edition": "第三版",
+        "isbn": null,
+        "publication": "2017.7",
+        "publisher": "化学工业出版社",
+        "title": "化学反应工程"
+      },
+      "bytes": 44493574,
+      "full_source_digitization_complete": false,
+      "is_encrypted": false,
+      "review_provenance": {
+        "agent_review": true,
+        "candidate_manifest_sha256": "c877806bbaa4314baec41159f05f4154274f4a88651a5bcfd7192412717b7fc4",
+        "content_review_file_sha256": "74517785baaf28d924b7b2bccaac987e9b04d02bbd63287fde0d33f1b2af6732",
+        "human_review": false,
+        "locked_candidate_part_hashes": {
+          "part_a_blocks.json": "dd0f0474fc9893f3c26e3f53ea5b6c2ff28d32e9799118b3df15b73f69956482",
+          "part_b_blocks.json": "1936fd3ec22702acf89e8184fb6a576664304bdc46847c5cab9883ed519e3448",
+          "part_c_blocks.json": "a5f32c7e3387530ca58d38b7949d6fadc08f65c7a0cbb2c3c36ca0f5d4b512d1"
+        },
+        "producer_id": "luna_source_readers_20260913",
+        "reviewer_id": "root_content_review_20260913"
+      },
+      "selected_knowledge_units_count": 14,
+      "source_id": "RE01",
+      "source_payload_public": false,
+      "source_sha256": "e66077b0393c6ee658fbe54eec3984f2f7ad635577b02eb41d7f1d90bf578e18",
+      "source_volume_id": "volume:re01:reaction-engineering:chemical-reaction-engineering",
+      "subject_root": "reaction-engineering",
+      "total_pdf_pages": 248
+    },
+    {
+      "bibliography": {
+        "authors": "王晓红、王英龙 编著",
+        "bibliography_basis": "题名页/CIP 前置核对；未见版次字样，不推定版次。",
+        "edition": null,
+        "isbn": "978-7-122-30704-0",
+        "publication": "2017.11",
+        "publisher": "化学工业出版社",
+        "title": "化工过程的优化设计与控制"
+      },
+      "bytes": 56116327,
+      "full_source_digitization_complete": false,
+      "is_encrypted": false,
+      "review_provenance": {
+        "agent_review": true,
+        "candidate_manifest_sha256": "2e396c03b97994485b99c4e6268bb07e93787f19c63d7471ed31d4c15a3554e4",
+        "content_review_file_sha256": "39b9c28a26fff9d4b9f2a516e6af78f5b0d4549b8013d2d8402b7b2a6d8e7ae1",
+        "human_review": false,
+        "locked_candidate_part_hashes": {
+          "part_a_blocks.json": "8547e385fe8ee5e0c931ad95c96892c81a6a3982a17de4e74724567cf4af4f94",
+          "part_b_blocks.json": "ba77c668500806d3feb4e582c61d37c2621df0ed63f0c7e4c4c91ad0b980cdcc",
+          "part_c_blocks.json": "537cc4a579c41e31ec7941627464ed961b0bb496b0f2c9d7373f5572738cefaf"
+        },
+        "producer_id": "luna_source_readers_20260913",
+        "reviewer_id": "root_content_review_20260913"
+      },
+      "selected_knowledge_units_count": 13,
+      "source_id": "OC02",
+      "source_payload_public": false,
+      "source_sha256": "7ae342ed2d30cc3e5bed4943a095a88169cfd13af9edd91203463b9053ac76a6",
+      "source_volume_id": "volume:oc02:chemical-engineering-principles:process-optimization-control",
+      "subject_root": "chemical-engineering-principles",
+      "total_pdf_pages": 295
+    },
+    {
+      "bibliography": {
+        "authors": "陈光进等 编著",
+        "bibliography_basis": "题名页/CIP/版权页前置核对。",
+        "edition": "第二版",
+        "isbn": "978-7-5183-2808-6",
+        "publication": "2018.8",
+        "publisher": "石油工业出版社",
+        "title": "化工热力学"
+      },
+      "bytes": 37027197,
+      "full_source_digitization_complete": false,
+      "is_encrypted": false,
+      "review_provenance": {
+        "agent_review": true,
+        "candidate_manifest_sha256": "9a630a6dbb5d9953aae958ac9f8de8d1098be1c569a4bac56703e607d72be293",
+        "content_review_file_sha256": "5a5ab18dbc9765cb67dbd03935b0914ca6453a4241af849ec34cf8b609b4f3c3",
+        "human_review": false,
+        "locked_candidate_part_hashes": {
+          "part_a_blocks.json": "2914a6fb9f6d9e1edba6751c541d42bed6523c99e95fe37f41f09aafd7572798",
+          "part_b_blocks.json": "bf3d940d7377d6c2253e0b25524eb2e88ca1e5c5d5e01fce6911da510f75e7b1",
+          "part_c_blocks.json": "a472cd1346e70ab561d1189100c1d82538f1b6f60e6d79340215538d64343739"
+        },
+        "producer_id": "luna_source_readers_20260913",
+        "reviewer_id": "root_content_review_20260913"
+      },
+      "selected_knowledge_units_count": 25,
+      "source_id": "TH03",
+      "source_payload_public": false,
+      "source_sha256": "17b0116b7ccddbad706856b7c2cde9ce63537dfd95a5b7081e29b2b229293c9f",
+      "source_volume_id": "volume:th03:chemical-engineering-principles:chemical-thermodynamics",
+      "subject_root": "chemical-engineering-principles",
+      "total_pdf_pages": 443
+    },
+    {
+      "bibliography": {
+        "authors": "孙兰义 等编著",
+        "bibliography_basis": "封面、题名页、CIP/版权页前置核对；线上附录不在供给 PDF 内。",
+        "edition": "第一版，第一次印刷",
+        "isbn": "978-7-122-38052-4",
+        "publication": "CIP 2021.2；印刷 2021.10",
+        "publisher": "化学工业出版社",
+        "title": "过程工业能量系统优化——换热网络与蒸汽动力系统"
+      },
+      "bytes": 18298605,
+      "full_source_digitization_complete": false,
+      "is_encrypted": false,
+      "review_provenance": {
+        "agent_review": true,
+        "candidate_manifest_sha256": "a62788db2939273d1d90591ec0be3d84743991759b2e56d950a666a78c523424",
+        "content_review_file_sha256": "c2a37ae2a48467b7f2ddf56013c9f11de18623b763f7bee8b4e720268b904ff7",
+        "human_review": false,
+        "locked_candidate_part_hashes": {
+          "part_a_blocks.json": "0436f44ae160375eebe1883bca0dd0a461f9b281f770bbdc8f24262a20f4d458",
+          "part_b_blocks.json": "31ea578fc21821102364bac502b497046079f529e2edb66a652296ee19c40554",
+          "part_c_blocks.json": "523babe3289d27b3683d37460de5a4532df1125db832861cb57ae45af72ef99a"
+        },
+        "producer_id": "luna_source_readers_20260913",
+        "reviewer_id": "root_content_review_20260913"
+      },
+      "selected_knowledge_units_count": 17,
+      "source_id": "EN04",
+      "source_payload_public": false,
+      "source_sha256": "8984931953491e5ef1e080e6dfaf82cfbf190bcbc2441ff2c1636e6d29bba848",
+      "source_volume_id": "volume:en04:chemical-engineering-principles:energy-systems-optimization",
+      "subject_root": "chemical-engineering-principles",
+      "total_pdf_pages": 352
+    }
+  ]
+}

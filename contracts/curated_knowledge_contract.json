@@ -1,0 +1,69 @@
+{
+  "schema_version": "curated-selected-knowledge-1.0",
+  "scope": "authored-selected-knowledge-preview",
+  "canonical_project": "chemical-engineering-rag-kg",
+  "subject_roots": [
+    "chemical-engineering-principles",
+    "reaction-engineering"
+  ],
+  "hierarchy": ["subject_root", "source_volume", "chapter_or_support_group", "knowledge_unit", "evidence"],
+  "content_admission": {
+    "criterion": "Useful in application; an informed reader can unambiguously restate the content and necessary conditions.",
+    "preserve_reviewed_body_and_id": true,
+    "duplicate_or_no_value": "skip_with_reason",
+    "model_window_is_not_knowledge_granularity": true,
+    "source_full_digitization_implied": false,
+    "agent_review_is_human_review": false,
+    "current_project_values_transfer_allowed": false
+  },
+  "evidence": {
+    "type": "source_document_locator",
+    "required": ["source_id", "source_sha256", "pdf_pages", "locator", "reviewed_text_sha256"],
+    "source_hash_is_page_hash": false,
+    "private_source_payload_required_for_independent_source_recheck": true,
+    "public_page_media": false
+  },
+  "retrieval": {
+    "explicit_eligibility_required": true,
+    "missing_field_inference": false,
+    "one_chunk_maps_to_exactly_one_knowledge_unit": true,
+    "return_complete_knowledge_unit": true,
+    "external_reference_namespace": "chemical-engineering-skills",
+    "external_references_are_internal_graph_edges": false
+  },
+  "embedding": {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "revision": "46fbe35fd4374a00fee7de77dfddaeb6dd6a2c59",
+    "model_onnx_sha256": "1294ea4b6331115a353d81f96b85e8c8d7fdcc284453d5b2fab5b016230aad38",
+    "tokenizer_sha256": "48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26",
+    "input_template": "title + LF + original_body[start:end] + LF + applicability_joined_by_LF",
+    "max_tokens_including_special_tokens": 512,
+    "truncation_allowed": false,
+    "body_character_coverage": "complete; overlapping spans allowed",
+    "dimensions": 512,
+    "dtype": "little-endian float32",
+    "normalization": "L2",
+    "pooling": "CLS for rank-3 output; passthrough for rank-2 output",
+    "query_or_document_instruction_prefix": "none",
+    "provider": "CPUExecutionProvider",
+    "threads": 4,
+    "batch_size": 32,
+    "hash_or_random_vector_substitution": false,
+    "matrix_order": "chunk_id ascending",
+    "norm_absolute_tolerance": 0.00001
+  },
+  "public_release": {
+    "authorization_scope": "Owner authorized public knowledge artifacts, excluding original PDFs.",
+    "allowed": ["authored explanations", "bibliographic and locator metadata", "coarse graph", "validated derived embedding preview", "original code and reports"],
+    "denied": ["original PDFs", "page scans or crops", "OCR full text", "reconstructive source payload", "private absolute paths", "credentials", "model weights", "vector databases"],
+    "public_preview_is_production_activation": false,
+    "license_notice_unchanged": true
+  },
+  "history": {
+    "legacy_stage_snapshot": "reports/stage_snapshot.json",
+    "legacy_vector_contract": "contracts/vector_staging_contract.json",
+    "legacy_verification_contract": "contracts/vector_index_verification_contract.json",
+    "legacy_counts_and_failed_gates_unchanged": true,
+    "production_activated": false
+  }
+}

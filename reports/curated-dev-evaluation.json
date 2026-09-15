@@ -1,0 +1,1933 @@
+{
+  "bundle_manifest": {
+    "chunk_count": 82,
+    "dimensions": 512,
+    "human_approved_anchor_count": 0,
+    "knowledge_unit_count": 69,
+    "production_activated": false
+  },
+  "code_hashes": {
+    "evaluate_curated.py": "430c6a927cc3fd34b7fc37733951cb3cf741053ed042b60e8cfb17164fc1692c",
+    "index_curated_bundle.py": "32a4ce476fb36b9c79a8af72f5eda37e3fc6e8ad7cd4f1f8acd69944a7e1c3bc",
+    "query_curated.py": "ff6663f565fab41ccf9ce418903dad73fa4f585b64fee33c3049b81caf75f88c",
+    "retrieval_eval.py": "65eff052742469a79bb5804c92b4fa0852b2c791be2d2660c0f7a7ac9510573d"
+  },
+  "engineering_certification": false,
+  "holdout_read": false,
+  "input_hashes": {
+    "chunk_to_kg.jsonl": "e27aca78fc28bc35537b61d1c7c6eb0faa8d4e7b4ffbd449dc1d7b556a2fa517",
+    "embeddings.f32": "f1bf05bc01a4ec6bbb0aba6c55ef388201aa985b3abf688799be2503f7639eca",
+    "knowledge_units.jsonl": "0413d5ba942e6a66b9d8546f449a72e791028f9602db246e25ab709a01d51d6d",
+    "model_lock.json": "148a6a232f67914403038fa3866b6b316807368083eef17d9615e7117fe3c55a",
+    "queries.jsonl": "fe390e74d929d75e2013b09b1440a55357f1ffc60a661dedfe8d7e011c90e3f4",
+    "rag_chunks.jsonl": "925897d32c30d8fdf9b9b726abe6aa6c008e5511cf990612197fc0182eb35324",
+    "vector_manifest.json": "014ed2c0a35b9b50cf034cd99adf868aa3c997868d406d9a50db066adaebcb63"
+  },
+  "methods": {
+    "dense": {
+      "aggregate": {
+        "hit_at_5": 1.0,
+        "mrr_at_5": 1.0,
+        "query_count": 16,
+        "rank1_rate": 1.0
+      },
+      "per_query": [
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-A4"
+          ],
+          "query": "实测示踪剂出口曲线后，怎样判断返混并选择反应器模型？",
+          "query_id": "curated-dev-01",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-A4",
+            "RE01-B2",
+            "RE01-A3",
+            "RE01-A2",
+            "OC02-A3"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-B1"
+          ],
+          "query": "催化反应实验测到的速率，什么条件下才可以当作本征动力学？",
+          "query_id": "curated-dev-02",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-B1",
+            "RE01-B2",
+            "RE01-A1",
+            "RE01-C3",
+            "RE01-A2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-C4"
+          ],
+          "query": "全混反应器为什么会出现点火、熄火和多个稳态？",
+          "query_id": "curated-dev-03",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-C4",
+            "OC02-A4",
+            "RE01-A1",
+            "RE01-A4",
+            "RE01-A2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-C5"
+          ],
+          "query": "放大固定床反应器时，热点和温度敏感性应怎样限制设计尺度？",
+          "query_id": "curated-dev-04",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-C5",
+            "RE01-B5",
+            "RE01-A1",
+            "RE01-B1",
+            "EN04-A8"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-A4"
+          ],
+          "query": "从收敛的稳态精馏模型转到动态模拟，还必须补齐什么物理条件？",
+          "query_id": "curated-dev-05",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-A4",
+            "OC02-A1",
+            "OC02-B1",
+            "OC02-C1",
+            "OC02-B2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-B2"
+          ],
+          "query": "哪些相平衡变化能支持采用变压精馏？进料组成会影响塔序吗？",
+          "query_id": "curated-dev-06",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-B2",
+            "OC02-B4",
+            "OC02-C1",
+            "OC02-A1",
+            "EN04-A5"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-A1"
+          ],
+          "query": "精馏的产品纯度控制用温度代替组成测量时，测点如何筛选？",
+          "query_id": "curated-dev-07",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-A1",
+            "OC02-B1",
+            "OC02-C1",
+            "OC02-B2",
+            "TH03-C6"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-C2"
+          ],
+          "query": "CO2吸收解吸系统进料负荷变化时，可以怎样做补偿控制？",
+          "query_id": "curated-dev-08",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-C2",
+            "RE01-A4",
+            "EN04-B4",
+            "OC02-B1",
+            "OC02-A2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-A3"
+          ],
+          "query": "立方状态方程解出多个体积根，怎样判别饱和状态和应选的根？",
+          "query_id": "curated-dev-09",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-A3",
+            "TH03-A1",
+            "RE01-B3",
+            "TH03-C8",
+            "RE01-B2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-A8"
+          ],
+          "query": "气体经过节流阀一定会降温吗？等焓与温度变化是什么关系？",
+          "query_id": "curated-dev-10",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-A8",
+            "TH03-A9",
+            "TH03-A6",
+            "EN04-A2",
+            "TH03-A2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-C10"
+          ],
+          "query": "已知压力温度的闪蒸，与等焓、等熵闪蒸分别固定什么条件？",
+          "query_id": "curated-dev-11",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-C10",
+            "TH03-B3",
+            "TH03-B2",
+            "TH03-C6",
+            "OC02-B2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-C12"
+          ],
+          "query": "预测液液分相为什么还需要检查Gibbs稳定性，不能只求平衡方程？",
+          "query_id": "curated-dev-12",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-C12",
+            "TH03-C8",
+            "TH03-C6",
+            "TH03-C13",
+            "TH03-C14"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-A1"
+          ],
+          "query": "怎样从复合曲线与热级联获得最小冷热公用工程目标？",
+          "query_id": "curated-dev-13",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-A1",
+            "EN04-A3",
+            "EN04-A11",
+            "EN04-A8",
+            "EN04-A10"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-A8"
+          ],
+          "query": "现有换热网络改造时，跨夹点传热、HRAT和经济性如何一起考虑？",
+          "query_id": "curated-dev-14",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-A8",
+            "EN04-A9",
+            "EN04-A6",
+            "EN04-A7",
+            "EN04-A4"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-B3"
+          ],
+          "query": "蒸汽动力系统的锅炉、汽轮机和用汽接口要闭合哪些方程？",
+          "query_id": "curated-dev-15",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-B3",
+            "TH03-B3",
+            "EN04-A11",
+            "OC02-A4",
+            "EN04-A4"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-B5"
+          ],
+          "query": "全年不同时段的蒸汽需求、设备可用性和能源价格如何影响优化约束？",
+          "query_id": "curated-dev-16",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-B5",
+            "TH03-B3",
+            "EN04-A11",
+            "EN04-B3",
+            "OC02-B4"
+          ]
+        }
+      ],
+      "review_only_evaluation": {
+        "aggregate": {
+          "all_relevant_ndcg_at_k": null,
+          "all_relevant_recall_at_k": null,
+          "case_count": 16,
+          "case_role_counts": {
+            "negative_source_routing": 0,
+            "positive_all_relevant_ordered_parts": 0,
+            "positive_any_hit": 16,
+            "relation_only_not_primary_scored": 0
+          },
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "negative_must_not_clean_rate_at_k": null,
+          "negative_source_routing_case_count": 0,
+          "positive_all_relevant_case_count": 0,
+          "positive_any_hit_case_count": 16,
+          "positive_case_count": 16,
+          "rank1_rate": 1.0,
+          "relation_only_not_primary_scored_count": 0
+        },
+        "diagnostics": [
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-01",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-02",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-03",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-04",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-05",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-06",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-07",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-08",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-09",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-10",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-11",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-12",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-13",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-14",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-15",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-16",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          }
+        ],
+        "embedding_created": false,
+        "fusion_recomputed": false,
+        "human_pass_substitute": false,
+        "human_review": {
+          "decision": null,
+          "reviewer": null,
+          "status": "UNFILLED"
+        },
+        "index_built": false,
+        "k": 5,
+        "kg_activated": false,
+        "mrr_k": 5,
+        "ndcg_k": 5,
+        "production": false,
+        "ranking_source": "caller_supplied_ranked_ids_unchanged",
+        "route": "curated_bundle_dense",
+        "schema_version": "case-role-ranked-id-evaluation-2.0",
+        "status": "REVIEW_ONLY_MACHINE_DIAGNOSTIC"
+      }
+    },
+    "hybrid": {
+      "aggregate": {
+        "hit_at_5": 1.0,
+        "mrr_at_5": 1.0,
+        "query_count": 16,
+        "rank1_rate": 1.0
+      },
+      "per_query": [
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-A4"
+          ],
+          "query": "实测示踪剂出口曲线后，怎样判断返混并选择反应器模型？",
+          "query_id": "curated-dev-01",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-A4",
+            "RE01-A2",
+            "RE01-A3",
+            "RE01-C4",
+            "RE01-B2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-B1"
+          ],
+          "query": "催化反应实验测到的速率，什么条件下才可以当作本征动力学？",
+          "query_id": "curated-dev-02",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-B1",
+            "RE01-B2",
+            "RE01-A1",
+            "RE01-A2",
+            "RE01-A4"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-C4"
+          ],
+          "query": "全混反应器为什么会出现点火、熄火和多个稳态？",
+          "query_id": "curated-dev-03",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-C4",
+            "RE01-A1",
+            "RE01-A2",
+            "RE01-A4",
+            "RE01-A3"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-C5"
+          ],
+          "query": "放大固定床反应器时，热点和温度敏感性应怎样限制设计尺度？",
+          "query_id": "curated-dev-04",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-C5",
+            "RE01-B5",
+            "RE01-B1",
+            "RE01-A1",
+            "RE01-A4"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-A4"
+          ],
+          "query": "从收敛的稳态精馏模型转到动态模拟，还必须补齐什么物理条件？",
+          "query_id": "curated-dev-05",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-A4",
+            "OC02-A1",
+            "OC02-C3",
+            "OC02-B4",
+            "OC02-B1"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-B2"
+          ],
+          "query": "哪些相平衡变化能支持采用变压精馏？进料组成会影响塔序吗？",
+          "query_id": "curated-dev-06",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-B2",
+            "OC02-B4",
+            "OC02-C1",
+            "OC02-A1",
+            "EN04-C1"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-A1"
+          ],
+          "query": "精馏的产品纯度控制用温度代替组成测量时，测点如何筛选？",
+          "query_id": "curated-dev-07",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-A1",
+            "OC02-B1",
+            "OC02-C3",
+            "OC02-C1",
+            "OC02-B2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-C2"
+          ],
+          "query": "CO2吸收解吸系统进料负荷变化时，可以怎样做补偿控制？",
+          "query_id": "curated-dev-08",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-C2",
+            "EN04-B4",
+            "OC02-A5",
+            "OC02-B2",
+            "OC02-B1"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-A3"
+          ],
+          "query": "立方状态方程解出多个体积根，怎样判别饱和状态和应选的根？",
+          "query_id": "curated-dev-09",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-A3",
+            "TH03-A1",
+            "TH03-C8",
+            "TH03-A4",
+            "TH03-A2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-A8"
+          ],
+          "query": "气体经过节流阀一定会降温吗？等焓与温度变化是什么关系？",
+          "query_id": "curated-dev-10",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-A8",
+            "TH03-A6",
+            "TH03-A9",
+            "TH03-A5",
+            "TH03-C10"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-C10"
+          ],
+          "query": "已知压力温度的闪蒸，与等焓、等熵闪蒸分别固定什么条件？",
+          "query_id": "curated-dev-11",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-C10",
+            "TH03-B2",
+            "TH03-C6",
+            "TH03-A8",
+            "TH03-A3"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-C12"
+          ],
+          "query": "预测液液分相为什么还需要检查Gibbs稳定性，不能只求平衡方程？",
+          "query_id": "curated-dev-12",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-C12",
+            "TH03-C8",
+            "TH03-A3",
+            "TH03-C6",
+            "TH03-C13"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-A1"
+          ],
+          "query": "怎样从复合曲线与热级联获得最小冷热公用工程目标？",
+          "query_id": "curated-dev-13",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-A1",
+            "EN04-A3",
+            "EN04-A10",
+            "EN04-A8",
+            "EN04-A7"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-A8"
+          ],
+          "query": "现有换热网络改造时，跨夹点传热、HRAT和经济性如何一起考虑？",
+          "query_id": "curated-dev-14",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-A8",
+            "EN04-A9",
+            "EN04-A6",
+            "EN04-A7",
+            "EN04-A3"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-B3"
+          ],
+          "query": "蒸汽动力系统的锅炉、汽轮机和用汽接口要闭合哪些方程？",
+          "query_id": "curated-dev-15",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-B3",
+            "EN04-A11",
+            "TH03-B3",
+            "EN04-A4",
+            "EN04-A10"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-B5"
+          ],
+          "query": "全年不同时段的蒸汽需求、设备可用性和能源价格如何影响优化约束？",
+          "query_id": "curated-dev-16",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-B5",
+            "TH03-B3",
+            "EN04-B3",
+            "EN04-A11",
+            "EN04-B4"
+          ]
+        }
+      ],
+      "review_only_evaluation": {
+        "aggregate": {
+          "all_relevant_ndcg_at_k": null,
+          "all_relevant_recall_at_k": null,
+          "case_count": 16,
+          "case_role_counts": {
+            "negative_source_routing": 0,
+            "positive_all_relevant_ordered_parts": 0,
+            "positive_any_hit": 16,
+            "relation_only_not_primary_scored": 0
+          },
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "negative_must_not_clean_rate_at_k": null,
+          "negative_source_routing_case_count": 0,
+          "positive_all_relevant_case_count": 0,
+          "positive_any_hit_case_count": 16,
+          "positive_case_count": 16,
+          "rank1_rate": 1.0,
+          "relation_only_not_primary_scored_count": 0
+        },
+        "diagnostics": [
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-01",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-02",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-03",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-04",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-05",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-06",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-07",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-08",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-09",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-10",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-11",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-12",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-13",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-14",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-15",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-16",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          }
+        ],
+        "embedding_created": false,
+        "fusion_recomputed": false,
+        "human_pass_substitute": false,
+        "human_review": {
+          "decision": null,
+          "reviewer": null,
+          "status": "UNFILLED"
+        },
+        "index_built": false,
+        "k": 5,
+        "kg_activated": false,
+        "mrr_k": 5,
+        "ndcg_k": 5,
+        "production": false,
+        "ranking_source": "caller_supplied_ranked_ids_unchanged",
+        "route": "curated_bundle_hybrid",
+        "schema_version": "case-role-ranked-id-evaluation-2.0",
+        "status": "REVIEW_ONLY_MACHINE_DIAGNOSTIC"
+      }
+    },
+    "lexical": {
+      "aggregate": {
+        "hit_at_5": 1.0,
+        "mrr_at_5": 1.0,
+        "query_count": 16,
+        "rank1_rate": 1.0
+      },
+      "per_query": [
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-A4"
+          ],
+          "query": "实测示踪剂出口曲线后，怎样判断返混并选择反应器模型？",
+          "query_id": "curated-dev-01",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-A4",
+            "RE01-A2",
+            "RE01-C4",
+            "EN04-A2",
+            "RE01-A1"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-B1"
+          ],
+          "query": "催化反应实验测到的速率，什么条件下才可以当作本征动力学？",
+          "query_id": "curated-dev-02",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-B1",
+            "RE01-B2",
+            "RE01-A2",
+            "RE01-A1",
+            "RE01-A4"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-C4"
+          ],
+          "query": "全混反应器为什么会出现点火、熄火和多个稳态？",
+          "query_id": "curated-dev-03",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-C4",
+            "RE01-A1",
+            "RE01-A2",
+            "RE01-C5",
+            "RE01-A3"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "RE01-C5"
+          ],
+          "query": "放大固定床反应器时，热点和温度敏感性应怎样限制设计尺度？",
+          "query_id": "curated-dev-04",
+          "rank1": true,
+          "ranked_ids": [
+            "RE01-C5",
+            "RE01-B5",
+            "TH03-C7",
+            "RE01-B1",
+            "RE01-A4"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-A4"
+          ],
+          "query": "从收敛的稳态精馏模型转到动态模拟，还必须补齐什么物理条件？",
+          "query_id": "curated-dev-05",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-A4",
+            "OC02-C3",
+            "OC02-B4",
+            "TH03-A3",
+            "OC02-A1"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-B2"
+          ],
+          "query": "哪些相平衡变化能支持采用变压精馏？进料组成会影响塔序吗？",
+          "query_id": "curated-dev-06",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-B2",
+            "OC02-C1",
+            "OC02-B4",
+            "OC02-A1",
+            "OC02-A5"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-A1"
+          ],
+          "query": "精馏的产品纯度控制用温度代替组成测量时，测点如何筛选？",
+          "query_id": "curated-dev-07",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-A1",
+            "OC02-B1",
+            "OC02-A5",
+            "OC02-C3",
+            "OC02-A3"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "OC02-C2"
+          ],
+          "query": "CO2吸收解吸系统进料负荷变化时，可以怎样做补偿控制？",
+          "query_id": "curated-dev-08",
+          "rank1": true,
+          "ranked_ids": [
+            "OC02-C2",
+            "OC02-A5",
+            "RE01-B4",
+            "OC02-B4",
+            "OC02-B2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-A3"
+          ],
+          "query": "立方状态方程解出多个体积根，怎样判别饱和状态和应选的根？",
+          "query_id": "curated-dev-09",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-A3",
+            "TH03-A1",
+            "TH03-A2",
+            "TH03-C8",
+            "TH03-C2"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-A8"
+          ],
+          "query": "气体经过节流阀一定会降温吗？等焓与温度变化是什么关系？",
+          "query_id": "curated-dev-10",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-A8",
+            "TH03-A6",
+            "TH03-C10",
+            "TH03-A5",
+            "TH03-A9"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-C10"
+          ],
+          "query": "已知压力温度的闪蒸，与等焓、等熵闪蒸分别固定什么条件？",
+          "query_id": "curated-dev-11",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-C10",
+            "TH03-A3",
+            "TH03-B2",
+            "TH03-A8",
+            "TH03-A5"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "TH03-C12"
+          ],
+          "query": "预测液液分相为什么还需要检查Gibbs稳定性，不能只求平衡方程？",
+          "query_id": "curated-dev-12",
+          "rank1": true,
+          "ranked_ids": [
+            "TH03-C12",
+            "TH03-A3",
+            "TH03-C8",
+            "TH03-C10",
+            "TH03-C6"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-A1"
+          ],
+          "query": "怎样从复合曲线与热级联获得最小冷热公用工程目标？",
+          "query_id": "curated-dev-13",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-A1",
+            "EN04-A10",
+            "EN04-A3",
+            "EN04-A4",
+            "EN04-A7"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-A8"
+          ],
+          "query": "现有换热网络改造时，跨夹点传热、HRAT和经济性如何一起考虑？",
+          "query_id": "curated-dev-14",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-A8",
+            "EN04-A9",
+            "EN04-A6",
+            "EN04-B2",
+            "EN04-A3"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-B3"
+          ],
+          "query": "蒸汽动力系统的锅炉、汽轮机和用汽接口要闭合哪些方程？",
+          "query_id": "curated-dev-15",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-B3",
+            "EN04-A11",
+            "TH03-B3",
+            "EN04-B4",
+            "EN04-A4"
+          ]
+        },
+        {
+          "first_primary_rank": 1,
+          "hit_at_5": true,
+          "mrr_at_5": 1.0,
+          "primary_target_ids": [
+            "EN04-B5"
+          ],
+          "query": "全年不同时段的蒸汽需求、设备可用性和能源价格如何影响优化约束？",
+          "query_id": "curated-dev-16",
+          "rank1": true,
+          "ranked_ids": [
+            "EN04-B5",
+            "EN04-B3",
+            "TH03-B3",
+            "EN04-A3",
+            "EN04-B4"
+          ]
+        }
+      ],
+      "review_only_evaluation": {
+        "aggregate": {
+          "all_relevant_ndcg_at_k": null,
+          "all_relevant_recall_at_k": null,
+          "case_count": 16,
+          "case_role_counts": {
+            "negative_source_routing": 0,
+            "positive_all_relevant_ordered_parts": 0,
+            "positive_any_hit": 16,
+            "relation_only_not_primary_scored": 0
+          },
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "negative_must_not_clean_rate_at_k": null,
+          "negative_source_routing_case_count": 0,
+          "positive_all_relevant_case_count": 0,
+          "positive_any_hit_case_count": 16,
+          "positive_case_count": 16,
+          "rank1_rate": 1.0,
+          "relation_only_not_primary_scored_count": 0
+        },
+        "diagnostics": [
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-01",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-02",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-03",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-04",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-05",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-06",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-07",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-08",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-09",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-10",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-11",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-12",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-13",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-14",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-15",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          },
+          {
+            "case_role": "positive_any_hit",
+            "expected_behavior": null,
+            "first_primary_rank": 1,
+            "hit_at_k": true,
+            "mrr_at_k": 1.0,
+            "must_not_clean_at_k": null,
+            "must_not_count": 0,
+            "must_not_violations_at_k": [],
+            "ndcg_at_k": null,
+            "observed_relation_context_ranks_at_k": [],
+            "primary_metric_population": "included",
+            "primary_target_count": 1,
+            "query_id": "curated-dev-16",
+            "rank1": true,
+            "recall_at_k": null,
+            "relation_context_count": 0
+          }
+        ],
+        "embedding_created": false,
+        "fusion_recomputed": false,
+        "human_pass_substitute": false,
+        "human_review": {
+          "decision": null,
+          "reviewer": null,
+          "status": "UNFILLED"
+        },
+        "index_built": false,
+        "k": 5,
+        "kg_activated": false,
+        "mrr_k": 5,
+        "ndcg_k": 5,
+        "production": false,
+        "ranking_source": "caller_supplied_ranked_ids_unchanged",
+        "route": "curated_bundle_lexical",
+        "schema_version": "case-role-ranked-id-evaluation-2.0",
+        "status": "REVIEW_ONLY_MACHINE_DIAGNOSTIC"
+      }
+    }
+  },
+  "production_activated": false,
+  "query_count": 16,
+  "ranking_contract": {
+    "dense": "locked direct ONNX BGE embeddings with exact matrix cosine",
+    "hybrid": "fixed reciprocal rank fusion with RRF_K=60",
+    "lexical": "Chinese characters plus adjacent bigrams and lowercased English/alphanumeric tokens scored by BM25(k1=1.2,b=0.75)",
+    "limit": 5,
+    "no_parameter_tuning": true,
+    "target_grain": "knowledge_unit"
+  },
+  "schema": "curated-public-development-evaluation-v1",
+  "scope": "public_development_examples_only",
+  "status": "review_only_machine_diagnostic",
+  "timing_note": "One locked encoder and one batched query encoding were reused for dense and hybrid; hybrid timing is the fixed RRF fusion step.",
+  "timing_seconds": {
+    "dense_query_encode_batch": 0.03911510000034468,
+    "dense_ranking": 0.0023432000016327947,
+    "encoder_init_and_contract_check": 0.45760539999901084,
+    "hybrid_rrf_fusion": 0.0009897999989334494,
+    "lexical_ranking": 0.15008700000180397
+  }
+}

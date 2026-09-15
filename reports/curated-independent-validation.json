@@ -1,0 +1,47 @@
+{
+  "counts": {
+    "edges": 191,
+    "evidence": 69,
+    "external_references": 252,
+    "knowledge_units": 69,
+    "nodes": 177,
+    "sources": 4
+  },
+  "errors": [],
+  "evidence_mode": {
+    "chapter_map": true,
+    "records_root": true,
+    "source_audit": true
+  },
+  "schema_version": "curated-bundle-validation-1.0",
+  "scope": "independent_candidate_bundle_validation",
+  "status": "PASS",
+  "vectors_required": true,
+  "warnings": [],
+  "independent_evidence": {
+    "bundle_scope": "formal_repo_bundle_read_only",
+    "private_identity_recheck": {
+      "chapter_map_sha256": "539f491e2eb54b3a70bbd70f5f8e7d95772aad1733af159eceda4ad87b764120",
+      "source_audit_sha256": "6be764f1d2c5a865de3a0ca5283f19e40cc4487795aa12be19afea9dc034619d",
+      "records_root_body_identity_rechecked": true,
+      "records_rechecked": 69
+    },
+    "bundle_file_sha256": {
+      "knowledge_units.jsonl": "0413d5ba942e6a66b9d8546f449a72e791028f9602db246e25ab709a01d51d6d",
+      "source_manifest.json": "b277c58cadfd8f8b689e755ebd6b5a507532a190faf9130772abd7e53886f469",
+      "kg_nodes.jsonl": "349fc3215e952500cca4bb889e29d9152d5abe7ded8d7b771ca3f9880200f9fb",
+      "kg_edges.jsonl": "d12671d3d4482628e7e57e1c7bbfcf8b220a88fc8564a14a26b8f2eedcf9769f",
+      "evidence_registry.jsonl": "be5991222e0295dfbd2895ea63ee80cf04a47ea5812ee478e5018784c89a0066",
+      "external_references.jsonl": "24e22e3adcae5cc2870b691ade341bf84298638cb7b31a9bea29a9d6584859ee",
+      "conversion_report.json": "08acfee326afb7e6050adab05eb9f75f8788ea6bb1f15d627ea18e8a10da2737",
+      "rag_chunks.jsonl": "925897d32c30d8fdf9b9b726abe6aa6c008e5511cf990612197fc0182eb35324",
+      "chunk_to_kg.jsonl": "e27aca78fc28bc35537b61d1c7c6eb0faa8d4e7b4ffbd449dc1d7b556a2fa517",
+      "embeddings.f32": "f1bf05bc01a4ec6bbb0aba6c55ef388201aa985b3abf688799be2503f7639eca",
+      "vector_manifest.json": "014ed2c0a35b9b50cf034cd99adf868aa3c997868d406d9a50db066adaebcb63"
+    },
+    "model_boundary": {
+      "model_or_tokenizer_executed_by_validator": false,
+      "checked": "chunk inheritance, complete span coverage, search/embedding equality, matrix SHA/order/shape/finite/L2"
+    }
+  }
+}

@@ -1,0 +1,1001 @@
+{
+  "all_48_top5_match": true,
+  "binding": {
+    "chunk_to_kg.jsonl": "e27aca78fc28bc35537b61d1c7c6eb0faa8d4e7b4ffbd449dc1d7b556a2fa517",
+    "embeddings.f32": "f1bf05bc01a4ec6bbb0aba6c55ef388201aa985b3abf688799be2503f7639eca",
+    "evaluate_curated.py": "430c6a927cc3fd34b7fc37733951cb3cf741053ed042b60e8cfb17164fc1692c",
+    "formal_report": "bbbb8a6eba73c78b72aa6edb5b9027259ed9b9654ba9be5888bdc1c89ab6fecd",
+    "knowledge_units.jsonl": "0413d5ba942e6a66b9d8546f449a72e791028f9602db246e25ab709a01d51d6d",
+    "model_lock.json": "148a6a232f67914403038fa3866b6b316807368083eef17d9615e7117fe3c55a",
+    "queries.jsonl": "fe390e74d929d75e2013b09b1440a55357f1ffc60a661dedfe8d7e011c90e3f4",
+    "query_curated.py": "ff6663f565fab41ccf9ce418903dad73fa4f585b64fee33c3049b81caf75f88c",
+    "rag_chunks.jsonl": "925897d32c30d8fdf9b9b726abe6aa6c008e5511cf990612197fc0182eb35324",
+    "vector_manifest.json": "014ed2c0a35b9b50cf034cd99adf868aa3c997868d406d9a50db066adaebcb63"
+  },
+  "calls": 48,
+  "comparisons": [
+    {
+      "actual_top5": [
+        "RE01-A4",
+        "RE01-A2",
+        "RE01-C4",
+        "EN04-A2",
+        "RE01-A1"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-01",
+      "reported_top5": [
+        "RE01-A4",
+        "RE01-A2",
+        "RE01-C4",
+        "EN04-A2",
+        "RE01-A1"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-B1",
+        "RE01-B2",
+        "RE01-A2",
+        "RE01-A1",
+        "RE01-A4"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-02",
+      "reported_top5": [
+        "RE01-B1",
+        "RE01-B2",
+        "RE01-A2",
+        "RE01-A1",
+        "RE01-A4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-C4",
+        "RE01-A1",
+        "RE01-A2",
+        "RE01-C5",
+        "RE01-A3"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-03",
+      "reported_top5": [
+        "RE01-C4",
+        "RE01-A1",
+        "RE01-A2",
+        "RE01-C5",
+        "RE01-A3"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-C5",
+        "RE01-B5",
+        "TH03-C7",
+        "RE01-B1",
+        "RE01-A4"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-04",
+      "reported_top5": [
+        "RE01-C5",
+        "RE01-B5",
+        "TH03-C7",
+        "RE01-B1",
+        "RE01-A4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-A4",
+        "OC02-C3",
+        "OC02-B4",
+        "TH03-A3",
+        "OC02-A1"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-05",
+      "reported_top5": [
+        "OC02-A4",
+        "OC02-C3",
+        "OC02-B4",
+        "TH03-A3",
+        "OC02-A1"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-B2",
+        "OC02-C1",
+        "OC02-B4",
+        "OC02-A1",
+        "OC02-A5"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-06",
+      "reported_top5": [
+        "OC02-B2",
+        "OC02-C1",
+        "OC02-B4",
+        "OC02-A1",
+        "OC02-A5"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-A1",
+        "OC02-B1",
+        "OC02-A5",
+        "OC02-C3",
+        "OC02-A3"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-07",
+      "reported_top5": [
+        "OC02-A1",
+        "OC02-B1",
+        "OC02-A5",
+        "OC02-C3",
+        "OC02-A3"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-C2",
+        "OC02-A5",
+        "RE01-B4",
+        "OC02-B4",
+        "OC02-B2"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-08",
+      "reported_top5": [
+        "OC02-C2",
+        "OC02-A5",
+        "RE01-B4",
+        "OC02-B4",
+        "OC02-B2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-A3",
+        "TH03-A1",
+        "TH03-A2",
+        "TH03-C8",
+        "TH03-C2"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-09",
+      "reported_top5": [
+        "TH03-A3",
+        "TH03-A1",
+        "TH03-A2",
+        "TH03-C8",
+        "TH03-C2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-A8",
+        "TH03-A6",
+        "TH03-C10",
+        "TH03-A5",
+        "TH03-A9"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-10",
+      "reported_top5": [
+        "TH03-A8",
+        "TH03-A6",
+        "TH03-C10",
+        "TH03-A5",
+        "TH03-A9"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-C10",
+        "TH03-A3",
+        "TH03-B2",
+        "TH03-A8",
+        "TH03-A5"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-11",
+      "reported_top5": [
+        "TH03-C10",
+        "TH03-A3",
+        "TH03-B2",
+        "TH03-A8",
+        "TH03-A5"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-C12",
+        "TH03-A3",
+        "TH03-C8",
+        "TH03-C10",
+        "TH03-C6"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-12",
+      "reported_top5": [
+        "TH03-C12",
+        "TH03-A3",
+        "TH03-C8",
+        "TH03-C10",
+        "TH03-C6"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-A1",
+        "EN04-A10",
+        "EN04-A3",
+        "EN04-A4",
+        "EN04-A7"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-13",
+      "reported_top5": [
+        "EN04-A1",
+        "EN04-A10",
+        "EN04-A3",
+        "EN04-A4",
+        "EN04-A7"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-A8",
+        "EN04-A9",
+        "EN04-A6",
+        "EN04-B2",
+        "EN04-A3"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-14",
+      "reported_top5": [
+        "EN04-A8",
+        "EN04-A9",
+        "EN04-A6",
+        "EN04-B2",
+        "EN04-A3"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-B3",
+        "EN04-A11",
+        "TH03-B3",
+        "EN04-B4",
+        "EN04-A4"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-15",
+      "reported_top5": [
+        "EN04-B3",
+        "EN04-A11",
+        "TH03-B3",
+        "EN04-B4",
+        "EN04-A4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-B5",
+        "EN04-B3",
+        "TH03-B3",
+        "EN04-A3",
+        "EN04-B4"
+      ],
+      "match": true,
+      "method": "lexical",
+      "query_id": "curated-dev-16",
+      "reported_top5": [
+        "EN04-B5",
+        "EN04-B3",
+        "TH03-B3",
+        "EN04-A3",
+        "EN04-B4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-A4",
+        "RE01-B2",
+        "RE01-A3",
+        "RE01-A2",
+        "OC02-A3"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-01",
+      "reported_top5": [
+        "RE01-A4",
+        "RE01-B2",
+        "RE01-A3",
+        "RE01-A2",
+        "OC02-A3"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-B1",
+        "RE01-B2",
+        "RE01-A1",
+        "RE01-C3",
+        "RE01-A2"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-02",
+      "reported_top5": [
+        "RE01-B1",
+        "RE01-B2",
+        "RE01-A1",
+        "RE01-C3",
+        "RE01-A2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-C4",
+        "OC02-A4",
+        "RE01-A1",
+        "RE01-A4",
+        "RE01-A2"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-03",
+      "reported_top5": [
+        "RE01-C4",
+        "OC02-A4",
+        "RE01-A1",
+        "RE01-A4",
+        "RE01-A2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-C5",
+        "RE01-B5",
+        "RE01-A1",
+        "RE01-B1",
+        "EN04-A8"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-04",
+      "reported_top5": [
+        "RE01-C5",
+        "RE01-B5",
+        "RE01-A1",
+        "RE01-B1",
+        "EN04-A8"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-A4",
+        "OC02-A1",
+        "OC02-B1",
+        "OC02-C1",
+        "OC02-B2"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-05",
+      "reported_top5": [
+        "OC02-A4",
+        "OC02-A1",
+        "OC02-B1",
+        "OC02-C1",
+        "OC02-B2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-B2",
+        "OC02-B4",
+        "OC02-C1",
+        "OC02-A1",
+        "EN04-A5"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-06",
+      "reported_top5": [
+        "OC02-B2",
+        "OC02-B4",
+        "OC02-C1",
+        "OC02-A1",
+        "EN04-A5"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-A1",
+        "OC02-B1",
+        "OC02-C1",
+        "OC02-B2",
+        "TH03-C6"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-07",
+      "reported_top5": [
+        "OC02-A1",
+        "OC02-B1",
+        "OC02-C1",
+        "OC02-B2",
+        "TH03-C6"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-C2",
+        "RE01-A4",
+        "EN04-B4",
+        "OC02-B1",
+        "OC02-A2"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-08",
+      "reported_top5": [
+        "OC02-C2",
+        "RE01-A4",
+        "EN04-B4",
+        "OC02-B1",
+        "OC02-A2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-A3",
+        "TH03-A1",
+        "RE01-B3",
+        "TH03-C8",
+        "RE01-B2"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-09",
+      "reported_top5": [
+        "TH03-A3",
+        "TH03-A1",
+        "RE01-B3",
+        "TH03-C8",
+        "RE01-B2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-A8",
+        "TH03-A9",
+        "TH03-A6",
+        "EN04-A2",
+        "TH03-A2"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-10",
+      "reported_top5": [
+        "TH03-A8",
+        "TH03-A9",
+        "TH03-A6",
+        "EN04-A2",
+        "TH03-A2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-C10",
+        "TH03-B3",
+        "TH03-B2",
+        "TH03-C6",
+        "OC02-B2"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-11",
+      "reported_top5": [
+        "TH03-C10",
+        "TH03-B3",
+        "TH03-B2",
+        "TH03-C6",
+        "OC02-B2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-C12",
+        "TH03-C8",
+        "TH03-C6",
+        "TH03-C13",
+        "TH03-C14"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-12",
+      "reported_top5": [
+        "TH03-C12",
+        "TH03-C8",
+        "TH03-C6",
+        "TH03-C13",
+        "TH03-C14"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-A1",
+        "EN04-A3",
+        "EN04-A11",
+        "EN04-A8",
+        "EN04-A10"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-13",
+      "reported_top5": [
+        "EN04-A1",
+        "EN04-A3",
+        "EN04-A11",
+        "EN04-A8",
+        "EN04-A10"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-A8",
+        "EN04-A9",
+        "EN04-A6",
+        "EN04-A7",
+        "EN04-A4"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-14",
+      "reported_top5": [
+        "EN04-A8",
+        "EN04-A9",
+        "EN04-A6",
+        "EN04-A7",
+        "EN04-A4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-B3",
+        "TH03-B3",
+        "EN04-A11",
+        "OC02-A4",
+        "EN04-A4"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-15",
+      "reported_top5": [
+        "EN04-B3",
+        "TH03-B3",
+        "EN04-A11",
+        "OC02-A4",
+        "EN04-A4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-B5",
+        "TH03-B3",
+        "EN04-A11",
+        "EN04-B3",
+        "OC02-B4"
+      ],
+      "match": true,
+      "method": "dense",
+      "query_id": "curated-dev-16",
+      "reported_top5": [
+        "EN04-B5",
+        "TH03-B3",
+        "EN04-A11",
+        "EN04-B3",
+        "OC02-B4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-A4",
+        "RE01-A2",
+        "RE01-A3",
+        "RE01-C4",
+        "RE01-B2"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-01",
+      "reported_top5": [
+        "RE01-A4",
+        "RE01-A2",
+        "RE01-A3",
+        "RE01-C4",
+        "RE01-B2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-B1",
+        "RE01-B2",
+        "RE01-A1",
+        "RE01-A2",
+        "RE01-A4"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-02",
+      "reported_top5": [
+        "RE01-B1",
+        "RE01-B2",
+        "RE01-A1",
+        "RE01-A2",
+        "RE01-A4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-C4",
+        "RE01-A1",
+        "RE01-A2",
+        "RE01-A4",
+        "RE01-A3"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-03",
+      "reported_top5": [
+        "RE01-C4",
+        "RE01-A1",
+        "RE01-A2",
+        "RE01-A4",
+        "RE01-A3"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "RE01-C5",
+        "RE01-B5",
+        "RE01-B1",
+        "RE01-A1",
+        "RE01-A4"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-04",
+      "reported_top5": [
+        "RE01-C5",
+        "RE01-B5",
+        "RE01-B1",
+        "RE01-A1",
+        "RE01-A4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-A4",
+        "OC02-A1",
+        "OC02-C3",
+        "OC02-B4",
+        "OC02-B1"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-05",
+      "reported_top5": [
+        "OC02-A4",
+        "OC02-A1",
+        "OC02-C3",
+        "OC02-B4",
+        "OC02-B1"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-B2",
+        "OC02-B4",
+        "OC02-C1",
+        "OC02-A1",
+        "EN04-C1"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-06",
+      "reported_top5": [
+        "OC02-B2",
+        "OC02-B4",
+        "OC02-C1",
+        "OC02-A1",
+        "EN04-C1"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-A1",
+        "OC02-B1",
+        "OC02-C3",
+        "OC02-C1",
+        "OC02-B2"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-07",
+      "reported_top5": [
+        "OC02-A1",
+        "OC02-B1",
+        "OC02-C3",
+        "OC02-C1",
+        "OC02-B2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "OC02-C2",
+        "EN04-B4",
+        "OC02-A5",
+        "OC02-B2",
+        "OC02-B1"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-08",
+      "reported_top5": [
+        "OC02-C2",
+        "EN04-B4",
+        "OC02-A5",
+        "OC02-B2",
+        "OC02-B1"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-A3",
+        "TH03-A1",
+        "TH03-C8",
+        "TH03-A4",
+        "TH03-A2"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-09",
+      "reported_top5": [
+        "TH03-A3",
+        "TH03-A1",
+        "TH03-C8",
+        "TH03-A4",
+        "TH03-A2"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-A8",
+        "TH03-A6",
+        "TH03-A9",
+        "TH03-A5",
+        "TH03-C10"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-10",
+      "reported_top5": [
+        "TH03-A8",
+        "TH03-A6",
+        "TH03-A9",
+        "TH03-A5",
+        "TH03-C10"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-C10",
+        "TH03-B2",
+        "TH03-C6",
+        "TH03-A8",
+        "TH03-A3"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-11",
+      "reported_top5": [
+        "TH03-C10",
+        "TH03-B2",
+        "TH03-C6",
+        "TH03-A8",
+        "TH03-A3"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "TH03-C12",
+        "TH03-C8",
+        "TH03-A3",
+        "TH03-C6",
+        "TH03-C13"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-12",
+      "reported_top5": [
+        "TH03-C12",
+        "TH03-C8",
+        "TH03-A3",
+        "TH03-C6",
+        "TH03-C13"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-A1",
+        "EN04-A3",
+        "EN04-A10",
+        "EN04-A8",
+        "EN04-A7"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-13",
+      "reported_top5": [
+        "EN04-A1",
+        "EN04-A3",
+        "EN04-A10",
+        "EN04-A8",
+        "EN04-A7"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-A8",
+        "EN04-A9",
+        "EN04-A6",
+        "EN04-A7",
+        "EN04-A3"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-14",
+      "reported_top5": [
+        "EN04-A8",
+        "EN04-A9",
+        "EN04-A6",
+        "EN04-A7",
+        "EN04-A3"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-B3",
+        "EN04-A11",
+        "TH03-B3",
+        "EN04-A4",
+        "EN04-A10"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-15",
+      "reported_top5": [
+        "EN04-B3",
+        "EN04-A11",
+        "TH03-B3",
+        "EN04-A4",
+        "EN04-A10"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    },
+    {
+      "actual_top5": [
+        "EN04-B5",
+        "TH03-B3",
+        "EN04-B3",
+        "EN04-A11",
+        "EN04-B4"
+      ],
+      "match": true,
+      "method": "hybrid",
+      "query_id": "curated-dev-16",
+      "reported_top5": [
+        "EN04-B5",
+        "TH03-B3",
+        "EN04-B3",
+        "EN04-A11",
+        "EN04-B4"
+      ],
+      "search_kwargs_excluded_target_ids": "primary_target_ids"
+    }
+  ],
+  "evaluator_code_audit": {
+    "ranking_functions_contain_target_id_references": [],
+    "ranking_target_dependency_absent": true,
+    "run_target_set_validation_lines": [
+      243,
+      248
+    ]
+  },
+  "methods": [
+    "lexical",
+    "dense",
+    "hybrid"
+  ],
+  "mismatches": [],
+  "model_boundary": {
+    "model_execution_claim": "not claimed by this audit; this compares the formal API with the frozen report",
+    "ranking_reimplemented": false,
+    "search_api": "formal query_curated.CuratedBundle.search",
+    "target_ids_used_for_ranking": false
+  },
+  "queries": 16,
+  "schema": "curated-search-independent-replay-v1",
+  "status": "PASS"
+}

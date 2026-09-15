@@ -1,0 +1,113 @@
+{
+  "schema_version": "curated-public-preview-qa-1.0",
+  "as_of": "2026-09-16",
+  "status": "validated_public_preview",
+  "canonical_project": "chemical-engineering-rag-kg",
+  "scope": "69 selected authored explanations from four private source documents; not full-source digitization",
+  "counts": {
+    "sources": 4,
+    "knowledge_units": 69,
+    "source_counts": {
+      "RE01": 14,
+      "OC02": 13,
+      "TH03": 25,
+      "EN04": 17
+    },
+    "kg_nodes": 177,
+    "kg_edges": 191,
+    "evidence": 69,
+    "external_references": 252,
+    "retrieval_chunks": 82,
+    "embedding_rows": 82,
+    "embedding_dimensions": 512
+  },
+  "content_review": {
+    "prior_reviewed_explanations_reused": 69,
+    "body_and_source_identity_rechecked": 69,
+    "duplicate_body_hashes": 0,
+    "agent_review": true,
+    "human_review": false,
+    "full_source_digitization_complete": false,
+    "source_page_media_published": false,
+    "source_hash_is_page_hash": false
+  },
+  "graph_validation": {
+    "status": "PASS",
+    "independent_agent_review": true,
+    "blocking_findings": 0,
+    "report": "../../reports/curated-independent-validation.json",
+    "private_parent_identity_recheck": true,
+    "validator_executed_model_or_tokenizer": false
+  },
+  "learned_vectors": {
+    "status": "generated_and_verified",
+    "model": "BAAI/bge-small-zh-v1.5",
+    "revision": "46fbe35fd4374a00fee7de77dfddaeb6dd6a2c59",
+    "implementation": "direct-onnxruntime",
+    "hash_or_random_vectors": false,
+    "matrix_sha256": "f1bf05bc01a4ec6bbb0aba6c55ef388201aa985b3abf688799be2503f7639eca",
+    "independent_build_bytes_identical": true,
+    "long_knowledge_units_split": 13,
+    "max_observed_tokens_including_special_tokens": 508,
+    "max_tokens_allowed": 512,
+    "truncation": false,
+    "complete_body_coverage": true,
+    "returned_grain": "complete knowledge unit"
+  },
+  "tests": {
+    "vector_module": {
+      "passed": 5,
+      "total": 5,
+      "actual_model_execution": true
+    },
+    "bundle_validator": {
+      "passed": 11,
+      "total": 11,
+      "actual_model_execution": false
+    },
+    "index_and_query": {
+      "passed": 5,
+      "total": 5,
+      "actual_model_execution": true,
+      "report": "../../reports/curated-search-tests.json"
+    },
+    "default_cli_from_other_working_directory": "PASS",
+    "independent_real_search_api_replay": {
+      "passed": 48,
+      "total": 48,
+      "top5_mismatches": 0,
+      "report": "../../reports/curated-search-replay.json"
+    }
+  },
+  "retrieval_development": {
+    "query_count": 16,
+    "split": "public_development",
+    "methods": [
+      "lexical",
+      "dense",
+      "hybrid"
+    ],
+    "hit_at_5": 1,
+    "mrr_at_5": 1,
+    "rank1_rate": 1,
+    "report": "../../reports/curated-dev-evaluation.json",
+    "holdout_read": false,
+    "no_answer_threshold_validated": false,
+    "engineering_certification": false
+  },
+  "public_scope": {
+    "original_pdfs": false,
+    "page_images": false,
+    "ocr_full_text": false,
+    "model_weights": false,
+    "vector_databases": false,
+    "private_absolute_paths": false,
+    "authored_knowledge_and_validated_derived_matrix": true
+  },
+  "history": {
+    "legacy_snapshot": "../../reports/stage_snapshot.json",
+    "legacy_counts_or_failed_gates_changed": false
+  },
+  "production_activated": false,
+  "human_approved_anchor_count": 0
+}
