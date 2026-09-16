@@ -82,10 +82,126 @@ CURATED_PAYLOAD_FILES = {
     "embeddings.f32", "vector_manifest.json", "qa_summary.json",
 }
 S001_EXTRA_PAYLOAD_FILES = {"cross_bundle_references.jsonl"}
+COLLECTION_DESCRIPTOR = "knowledge/curated-collection-v1.json"
+COLLECTION_BUNDLE_IDS = {
+    "curated-four-books-v1",
+    "curated-s001-upper-v1",
+}
 
 
 def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
+
+
+def check_collection_descriptor(root: Path) -> list[str]:
+    """Validate the fixed two-bundle descriptor when it is present."""
+    failures: list[str] = []
+    descriptor_path = root / COLLECTION_DESCRIPTOR
+    if not descriptor_path.exists():
+        return failures
+    if not descriptor_path.is_file():
+        return ["collection descriptor path exists but is not a file"]
+    try:
+        descriptor = json.loads(descriptor_path.read_text(encoding="utf-8"))
+        if not isinstance(descriptor, dict):
+            raise ValueError("collection descriptor must be an object")
+        if descriptor.get("schema_version") != "curated-collection-candidate-1.0":
+            failures.append("collection descriptor schema is invalid")
+        if descriptor.get("collection_id") != "curated-two-bundles-v1":
+            failures.append("collection descriptor id is invalid")
+        if descriptor.get("canonical_project") != "chemical-engineering-rag-kg":
+            failures.append("collection descriptor project is invalid")
+        if descriptor.get("status") != "candidate_read_only":
+            failures.append("collection descriptor status is invalid")
+        if descriptor.get("production_activated") is not False:
+            failures.append("collection descriptor production flag is invalid")
+        if descriptor.get("no_answer_threshold") is not None:
+            failures.append("collection descriptor must not define an answer threshold")
+        if descriptor.get("full_corpus_auto_merge") is not False:
+            failures.append("collection descriptor enables automatic corpus merge")
+        if descriptor.get("knowledge_root") != ".":
+            failures.append("collection descriptor knowledge_root must be .")
+
+        packages = descriptor.get("packages")
+        if not isinstance(packages, list):
+            failures.append("collection descriptor packages must be a list")
+            packages = []
+        if len(packages) != 2:
+            failures.append("collection descriptor must contain exactly two packages")
+        package_ids = [
+            entry.get("bundle_id")
+            for entry in packages
+            if isinstance(entry, dict)
+        ]
+        if len(package_ids) != len(packages):
+            failures.append("collection descriptor has a non-object package entry")
+        string_ids = [value for value in package_ids if isinstance(value, str)]
+        if len(string_ids) != len(package_ids):
+            failures.append("collection descriptor has an invalid package id")
+        if len(string_ids) != len(set(string_ids)):
+            failures.append("collection descriptor has duplicate package ids")
+        if set(string_ids) != COLLECTION_BUNDLE_IDS:
+            failures.append("collection descriptor package ids are not the two approved bundles")
+
+        totals = descriptor.get("totals")
+        if not isinstance(totals, dict):
+            failures.append("collection descriptor totals are missing")
+            totals = {}
+        if totals.get("knowledge_units") != 98:
+            failures.append("collection descriptor total knowledge units must be 98")
+        if totals.get("chunks") != 113:
+            failures.append("collection descriptor total chunks must be 113")
+
+        coverage_totals = {"knowledge_units": 0, "chunks": 0}
+        for entry in packages:
+            if not isinstance(entry, dict):
+                continue
+            bundle_id = entry.get("bundle_id")
+            if not isinstance(bundle_id, str):
+                continue
+            if bundle_id not in COLLECTION_BUNDLE_IDS:
+                continue
+            if entry.get("path_relative_to_knowledge") != bundle_id:
+                failures.append(f"collection package path is not its bundle id: {bundle_id}")
+            package_dir = root / "knowledge" / bundle_id
+            manifest_path = package_dir / "manifest.json"
+            vector_path = package_dir / "vector_manifest.json"
+            for path, field in (
+                (manifest_path, "manifest_sha256"),
+                (vector_path, "vector_manifest_sha256"),
+            ):
+                expected_sha = entry.get(field)
+                if not path.is_file():
+                    failures.append(f"collection package file is missing: {path.as_posix()}")
+                elif not isinstance(expected_sha, str) or hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha:
+                    failures.append(f"collection package {field} mismatch: {bundle_id}")
+            if not vector_path.is_file():
+                continue
+            try:
+                vector_manifest = json.loads(vector_path.read_text(encoding="utf-8"))
+                coverage = vector_manifest["coverage"]
+                if not isinstance(coverage, dict):
+                    raise ValueError("coverage is not an object")
+                for field, total_field in (
+                    ("knowledge_unit_count", "knowledge_units"),
+                    ("chunk_count", "chunks"),
+                ):
+                    if entry.get(field) != coverage.get(field):
+                        failures.append(f"collection package {field} disagrees with coverage: {bundle_id}")
+                    value = coverage.get(field)
+                    if type(value) is int and value >= 0:
+                        coverage_totals[total_field] += value
+            except (KeyError, TypeError, ValueError, OSError, json.JSONDecodeError) as exc:
+                failures.append(f"collection vector coverage invalid for {bundle_id}: {exc}")
+        if coverage_totals["knowledge_units"] != 98:
+            failures.append("collection package coverage total knowledge units must be 98")
+        if coverage_totals["chunks"] != 113:
+            failures.append("collection package coverage total chunks must be 113")
+        if not (root / "src" / "query_collection.py").is_file():
+            failures.append("src/query_collection.py is required with the collection descriptor")
+    except (json.JSONDecodeError, OSError, TypeError, ValueError) as exc:
+        failures.append(f"collection descriptor validation: {exc}")
+    return failures
 
 
 def check_curated_vectors(root: Path, bundle_rel: str = CURATED_BUNDLE) -> list[str]:
@@ -192,6 +308,8 @@ def main() -> int:
     missing = sorted(REQUIRED_FILES - paths)
     if missing:
         failures.append(f"missing required files: {missing}")
+
+    failures.extend(check_collection_descriptor(ROOT))
 
     for path in files:
         relative = rel(path)

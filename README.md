@@ -2,6 +2,38 @@
 
 面向独立项目 `chemical-engineering-rag-kg` 的化工知识检索与粗粒度知识图谱公开预览。公开内容以有实际用途、可完整复述并带必要条件的工程释义为核心，不把整本资料或无信息增量内容塞入检索。
 
+## 统一查询已接纳内容
+
+现在可以一次查询两批已接纳内容：**5 个来源卷、98 个完整主题、113×512 维已有真实语义向量**。入口为 [`query_collection.py`](src/query_collection.py)，批次范围由[明确清单](knowledge/curated-collection-v1.json)锁定；不是自动扫描历史八源库或外部 Skills 项目。
+
+```powershell
+python src/query_collection.py --query "换热器压降和泵的工作点怎样一起检查？" --method lexical
+python src/query_collection.py --query "固定床热点如何限制放大尺度？" --method hybrid --model-dir ./local-model --lock contracts/curated_model_lock.json
+```
+
+两包的知识、图谱和向量文件保留原样，不复制成第三份库。词法检索在筛选后的全体分段上计算统一统计，语义检索只编码一次查询后统一排序，混合检索在全局主题排名上融合。结果带所属批次和完整 KU；`--source`、`--subject` 可限定范围，`--node-id` 可精确读取。候选命中不等于工程答案，当前仍没有自动无答案阈值。
+
+32 个公开开发题在**不筛选来源或学科**的统一范围下，实际执行了 96 次查询，并核对返回 KU 的完整性：
+
+| 方法 | 前 5 命中率 | 首位命中率 | MRR@5 |
+|---|---:|---:|---:|
+| 词法 lexical | 100% | 96.875% | 0.984375 |
+| 语义 dense | 100% | 96.875% | 0.979167 |
+| 混合 hybrid | 100% | 100% | 1.000000 |
+
+详见[逐题结果和运行依据](reports/collection-dev-evaluation.json)。词法与语义各有一题目标未排首位；混合检索在本开发集全部首位命中。上述结果不是封存测试、拒答能力验收或普遍正确性证明，也不表示全书数字化已经完成。
+
+如需复跑，准备锁定模型及下文列出的查询依赖，将 `./local-model` 与 `./local-vendor` 换成自己的模型和依赖目录；复跑结果另存，不覆盖发布报告：
+
+```powershell
+python src/evaluate_collection.py `
+  --collection knowledge/curated-collection-v1.json --knowledge-root knowledge `
+  --query-module src --four-queries examples/curated-dev-queries.jsonl `
+  --s001-queries examples/s001-public-development-queries.jsonl `
+  --model-dir ./local-model --lock contracts/curated_model_lock.json `
+  --vendor ./local-vendor --output ./local-collection-evaluation.json
+```
+
 ## 新增：化工原理上册选题包
 
 [`curated-s001-upper-v1`](knowledge/curated-s001-upper-v1/) 收录 S001《化工原理 上》（王瑶、贺高红主编）的 **29 个完整主题**，覆盖流体输送、机械分离及流态化、传热与换热器、蒸发四章的选定内容。来源共 371 页，这不表示 371 页均已完成数字化。
@@ -12,7 +44,7 @@
 
 16 个公开开发正例的三种检索方式均为 hit@5=1.0；lexical/hybrid 的首位命中率为 1.0，dense 为 0.9375（有一题排第 3），详见[本批评测](reports/s001-dev-evaluation.json)。另有 4 个库外诊断题，当前接口仍会返回候选，不声称自动拒答通过。[向量复核](reports/s001-vector-audit.json)记录全部 31 行真实模型重编码逐字节一致。以上均不是全书验收或普遍可靠性证明。
 
-查询该包时须显式指定 `--bundle knowledge/curated-s001-upper-v1`。当前查询一次读取一个批次，默认仍是四源包；跨包关联不表示已自动完成全库合并检索。
+如只查本批，使用原单包入口并指定 `--bundle knowledge/curated-s001-upper-v1`。`query_curated.py` 的默认仍是四源包；统一查询使用上面的 `query_collection.py`。跨包关联本身只表示补读关系，不自动构成合并检索或工程推理。
 
 ```powershell
 python src/query_curated.py --bundle knowledge/curated-s001-upper-v1 --query "多效蒸发的进料方向怎样比较？" --method lexical

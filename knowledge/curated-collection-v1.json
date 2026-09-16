@@ -1,0 +1,33 @@
+{
+  "schema_version": "curated-collection-candidate-1.0",
+  "collection_id": "curated-two-bundles-v1",
+  "canonical_project": "chemical-engineering-rag-kg",
+  "status": "candidate_read_only",
+  "scope": "Two explicitly listed public preview bundles; no historical or private-library discovery.",
+  "knowledge_root": ".",
+  "packages": [
+    {
+      "bundle_id": "curated-four-books-v1",
+      "path_relative_to_knowledge": "curated-four-books-v1",
+      "manifest_sha256": "b5a27599c57dc955691f9a23a8a80d8f68fd2432e146291043a24663a763115d",
+      "vector_manifest_sha256": "014ed2c0a35b9b50cf034cd99adf868aa3c997868d406d9a50db066adaebcb63",
+      "knowledge_unit_count": 69,
+      "chunk_count": 82
+    },
+    {
+      "bundle_id": "curated-s001-upper-v1",
+      "path_relative_to_knowledge": "curated-s001-upper-v1",
+      "manifest_sha256": "c1a5acbebf3cff10b4959625d1210026a8d3d94fcb0a912880947eaf22375001",
+      "vector_manifest_sha256": "8c34f7b7c6d802baae4fab16f56baf56e84eb6f90b7c0b41b4d39df40e63ceb6",
+      "knowledge_unit_count": 29,
+      "chunk_count": 31
+    }
+  ],
+  "totals": {
+    "knowledge_units": 98,
+    "chunks": 113
+  },
+  "production_activated": false,
+  "no_answer_threshold": null,
+  "full_corpus_auto_merge": false
+}
