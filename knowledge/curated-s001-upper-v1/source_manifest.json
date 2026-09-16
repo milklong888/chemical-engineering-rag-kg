@@ -1,0 +1,49 @@
+{
+  "canonical_project": "chemical-engineering-rag-kg",
+  "schema_version": "curated-selected-knowledge-1.0",
+  "scope": "authored-selected-knowledge-preview",
+  "sources": [
+    {
+      "aliases": [
+        "CEPR-UPPER-WANG-HE",
+        "core_upper"
+      ],
+      "bibliography": {
+        "authors": "王瑶、贺高红 主编",
+        "bibliography_basis": "复用同一 PDF SHA 的版权页视觉核对登记；本轮重新核对实际 PDF 字节数、SHA、371页及未加密状态。",
+        "edition": "2016年10月北京第1版第1次印刷",
+        "isbn": "978-7-122-27413-7",
+        "publisher": "化学工业出版社",
+        "title": "化工原理 上"
+      },
+      "bytes": 83845722,
+      "full_source_digitization_complete": false,
+      "is_encrypted": false,
+      "review_provenance": {
+        "agent_review": true,
+        "candidate_manifest_sha256": "07fc006f25283c629812146167f4a00988bd693820f5e524954ec1ff3df16c25",
+        "content_review_file_sha256": "07fc006f25283c629812146167f4a00988bd693820f5e524954ec1ff3df16c25",
+        "human_review": false,
+        "locked_candidate_part_hashes": {
+          "part_a_revised_blocks.json": "eef695c15f7c84920b5867d8bca9a06dcc28665fb612a072361eb72cfb821f78",
+          "part_b_revised_blocks.json": "db0e80aafddfed3397e27a16f2f1d5b525f8a36b6541e0283ba0e16bc0730ea9",
+          "part_c_final_blocks.json": "05f0f8d223ae884dda7f445df9f9b1160da91d26b22d858e3db583070e6c4049"
+        },
+        "locked_candidate_review_hashes": {
+          "A_REVISION_REVIEW.md": "385fd351fa70d1316909623fa977aca8934b22206fd16ff2ef1f40f71e2a138d",
+          "B_REVISION_REVIEW.md": "1c586c9082efd7ad43b0b63485f0ddf41486a50de5065aa9f3881fccf50dc26e",
+          "ROOT_C_ACCEPTANCE.json": "e6a3297b245946b56775bfb266017928bcd09f783fddb8cd77ecf9b80397b4f6"
+        },
+        "producer_id": "luna_s001_candidate_conversion_20260916",
+        "reviewer_id": "root_s001_content_acceptance"
+      },
+      "selected_knowledge_units_count": 29,
+      "source_id": "S001",
+      "source_payload_public": false,
+      "source_sha256": "c532a5f767fe40a0beef722048b22280bbcfca13d8bb160b3bdc0ffeb8ba7e12",
+      "source_volume_id": "volume:s001:chemical-engineering-principles:chemical-principles-upper",
+      "subject_root": "chemical-engineering-principles",
+      "total_pdf_pages": 371
+    }
+  ]
+}

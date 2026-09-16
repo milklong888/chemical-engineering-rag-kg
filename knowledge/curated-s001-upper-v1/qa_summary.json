@@ -1,0 +1,83 @@
+{
+  "schema_version": "curated-public-preview-qa-1.0",
+  "as_of": "2026-09-16",
+  "status": "validated_public_preview",
+  "canonical_project": "chemical-engineering-rag-kg",
+  "bundle_id": "curated-s001-upper-v1",
+  "scope": "29 selected authored explanations from S001; not full-source digitization",
+  "counts": {
+    "sources": 1, "subject_roots": 1, "source_volumes": 1, "chapters": 4,
+    "knowledge_units": 29, "kg_nodes": 64, "kg_edges": 63, "evidence": 29,
+    "cross_bundle_references": 17, "external_references": 95,
+    "retrieval_chunks": 31, "embedding_rows": 31, "embedding_dimensions": 512
+  },
+  "content_review": {
+    "root_accepted_inputs_sha256": "07fc006f25283c629812146167f4a00988bd693820f5e524954ec1ff3df16c25",
+    "body_title_applicability_units_identity_rechecked": 29,
+    "agent_review": true,
+    "human_review": false,
+    "full_source_digitization_complete": false,
+    "source_page_media_published": false,
+    "source_hash_is_page_hash": false,
+    "criterion": "Useful in application; a reader can unambiguously restate the complete topic and necessary conditions."
+  },
+  "graph_validation": {
+    "status": "PASS",
+    "scope": "structure, frozen chapter mapping, source identity, evidence and cross-bundle target hashes",
+    "report": "../../reports/s001-independent-validation.json",
+    "validator_executed_model_or_tokenizer": false,
+    "source_content_review_is_separate": true,
+    "blocking_findings": 0
+  },
+  "learned_vectors": {
+    "status": "generated_and_verified",
+    "model": "BAAI/bge-small-zh-v1.5",
+    "revision": "46fbe35fd4374a00fee7de77dfddaeb6dd6a2c59",
+    "implementation": "direct-onnxruntime",
+    "hash_or_random_vectors": false,
+    "matrix_sha256": "d33e83c9001d5ae97c64f0d47d6ec4eca7c0b1385f2bfcabee40125e958e4f66",
+    "independent_real_model_reencode_bytes_identical": true,
+    "root_real_model_reencode_bytes_identical": true,
+    "long_knowledge_units_split": 2,
+    "max_observed_tokens_including_special_tokens": 511,
+    "max_tokens_allowed": 512,
+    "truncation": false,
+    "complete_body_coverage": true,
+    "report": "../../reports/s001-vector-audit.json"
+  },
+  "tests": {
+    "conversion": {"passed": 3, "total": 3},
+    "batch_compatibility": {"passed": 7, "total": 7, "synthetic_encoder_only_in_unit_tests": true},
+    "bundle_validator": {"passed": 17, "total": 17, "original_four_book_tests": 11, "new_s001_tests": 6},
+    "public_retrieval_contract": {"passed": 3, "total": 3},
+    "index_and_query_regression": {"passed": 5, "total": 5, "actual_model_execution": true},
+    "root_full_api_replay": {"calls": 60, "report_bytes_identical": true}
+  },
+  "retrieval_development": {
+    "query_count": 16,
+    "split": "public_development",
+    "methods": {
+      "lexical": {"hit_at_5": 1.0, "mrr_at_5": 1.0, "rank1_rate": 1.0},
+      "dense": {"hit_at_5": 1.0, "mrr_at_5": 0.9583333333333334, "rank1_rate": 0.9375},
+      "hybrid": {"hit_at_5": 1.0, "mrr_at_5": 1.0, "rank1_rate": 1.0}
+    },
+    "dense_nonfirst_case": {"query_id": "S001-DEV-CH02-01", "expected_knowledge_unit_id": "S001-CURATED-A1", "rank": 3},
+    "out_of_bundle_diagnostic_count": 4,
+    "report": "../../reports/s001-dev-evaluation.json",
+    "holdout_read": false,
+    "no_answer_threshold_validated": false,
+    "engineering_certification": false
+  },
+  "public_scope": {
+    "original_pdfs": false, "page_images": false, "ocr_full_text": false,
+    "model_weights": false, "vector_databases": false, "private_absolute_paths": false,
+    "authored_knowledge_and_validated_derived_matrix": true
+  },
+  "history": {
+    "prior_four_book_bundle_changed": false,
+    "legacy_snapshot_changed": false,
+    "all_batches_merged_into_one_query_index": false
+  },
+  "production_activated": false,
+  "human_approved_anchor_count": 0
+}

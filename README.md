@@ -2,6 +2,23 @@
 
 面向独立项目 `chemical-engineering-rag-kg` 的化工知识检索与粗粒度知识图谱公开预览。公开内容以有实际用途、可完整复述并带必要条件的工程释义为核心，不把整本资料或无信息增量内容塞入检索。
 
+## 新增：化工原理上册选题包
+
+[`curated-s001-upper-v1`](knowledge/curated-s001-upper-v1/) 收录 S001《化工原理 上》（王瑶、贺高红主编）的 **29 个完整主题**，覆盖流体输送、机械分离及流态化、传热与换热器、蒸发四章的选定内容。来源共 371 页，这不表示 371 页均已完成数字化。
+
+本批为 1 个来源卷、4 个章节节点、64 个图节点、63 条内部边。17 条指向四源包的关联存入 `cross_bundle_references.jsonl`，绑定目标 KU 及正文哈希；95 条 Skills 关联仍属于外部项目，不复制关联对象的正文。它是新增批次，首批四源包的内容与向量保持原样。
+
+已生成 **31×512 维真实 BGE 语义向量**，完整覆盖 29 个 KU；只有两个长主题作索引分段，正文不截断。批次内容、证据、图谱与向量均放在同一包中；原始 PDF、页图和 OCR 全文不公开。
+
+16 个公开开发正例的三种检索方式均为 hit@5=1.0；lexical/hybrid 的首位命中率为 1.0，dense 为 0.9375（有一题排第 3），详见[本批评测](reports/s001-dev-evaluation.json)。另有 4 个库外诊断题，当前接口仍会返回候选，不声称自动拒答通过。[向量复核](reports/s001-vector-audit.json)记录全部 31 行真实模型重编码逐字节一致。以上均不是全书验收或普遍可靠性证明。
+
+查询该包时须显式指定 `--bundle knowledge/curated-s001-upper-v1`。当前查询一次读取一个批次，默认仍是四源包；跨包关联不表示已自动完成全库合并检索。
+
+```powershell
+python src/query_curated.py --bundle knowledge/curated-s001-upper-v1 --query "多效蒸发的进料方向怎样比较？" --method lexical
+python scripts/validate_curated_bundle.py --bundle knowledge/curated-s001-upper-v1 --bundle-id curated-s001-upper-v1 --related-bundle knowledge/curated-four-books-v1 --require-vectors
+```
+
 ## 四源公开预览
 
 本批包含 4 个来源卷、69 个粗知识单元（KU）：
@@ -27,7 +44,7 @@
 
 KU 命中后应完整阅读标题、正文、适用范围、单位/基准、来源定位和证据。`related_to` 只表示有关联，不自动表示因果、计算先后或可以互相替代。实际项目数值、经验关联式、设备曲线和材料限值必须核实适用条件，并回到当前项目及可合法核对的来源确认；教材示例值不能直接当作项目输入。
 
-## 包入口
+## 四源包入口
 
 公开包入口为 [`knowledge/curated-four-books-v1/`](knowledge/curated-four-books-v1/)，关键文件如下：
 

@@ -16,6 +16,13 @@ ROOT = Path(__file__).resolve().parents[1]
 MAX_FILE_BYTES = 10 * 1024 * 1024
 CURATED_BUNDLE = "knowledge/curated-four-books-v1"
 ALLOWED_VECTOR_FILE = CURATED_BUNDLE + "/embeddings.f32"
+S001_BUNDLE = "knowledge/curated-s001-upper-v1"
+S001_ALLOWED_VECTOR_FILE = S001_BUNDLE + "/embeddings.f32"
+S001_REPORTS = {
+    "reports/s001-independent-validation.json",
+    "reports/s001-vector-audit.json",
+    "reports/s001-dev-evaluation.json",
+}
 
 DENIED_SUFFIXES = {
     ".pdf",
@@ -74,17 +81,18 @@ CURATED_PAYLOAD_FILES = {
     "conversion_report.json", "rag_chunks.jsonl", "chunk_to_kg.jsonl",
     "embeddings.f32", "vector_manifest.json", "qa_summary.json",
 }
+S001_EXTRA_PAYLOAD_FILES = {"cross_bundle_references.jsonl"}
 
 
 def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
 
 
-def check_curated_vectors(root: Path) -> list[str]:
+def check_curated_vectors(root: Path, bundle_rel: str = CURATED_BUNDLE) -> list[str]:
     """The sole binary exception is a hash-bound authored-knowledge preview."""
     failures: list[str] = []
-    matrix_path = root / ALLOWED_VECTOR_FILE
-    manifest_path = root / CURATED_BUNDLE / "vector_manifest.json"
+    matrix_path = root / bundle_rel / "embeddings.f32"
+    manifest_path = root / bundle_rel / "vector_manifest.json"
     if not matrix_path.exists() and not manifest_path.exists():
         return failures
     if not matrix_path.exists() or not manifest_path.exists():
@@ -104,7 +112,7 @@ def check_curated_vectors(root: Path) -> list[str]:
             raise ValueError("matrix size or entry count mismatch")
         if hashlib.sha256(payload).hexdigest() != matrix["sha256"]:
             raise ValueError("matrix SHA mismatch")
-        chunk_path = root / CURATED_BUNDLE / "rag_chunks.jsonl"
+        chunk_path = root / bundle_rel / "rag_chunks.jsonl"
         chunks = [json.loads(line) for line in chunk_path.read_text(encoding="utf-8").splitlines() if line.strip()]
         eligible = {c["chunk_id"]: c for c in chunks if c.get("embedding_eligible") is True}
         row_ids = [entry["chunk_id"] for entry in entries]
@@ -129,16 +137,25 @@ def check_curated_vectors(root: Path) -> list[str]:
     return failures
 
 
-def check_curated_release(root: Path) -> list[str]:
+def check_curated_release(
+    root: Path,
+    bundle_rel: str = CURATED_BUNDLE,
+    bundle_id: str = "curated-four-books-v1",
+    extra_payload: set[str] | None = None,
+    related_bundle: Path | None = None,
+) -> list[str]:
     """Bind the public snapshot to exact payload/report bytes and graph checks."""
     failures: list[str] = []
-    bundle = root / CURATED_BUNDLE
+    bundle = root / bundle_rel
+    expected_payload = CURATED_PAYLOAD_FILES | (extra_payload or set())
     try:
         manifest = json.loads((bundle / "manifest.json").read_text(encoding="utf-8"))
         if (manifest.get("status") != "validated_public_preview"
                 or manifest.get("production_activated") is not False):
             raise ValueError("invalid curated release status")
-        if set(manifest["files"]) != CURATED_PAYLOAD_FILES:
+        if manifest.get("bundle_id") != bundle_id:
+            raise ValueError("release manifest has the wrong bundle_id")
+        if set(manifest["files"]) != expected_payload:
             raise ValueError("release manifest does not enumerate the exact payload")
         for name, info in manifest["files"].items():
             payload = (bundle / name).read_bytes()
@@ -151,8 +168,15 @@ def check_curated_release(root: Path) -> list[str]:
             payload = path.read_bytes()
             if len(payload) != info["bytes"] or hashlib.sha256(payload).hexdigest() != info["sha256"]:
                 raise ValueError(f"curated report identity mismatch: {name}")
+        if bundle_id == "curated-s001-upper-v1" and set(manifest["reports"]) != S001_REPORTS:
+            raise ValueError("S001 release manifest does not bind the three registered reports")
         from validate_curated_bundle import validate_bundle
-        report = validate_bundle(bundle, require_vectors=True)
+        report = validate_bundle(
+            bundle,
+            require_vectors=True,
+            bundle_id=bundle_id,
+            related_bundle=related_bundle,
+        )
         failures.extend("curated structure: " + error["code"] + " at " + error["location"]
                         for error in report["errors"])
     except (KeyError, ValueError, TypeError, OSError) as exc:
@@ -173,8 +197,8 @@ def main() -> int:
         relative = rel(path)
         if path.suffix.lower() in DENIED_SUFFIXES:
             failures.append(f"denied payload extension: {relative}")
-        if path.suffix.lower() == ".f32" and relative != ALLOWED_VECTOR_FILE:
-            failures.append(f"vector outside the approved curated preview: {relative}")
+        if path.suffix.lower() == ".f32" and relative not in {ALLOWED_VECTOR_FILE, S001_ALLOWED_VECTOR_FILE}:
+            failures.append(f"vector outside the approved curated previews: {relative}")
         if path.stat().st_size > MAX_FILE_BYTES:
             failures.append(f"file exceeds 10 MiB: {relative}")
 
@@ -203,8 +227,20 @@ def main() -> int:
                 if pattern.search(text):
                     failures.append(f"{name} matched in {relative}")
 
-    failures.extend(check_curated_vectors(ROOT))
-    failures.extend(check_curated_release(ROOT))
+    failures.extend(check_curated_vectors(ROOT, CURATED_BUNDLE))
+    failures.extend(check_curated_release(ROOT, CURATED_BUNDLE))
+    s001_path = ROOT / S001_BUNDLE
+    if s001_path.exists():
+        failures.extend(check_curated_vectors(ROOT, S001_BUNDLE))
+        failures.extend(
+            check_curated_release(
+                ROOT,
+                S001_BUNDLE,
+                bundle_id="curated-s001-upper-v1",
+                extra_payload=S001_EXTRA_PAYLOAD_FILES,
+                related_bundle=ROOT / CURATED_BUNDLE,
+            )
+        )
 
     snapshot_path = ROOT / "reports" / "stage_snapshot.json"
     if snapshot_path.exists():

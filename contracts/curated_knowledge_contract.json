@@ -28,6 +28,10 @@
     "missing_field_inference": false,
     "one_chunk_maps_to_exactly_one_knowledge_unit": true,
     "return_complete_knowledge_unit": true,
+    "source_chain_id_template": "{bundle_id}:{source_id}",
+    "cross_bundle_reference_required": ["from_knowledge_unit_id", "target_bundle_id", "target_node_id", "target_text_sha256"],
+    "cross_bundle_references_are_internal_graph_edges": false,
+    "cross_bundle_target_body_hash_must_match": true,
     "external_reference_namespace": "chemical-engineering-skills",
     "external_references_are_internal_graph_edges": false
   },

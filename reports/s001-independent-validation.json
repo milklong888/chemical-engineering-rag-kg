@@ -1,0 +1,26 @@
+{
+  "content_validation": "structure_only; source-content acceptance remains separate",
+  "counts": {
+    "cross_bundle_references": 17,
+    "edges": 63,
+    "evidence": 29,
+    "external_references": 95,
+    "knowledge_units": 29,
+    "nodes": 64,
+    "sources": 1
+  },
+  "errors": [],
+  "evidence_mode": {
+    "chapter_map": false,
+    "records_root": false,
+    "source_audit": false
+  },
+  "profile": "curated-s001-upper-v1",
+  "schema_version": "curated-bundle-validation-1.0",
+  "scope": "independent_candidate_bundle_validation",
+  "status": "PASS",
+  "vectors_required": true,
+  "warnings": [],
+  "validator_sha256": "27bd676c37c5a75c5be6707447e596003a48a60b234623b4bd139a7f066357f0",
+  "validation_is_source_content_review": false
+}

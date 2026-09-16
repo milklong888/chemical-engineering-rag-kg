@@ -12,6 +12,7 @@ import copy
 import hashlib
 import json
 import os
+import shutil
 import struct
 import sys
 import tempfile
@@ -24,6 +25,29 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
 from validate_curated_bundle import validate_bundle  # noqa: E402
+
+
+S001_BUNDLE_ID = "curated-s001-upper-v1"
+
+
+def s001_bundle_path() -> Path:
+    value = os.environ.get("S001_BUNDLE_PATH", str(Path(__file__).resolve().parents[1] / "knowledge" / S001_BUNDLE_ID))
+    if not value:
+        raise unittest.SkipTest("S001_BUNDLE_PATH is required for the S001 acceptance probes")
+    path = Path(value)
+    if not path.is_dir():
+        raise unittest.SkipTest(f"S001 bundle is unavailable: {path}")
+    return path
+
+
+def old_bundle_path() -> Path:
+    value = os.environ.get("RELATED_BUNDLE_PATH", str(Path(__file__).resolve().parents[1] / "knowledge" / "curated-four-books-v1"))
+    if not value:
+        raise unittest.SkipTest("RELATED_BUNDLE_PATH is required for cross-bundle probes")
+    path = Path(value)
+    if not path.exists():
+        raise unittest.SkipTest(f"related frozen bundle is unavailable: {path}")
+    return path
 
 
 SOURCE_COUNTS = {"RE01": 14, "OC02": 13, "TH03": 25, "EN04": 17}
@@ -519,6 +543,95 @@ class CuratedBundleValidatorTests(unittest.TestCase):
         finally:
             temp.cleanup()
 
+    def copy_s001(self, temp: tempfile.TemporaryDirectory[str]) -> Path:
+        source = s001_bundle_path()
+        target = Path(temp.name) / "s001"
+        shutil.copytree(source, target)
+        return target
+
+    def s001_result(self, bundle: Path, **kwargs: object) -> dict[str, object]:
+        return validate_bundle(
+            bundle,
+            bundle_id=S001_BUNDLE_ID,
+            related_bundle=old_bundle_path(),
+            **kwargs,
+        )
+
+    def test_s001_conversion_profile_positive(self) -> None:
+        report = self.s001_result(s001_bundle_path())
+        self.assertEqual(report["status"], "PASS", report["errors"])
+        self.assertEqual(report["counts"]["knowledge_units"], 29)
+        self.assertEqual(report["counts"]["cross_bundle_references"], 17)
+        self.assertFalse(report["evidence_mode"]["chapter_map"])
+
+    def test_s001_vector_profile_positive_without_model(self) -> None:
+        report = self.s001_result(
+            Path(os.environ.get("S001_VECTOR_BUNDLE_PATH", str(s001_bundle_path()))),
+            require_vectors=True,
+        )
+        self.assertEqual(report["status"], "PASS", report["errors"])
+        self.assertTrue(report["vectors_required"])
+
+    def test_s001_cross_bundle_dangling_target_rejected(self) -> None:
+        temp = tempfile.TemporaryDirectory()
+        try:
+            target = self.copy_s001(temp)
+            rows = [json.loads(line) for line in (target / "cross_bundle_references.jsonl").read_text(encoding="utf-8").splitlines()]
+            rows[0]["target_node_id"] = "TH03-NOT-IN-FROZEN-BUNDLE"
+            write_jsonl(target / "cross_bundle_references.jsonl", rows)
+            report = self.s001_result(target)
+            self.assertEqual(report["status"], "FAIL")
+            self.assertIn("cross_target_dangling", {item["code"] for item in report["errors"]})
+        finally:
+            temp.cleanup()
+
+    def test_s001_chapter_reassignment_rejected(self) -> None:
+        temp = tempfile.TemporaryDirectory()
+        try:
+            target = self.copy_s001(temp)
+            kus = [json.loads(line) for line in (target / "knowledge_units.jsonl").read_text(encoding="utf-8").splitlines()]
+            next(ku for ku in kus if ku["node_id"] == "S001-CURATED-A1")["package_id"] = "S001-CURATED-CH03"
+            write_jsonl(target / "knowledge_units.jsonl", kus)
+            edges = [json.loads(line) for line in (target / "kg_edges.jsonl").read_text(encoding="utf-8").splitlines()]
+            moved = next(edge for edge in edges if edge.get("target_node_id") == "S001-CURATED-A1" and edge.get("relation") == "contains")
+            moved["source_node_id"] = "S001-CURATED-CH03"
+            write_jsonl(target / "kg_edges.jsonl", edges)
+            report = self.s001_result(target)
+            self.assertEqual(report["status"], "FAIL")
+            codes = {item["code"] for item in report["errors"]}
+            self.assertTrue({"s001_package_chapter", "s001_parent_chapter"} & codes)
+        finally:
+            temp.cleanup()
+
+    def test_s001_cross_bundle_body_hash_rejected(self) -> None:
+        temp = tempfile.TemporaryDirectory()
+        try:
+            target = self.copy_s001(temp)
+            rows = [json.loads(line) for line in (target / "cross_bundle_references.jsonl").read_text(encoding="utf-8").splitlines()]
+            rows[0]["target_text_sha256"] = "0" * 64
+            write_jsonl(target / "cross_bundle_references.jsonl", rows)
+            report = self.s001_result(target)
+            self.assertEqual(report["status"], "FAIL")
+            self.assertIn("cross_target_body_hash", {item["code"] for item in report["errors"]})
+        finally:
+            temp.cleanup()
+
+    def test_s001_body_hash_and_legacy_route_rejected(self) -> None:
+        temp = tempfile.TemporaryDirectory()
+        try:
+            target = self.copy_s001(temp)
+            rows = [json.loads(line) for line in (target / "knowledge_units.jsonl").read_text(encoding="utf-8").splitlines()]
+            rows[0]["text"] += " altered"
+            write_jsonl(target / "knowledge_units.jsonl", rows)
+            report = self.s001_result(target)
+            self.assertEqual(report["status"], "FAIL")
+            self.assertIn("ku_text_hash", {item["code"] for item in report["errors"]})
+            routed = validate_bundle(target, bundle_id=S001_BUNDLE_ID, chapter_map=target / "legacy.json", related_bundle=old_bundle_path())
+            self.assertEqual(routed["status"], "FAIL")
+            self.assertIn("s001_private_evidence_unsupported", {item["code"] for item in routed["errors"]})
+        finally:
+            temp.cleanup()
+
 
 def run_and_write_probe() -> int:
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(CuratedBundleValidatorTests)
@@ -532,7 +645,7 @@ def run_and_write_probe() -> int:
 
     names = test_ids(suite)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
-    probe_dir = Path(os.environ.get("VALIDATOR_PROBE_DIR", str(Path(__file__).resolve().parents[2] / "validator_probe")))
+    probe_dir = Path(os.environ.get("VALIDATOR_PROBE_DIR", str(Path(__file__).resolve().parents[1] / "validator_probe")))
     probe_dir.mkdir(parents=True, exist_ok=True)
     write_json(
         probe_dir / "synthetic_validator_tests.json",

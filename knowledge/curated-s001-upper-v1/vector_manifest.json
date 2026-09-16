@@ -1,0 +1,299 @@
+{
+  "chunk_to_kg": {
+    "file": "chunk_to_kg.jsonl",
+    "rows": 31,
+    "sha256": "f8cccaa09d56e665b2ccae759d8037aa981261f41edba072acfb6582b0015d4c"
+  },
+  "chunks": {
+    "file": "rag_chunks.jsonl",
+    "rows": 31,
+    "sha256": "0026d14dc952fd637b8925781bc4b1d569f0fbb5fc71b4b2c517c64803dbba47"
+  },
+  "coverage": {
+    "all_chunks_mapped": true,
+    "all_knowledge_units_covered": true,
+    "chunk_count": 31,
+    "knowledge_unit_count": 29
+  },
+  "disposition": "This build does not claim independent approval; independent review is recorded separately from this artifact.",
+  "engineering_certification": false,
+  "entries": [
+    {
+      "chunk_id": "S001-CURATED-A10:chunk:001",
+      "input_sha256": "fea86c7a0da74de1d531c9c72f849c5b5ff380fa4a107464b8d9d59b1af9e003",
+      "knowledge_unit_id": "S001-CURATED-A10",
+      "row": 0,
+      "vector_sha256": "f6b50c834b1c0583c66682a5dd981c9c55ffa877e095f20ee36bf0b686addbc3"
+    },
+    {
+      "chunk_id": "S001-CURATED-A1:chunk:001",
+      "input_sha256": "1a8990e75c7a1a625da9d3ded820f94a3ba1ad9b43a3cd7229083c59cba92760",
+      "knowledge_unit_id": "S001-CURATED-A1",
+      "row": 1,
+      "vector_sha256": "dbf2123c5813445d207b5c00f8e98717f92b5d7933541b4c11de9d7f734d50a3"
+    },
+    {
+      "chunk_id": "S001-CURATED-A2:chunk:001",
+      "input_sha256": "450966f35ebd1452d9f0f2faba97919269bf41943a29b7b61a3da544ba87c855",
+      "knowledge_unit_id": "S001-CURATED-A2",
+      "row": 2,
+      "vector_sha256": "9271100ef6d2ef16f620276f86a42331662e4abafa8da80251b598215e9fd604"
+    },
+    {
+      "chunk_id": "S001-CURATED-A3:chunk:001",
+      "input_sha256": "7a72bd815674cb54235d80e31c449419f5304d8bfeb5cf1b1855d3621b56b4c6",
+      "knowledge_unit_id": "S001-CURATED-A3",
+      "row": 3,
+      "vector_sha256": "e5231bc633ac1adfd5ff6afa06c054a4074edb27719c644fa397ed7e0ac80905"
+    },
+    {
+      "chunk_id": "S001-CURATED-A4:chunk:001",
+      "input_sha256": "48634180dda553c8b2a732f12db55bb3b2bb0715826cab4bc57739b114941c30",
+      "knowledge_unit_id": "S001-CURATED-A4",
+      "row": 4,
+      "vector_sha256": "7564a93da0ae35124f7214cb112162ec37b55e3823a3eec0a3fbc9110038e7c8"
+    },
+    {
+      "chunk_id": "S001-CURATED-A5:chunk:001",
+      "input_sha256": "cc92c796631dbb37e459c374cdeea1acf7929e3dbcc1134fc59f12222bd2ebb3",
+      "knowledge_unit_id": "S001-CURATED-A5",
+      "row": 5,
+      "vector_sha256": "d4edd249a0a9dc107f0972df7baa59128b2b32ee77620316bf6e1a73c7a77a74"
+    },
+    {
+      "chunk_id": "S001-CURATED-A6:chunk:001",
+      "input_sha256": "779130af358a2ba0f6e4406f7612b570329f51f91d0bd22457bccfa7723761bd",
+      "knowledge_unit_id": "S001-CURATED-A6",
+      "row": 6,
+      "vector_sha256": "001305bf6f50d7796692b678fc615afa1d3fd289f4be86d9c07d1f72dca5dbc1"
+    },
+    {
+      "chunk_id": "S001-CURATED-A7:chunk:001",
+      "input_sha256": "85cc472b760bc13abe218760cfbf8196bb51e489f0c8b69d312f8697208bb09b",
+      "knowledge_unit_id": "S001-CURATED-A7",
+      "row": 7,
+      "vector_sha256": "10f0775c56b97e320f9a1b13243ec2a625a574a16c40ab591ce496cadec06b02"
+    },
+    {
+      "chunk_id": "S001-CURATED-A8:chunk:001",
+      "input_sha256": "03a3abbc16e6dbd9d000059e63714d4da1932c30245acd3d28860b615b9b5cb2",
+      "knowledge_unit_id": "S001-CURATED-A8",
+      "row": 8,
+      "vector_sha256": "a857934ed7eb9d460b1714b5f5a1db0f804672c708d2c6f9f649ddf81fd8d688"
+    },
+    {
+      "chunk_id": "S001-CURATED-A9:chunk:001",
+      "input_sha256": "61e485024c43f9e0b3c43ebabdcc19f1737ae936103267821ff17eb20a089933",
+      "knowledge_unit_id": "S001-CURATED-A9",
+      "row": 9,
+      "vector_sha256": "691c2f60bdcd3f87f5caa54964c06dc535988161fbbd908839ed4e2579babfa3"
+    },
+    {
+      "chunk_id": "S001-CURATED-B10:chunk:001",
+      "input_sha256": "2bd3b2e6030f353d0de99ee777136565bda3545c13945f5c2f6a4fa3aa0de6b4",
+      "knowledge_unit_id": "S001-CURATED-B10",
+      "row": 10,
+      "vector_sha256": "b8706fdceaf8113d34cbda8618c47f59914023313e5d07b84386d8881ebd562e"
+    },
+    {
+      "chunk_id": "S001-CURATED-B1:chunk:001",
+      "input_sha256": "c8fa47535cb272d6c71ad88f25eecce8af3400305e0218411b319cdf134f37ff",
+      "knowledge_unit_id": "S001-CURATED-B1",
+      "row": 11,
+      "vector_sha256": "02c183b8186f997106c2ac7e60b242bebd8822eb6e1df8d26900a97176747a7a"
+    },
+    {
+      "chunk_id": "S001-CURATED-B2:chunk:001",
+      "input_sha256": "0879abb9878a71b43e22ff1ed4d2527d147ab096b6312b2832b6d94c6c939150",
+      "knowledge_unit_id": "S001-CURATED-B2",
+      "row": 12,
+      "vector_sha256": "ca561efabca1288a0ef58bb45e9360df7ca4bb763e0eb98060b28bb0f6335cbe"
+    },
+    {
+      "chunk_id": "S001-CURATED-B3:chunk:001",
+      "input_sha256": "862e9018b40b6646349b947bcc9361e97c033b72ae4b1993bb4700e8d63e0512",
+      "knowledge_unit_id": "S001-CURATED-B3",
+      "row": 13,
+      "vector_sha256": "604adc32a60ce43de42072e76e993aad51c3395519edf9eedfdec7c3dc6c3303"
+    },
+    {
+      "chunk_id": "S001-CURATED-B4:chunk:001",
+      "input_sha256": "19936fae5f43fa1bfb1083b64259f47551080e597debc70aa74e0c05b4346739",
+      "knowledge_unit_id": "S001-CURATED-B4",
+      "row": 14,
+      "vector_sha256": "7049e6c509ece9a59d9c9fd01e6d32802c96d811f9b8f3b777a15b35adfa0440"
+    },
+    {
+      "chunk_id": "S001-CURATED-B5:chunk:001",
+      "input_sha256": "ae0d7ff63eacc1e29c26c196409f5c81512be4dd016a6e1df400a9600594aea3",
+      "knowledge_unit_id": "S001-CURATED-B5",
+      "row": 15,
+      "vector_sha256": "99526dfd6b0e4e888c92029839db6ed91a663b8291a0c8cbf4cbc8adae22eff3"
+    },
+    {
+      "chunk_id": "S001-CURATED-B6:chunk:001",
+      "input_sha256": "4ccf2ca65bcc094e7f638b38e23b7c765f7aff476a0349111d7eaf584bf32476",
+      "knowledge_unit_id": "S001-CURATED-B6",
+      "row": 16,
+      "vector_sha256": "627bcb2c890cac7157983f45da467964204e4b6c765437f4af58f66a0f58b9f6"
+    },
+    {
+      "chunk_id": "S001-CURATED-B7:chunk:001",
+      "input_sha256": "0a8cabbb916c6357a3e53f7b806527dc3fab3af2a0f5319b617194178e8bf42b",
+      "knowledge_unit_id": "S001-CURATED-B7",
+      "row": 17,
+      "vector_sha256": "cd9d0a2961ee1bb6e8c34d0136f38d5be78bf09cc4038df4f58f518206894962"
+    },
+    {
+      "chunk_id": "S001-CURATED-B8:chunk:001",
+      "input_sha256": "c6e7e0b5315908f09b66ccfa48054db5101e7d97190e9eef26ec6cf08fdbd422",
+      "knowledge_unit_id": "S001-CURATED-B8",
+      "row": 18,
+      "vector_sha256": "18ea9c6b7e2c81c47b4c8e112c8b925bd8abc78ac47764d2f9b941ba90f3ac25"
+    },
+    {
+      "chunk_id": "S001-CURATED-B9:chunk:001",
+      "input_sha256": "aa386c08a9a64ae573ac94123d45f28dc0dc945df862a65a0dc494a218101b25",
+      "knowledge_unit_id": "S001-CURATED-B9",
+      "row": 19,
+      "vector_sha256": "6f3be77d448ef4b53dbf5b2f7a82a7715b1163ae8e0e0fc597e46b02b4aa5c77"
+    },
+    {
+      "chunk_id": "S001-CURATED-B9:chunk:002",
+      "input_sha256": "b8064f6be53c183cbef3c568124d217adca4f3771c5f7fae01ddbb2996bda734",
+      "knowledge_unit_id": "S001-CURATED-B9",
+      "row": 20,
+      "vector_sha256": "c41d4df3768a555c07d3a0197dffb0ccf127e5a4c76c50acee92e765a87b925b"
+    },
+    {
+      "chunk_id": "S001-CURATED-C1:chunk:001",
+      "input_sha256": "029ac99312064e164113f3afa854541a92b911f2ca252ae66ce39f3257278460",
+      "knowledge_unit_id": "S001-CURATED-C1",
+      "row": 21,
+      "vector_sha256": "bc675744b74def842f07e7deb9c2faabf5ff3f6f8e01d2c2bc4fc140cc19ddb4"
+    },
+    {
+      "chunk_id": "S001-CURATED-C2:chunk:001",
+      "input_sha256": "ff68dff72b31f0151d839d2f262ac4aa9ce8824b308cc2e0c9f2972c7b9ee82f",
+      "knowledge_unit_id": "S001-CURATED-C2",
+      "row": 22,
+      "vector_sha256": "ae85092ec1dd021c6f34bbb44d87a59ab498510a04b349a11991d24a11a0fcf0"
+    },
+    {
+      "chunk_id": "S001-CURATED-C3:chunk:001",
+      "input_sha256": "80547335ea1e4bab53db6cd8e37f198af8cace7aaf467836dc914d6e572bf72d",
+      "knowledge_unit_id": "S001-CURATED-C3",
+      "row": 23,
+      "vector_sha256": "4b6b9e894a0a7a2baf845925d4441f45107560bcf88a876c7166188a0c9c67e6"
+    },
+    {
+      "chunk_id": "S001-CURATED-C4:chunk:001",
+      "input_sha256": "72de2ad0d81832cd2575d0ded088171ad5797036c4da009da4b760cdce8c0dbf",
+      "knowledge_unit_id": "S001-CURATED-C4",
+      "row": 24,
+      "vector_sha256": "ea225ec7c5ef4f32f97751ae3c0a48948d34ddc9fd22064d5baf06f134fca077"
+    },
+    {
+      "chunk_id": "S001-CURATED-C5:chunk:001",
+      "input_sha256": "f5994dd5756974e1b8d8d38f6e309f18084687c99c9f4ccc0f7c7bd9f8bcce3c",
+      "knowledge_unit_id": "S001-CURATED-C5",
+      "row": 25,
+      "vector_sha256": "691808d986667affd677081e670a3064b84104bfbc45ff913af52a87dcb4c52e"
+    },
+    {
+      "chunk_id": "S001-CURATED-C6:chunk:001",
+      "input_sha256": "b998978529c39d5c303dd18dde59b4c94446964d52d9d00f18157b7bc1f32d6b",
+      "knowledge_unit_id": "S001-CURATED-C6",
+      "row": 26,
+      "vector_sha256": "ef72df5a539211d0ef5a3966b80f7ae2239ca34fc4783270c5a79f64dfff6fd3"
+    },
+    {
+      "chunk_id": "S001-CURATED-C6:chunk:002",
+      "input_sha256": "4479c2e4f2160911a155136cc8ba76edc771a2dd69cdc93c95d40dbfd63cb389",
+      "knowledge_unit_id": "S001-CURATED-C6",
+      "row": 27,
+      "vector_sha256": "df36ade38d24480daa7665910571bf9ac92e283ff78c5897c9068f06882f224a"
+    },
+    {
+      "chunk_id": "S001-CURATED-C7:chunk:001",
+      "input_sha256": "1411753ee7de5e266fe91551abc38d1fd1caa709613606d9f4d7bc20518db492",
+      "knowledge_unit_id": "S001-CURATED-C7",
+      "row": 28,
+      "vector_sha256": "33224e4c850f98d172ac7060e969b5471c486731c0f4794de10eb3a5beddbb8a"
+    },
+    {
+      "chunk_id": "S001-CURATED-C8:chunk:001",
+      "input_sha256": "eab10b442cc692a14acafd5fbbd5850b51ccfffaae3018a5806709736f025044",
+      "knowledge_unit_id": "S001-CURATED-C8",
+      "row": 29,
+      "vector_sha256": "eecd615e21a3aa330f641190485194cf83addba2cc0b555bfadd49eec148ffb9"
+    },
+    {
+      "chunk_id": "S001-CURATED-C9:chunk:001",
+      "input_sha256": "f5d18a4b4f5c0f6139a1efd53368334d4359adfc3b45de73187cee66806c3909",
+      "knowledge_unit_id": "S001-CURATED-C9",
+      "row": 30,
+      "vector_sha256": "390a9bf314f9da6e69a6e7f936c3d5b446b91d58a75c343108ce67f74bd3c497"
+    }
+  ],
+  "human_approved_anchor_count": 0,
+  "input": {
+    "body_character_coverage": "complete; overlapping spans allowed",
+    "bundle_id": "curated-s001-upper-v1",
+    "chunk_order": "chunk_id ascending",
+    "input_template": "title + LF + original_body[body_start:body_end] + LF + applicability_joined_by_LF",
+    "knowledge_unit_count": 29,
+    "knowledge_units_file": "knowledge_units.jsonl",
+    "knowledge_units_identity_sha256": "636f9bf366dbde313abbb82452a750ee2ee9f2b6a042b46c6d0d2d7c3ec3ebe1",
+    "knowledge_units_sha256": "1e759bfa445c678509ab76da6de9bd4f99d163bdb277504904fb28297ecee9c0",
+    "max_tokens_including_special_tokens": 512,
+    "truncation_allowed": false
+  },
+  "matrix": {
+    "dimensions": 512,
+    "dtype": "<f4",
+    "file": "embeddings.f32",
+    "finite": true,
+    "max_norm_absolute_error": 1.1920928955078125e-07,
+    "norm_absolute_tolerance": 1e-05,
+    "row_order": "chunk_id ascending",
+    "rows": 31,
+    "sha256": "d33e83c9001d5ae97c64f0d47d6ec4eca7c0b1385f2bfcabee40125e958e4f66"
+  },
+  "model": {
+    "batch_size": 32,
+    "dimensions": 512,
+    "dtype": "<f4",
+    "files": {
+      "config.json": "9088751d39abbf86ec3d19ffca92ad62ad19075f7e59712e6c71217fa125d1d3",
+      "model_optimized.onnx": "1294ea4b6331115a353d81f96b85e8c8d7fdcc284453d5b2fab5b016230aad38",
+      "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "tokenizer.json": "48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26",
+      "tokenizer_config.json": "e6f3b96db926a37d4039995fbf5ad17de158dfb8f6343d607e4dbaad18d75f5a",
+      "vocab.txt": "45bbac6b341c319adc98a532532882e91a9cefc0329aa57bac9ae761c27b291c"
+    },
+    "name": "BAAI/bge-small-zh-v1.5",
+    "normalization": "L2",
+    "pooling": "CLS for rank-3 output; passthrough for rank-2 output",
+    "provider": "CPUExecutionProvider",
+    "revision": "46fbe35fd4374a00fee7de77dfddaeb6dd6a2c59",
+    "threads": 4
+  },
+  "production_activated": false,
+  "public_preview_is_production": false,
+  "runtime": {
+    "batch_size": 32,
+    "fastembed_used": false,
+    "implementation": "direct-onnxruntime",
+    "numpy": "2.5.1",
+    "onnxruntime": "1.27.0",
+    "pooling": "CLS for rank-3 output; passthrough for rank-2 output",
+    "provider": "CPUExecutionProvider",
+    "threads": 4,
+    "tokenizer_truncation": false,
+    "tokenizers": "0.23.1"
+  },
+  "schema_version": "curated-vector-bundle-manifest-1.0",
+  "scope": "authored-selected-knowledge-preview",
+  "status": "candidate_vector_preview"
+}

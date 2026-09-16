@@ -1,0 +1,737 @@
+{
+  "body_identity_verification": [
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "c730f0fa515408be6ddc00c572e97c89410dddd525eeb68a3a89c36e2054fb22",
+      "knowledge_unit_id": "S001-CURATED-A1",
+      "local_id": "A1",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "029632044af5475afee58e5ffc74aa9d2a9a965f4c574c0754977fb188b1c397",
+      "knowledge_unit_id": "S001-CURATED-A2",
+      "local_id": "A2",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "3662caa0b516aef619acedbf3f47dea89130b41a35de190e8865f2ce5b367453",
+      "knowledge_unit_id": "S001-CURATED-A3",
+      "local_id": "A3",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "aa1099444cf9a9a7ce1ffaa05140a5e2e94ab10b1c9807069e1bdac95c43f16d",
+      "knowledge_unit_id": "S001-CURATED-A4",
+      "local_id": "A4",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "0f81152a26a47f3d248a1fd4ec8a8302c561cb7d065288b0044d6e362643e22a",
+      "knowledge_unit_id": "S001-CURATED-A5",
+      "local_id": "A5",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "13e0b33745cb787af1f211e7204486e2459fc011247d514da753ba2b940043fc",
+      "knowledge_unit_id": "S001-CURATED-A6",
+      "local_id": "A6",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "9d7a893a7dce7c78a73fc187573f29ef45768d640c2fde141614bc7e34e26413",
+      "knowledge_unit_id": "S001-CURATED-A7",
+      "local_id": "A7",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "caee09628585b8879bf1964ebb2989f0e58e73c7f324b973b53822efbe96dd73",
+      "knowledge_unit_id": "S001-CURATED-A8",
+      "local_id": "A8",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "e8c11fa39e83932e341d7296513c81916fc1a6fb6394477c901a703b41cb0fb0",
+      "knowledge_unit_id": "S001-CURATED-A9",
+      "local_id": "A9",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "7d2840343b63a80baeb754a25cba716fbf503d85be61631f6cb7198d434e63b1",
+      "knowledge_unit_id": "S001-CURATED-A10",
+      "local_id": "A10",
+      "source_id_input": null,
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "2214c6eac840965e1c7d3b68180e4c3d192ee49bc7ad409cfb20c310e107dbec",
+      "knowledge_unit_id": "S001-CURATED-B1",
+      "local_id": "B1",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "0b6dfd5e7fe6298b177027fbb426f1eb27667e31b9bb0fb86c2bd24bd7a3eff1",
+      "knowledge_unit_id": "S001-CURATED-B2",
+      "local_id": "B2",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "c9e56a2ce6afc1b28ff8e29128151720be8b1cea8c153aabca40810940251678",
+      "knowledge_unit_id": "S001-CURATED-B3",
+      "local_id": "B3",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "fbf5d5ffabbde951d346f0cceafd478dd4b97ef01aad14e03450c23ebeeec86b",
+      "knowledge_unit_id": "S001-CURATED-B4",
+      "local_id": "B4",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "e6edd483485b94df0d00124afcc5a91bb0536d5615da9f9412b6bb12ef5e71de",
+      "knowledge_unit_id": "S001-CURATED-B5",
+      "local_id": "B5",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "4a305af217851c12450d55aed240633527469f9fb690173020a32462fa0d0050",
+      "knowledge_unit_id": "S001-CURATED-B6",
+      "local_id": "B6",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "316661ba54419e4dfe65a12b6e4b8a98f08725e4d23f66793602b381b88df446",
+      "knowledge_unit_id": "S001-CURATED-B7",
+      "local_id": "B7",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "226585d81bf91ac6fc72479ec2669bf224253d77a7f7f116601ff38fe63ed0e8",
+      "knowledge_unit_id": "S001-CURATED-B8",
+      "local_id": "B8",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "cae0f1f082f9c803ea2dc07ae4e1c7d37a03772d6f5e63fa589a46c0ed45d681",
+      "knowledge_unit_id": "S001-CURATED-B9",
+      "local_id": "B9",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "b1c3ee3eb45752b5358be1c47f6a2bea2a1fa64f4fe1eed7ea0efb451e55077b",
+      "knowledge_unit_id": "S001-CURATED-B10",
+      "local_id": "B10",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "d65948032381e8e0ad9d9b020588a8ba29b7434d651217a25269372401263d00",
+      "knowledge_unit_id": "S001-CURATED-C1",
+      "local_id": "C1",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "281e3e80080c6cd2422a36d15e32e0cd18178c18ec320e4d3e195ee678d0d4d4",
+      "knowledge_unit_id": "S001-CURATED-C2",
+      "local_id": "C2",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "bc29410caa3626b0055ec5d1290c1998c03db062d21225286b34abc4e6ca677b",
+      "knowledge_unit_id": "S001-CURATED-C3",
+      "local_id": "C3",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "c8073237c115b15b3e02f629da3291135655e8c6a48b6a09a9c6a75acbe6877e",
+      "knowledge_unit_id": "S001-CURATED-C4",
+      "local_id": "C4",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "98f2994017abc4aa8cdfe61e0e60cafe51386e931d4a883f8f4c66c42bc12961",
+      "knowledge_unit_id": "S001-CURATED-C5",
+      "local_id": "C5",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "a87743462b02acc67a98143fb4171aa515ecc7bba467378bc0a892e010b26731",
+      "knowledge_unit_id": "S001-CURATED-C6",
+      "local_id": "C6",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "86cbab09fc17a7dfaad283ce273cdffd217ee84d5dc4bc2d16ef784e25525324",
+      "knowledge_unit_id": "S001-CURATED-C7",
+      "local_id": "C7",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "f7a48fc48bc0fd10a9247c4696477c1703dfc2bdb08c7db8039f68eb11bdbb2a",
+      "knowledge_unit_id": "S001-CURATED-C8",
+      "local_id": "C8",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    },
+    {
+      "applicability_match": true,
+      "body_match": true,
+      "body_sha256": "968efce5cabad28bf712c05a0b43c2197c941e066b9eb1623272e0855bd0bfaf",
+      "knowledge_unit_id": "S001-CURATED-C9",
+      "local_id": "C9",
+      "source_id_input": "CEPR-UPPER-WANG-HE",
+      "source_id_output": "S001",
+      "title_match": true,
+      "units_basis_match": true
+    }
+  ],
+  "bundle_id": "curated-s001-upper-v1",
+  "candidate_boundary": "候选转换产物；不代表独审、人工批准、生产激活或本批向量已生成。",
+  "canonical_project": "chemical-engineering-rag-kg",
+  "checks": {
+    "accepted_input_drift": false,
+    "body_title_applicability_units_preserved": true,
+    "cross_bundle_target_hashes_verified": true,
+    "hierarchy_closed": true,
+    "physical_page_ranges_within_chapter": true,
+    "printed_page_references_excluded_from_pdf_pages": true,
+    "private_absolute_paths_emitted": false,
+    "source_identity_verified": true,
+    "source_payload_public": false,
+    "vectors_written": false
+  },
+  "command_result": {
+    "arguments_supplied": [
+      "--inputs",
+      "--output-dir"
+    ],
+    "exit_code": 0,
+    "status": "ok"
+  },
+  "counts": {
+    "chapters": 4,
+    "cross_bundle_references": 17,
+    "cross_chapter_support_units": 0,
+    "evidence_records": 29,
+    "external_references": 95,
+    "kg_edges": 63,
+    "kg_nodes": 64,
+    "knowledge_units": 29,
+    "local_related_edges": 0,
+    "raw_related_ids": 112,
+    "source_volumes": 1,
+    "subject_roots": 1
+  },
+  "human_approved_anchor_count": 0,
+  "independent_audit_claimed": false,
+  "locator_page_checks": [
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A1",
+      "local_id": "A1",
+      "pdf_pages": [
+        {
+          "end": 25,
+          "start": 18
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A2",
+      "local_id": "A2",
+      "pdf_pages": [
+        {
+          "end": 33,
+          "start": 26
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A3",
+      "local_id": "A3",
+      "pdf_pages": [
+        {
+          "end": 26,
+          "start": 26
+        },
+        {
+          "end": 39,
+          "start": 33
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A4",
+      "local_id": "A4",
+      "pdf_pages": [
+        {
+          "end": 53,
+          "start": 39
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A5",
+      "local_id": "A5",
+      "pdf_pages": [
+        {
+          "end": 58,
+          "start": 48
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A6",
+      "local_id": "A6",
+      "pdf_pages": [
+        {
+          "end": 61,
+          "start": 58
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A7",
+      "local_id": "A7",
+      "pdf_pages": [
+        {
+          "end": 67,
+          "start": 61
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A8",
+      "local_id": "A8",
+      "pdf_pages": [
+        {
+          "end": 75,
+          "start": 67
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A9",
+      "local_id": "A9",
+      "pdf_pages": [
+        {
+          "end": 96,
+          "start": 76
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH02",
+      "knowledge_unit_id": "S001-CURATED-A10",
+      "local_id": "A10",
+      "pdf_pages": [
+        {
+          "end": 112,
+          "start": 97
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH03",
+      "knowledge_unit_id": "S001-CURATED-B1",
+      "local_id": "B1",
+      "pdf_pages": [
+        {
+          "end": 125,
+          "start": 122
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH03",
+      "knowledge_unit_id": "S001-CURATED-B2",
+      "local_id": "B2",
+      "pdf_pages": [
+        {
+          "end": 133,
+          "start": 126
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH03",
+      "knowledge_unit_id": "S001-CURATED-B3",
+      "local_id": "B3",
+      "pdf_pages": [
+        {
+          "end": 142,
+          "start": 134
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH03",
+      "knowledge_unit_id": "S001-CURATED-B4",
+      "local_id": "B4",
+      "pdf_pages": [
+        {
+          "end": 153,
+          "start": 143
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH03",
+      "knowledge_unit_id": "S001-CURATED-B5",
+      "local_id": "B5",
+      "pdf_pages": [
+        {
+          "end": 144,
+          "start": 144
+        },
+        {
+          "end": 161,
+          "start": 150
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH03",
+      "knowledge_unit_id": "S001-CURATED-B6",
+      "local_id": "B6",
+      "pdf_pages": [
+        {
+          "end": 170,
+          "start": 161
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH03",
+      "knowledge_unit_id": "S001-CURATED-B7",
+      "local_id": "B7",
+      "pdf_pages": [
+        {
+          "end": 172,
+          "start": 171
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH05",
+      "knowledge_unit_id": "S001-CURATED-B8",
+      "local_id": "B8",
+      "pdf_pages": [
+        {
+          "end": 309,
+          "start": 301
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH05",
+      "knowledge_unit_id": "S001-CURATED-B9",
+      "local_id": "B9",
+      "pdf_pages": [
+        {
+          "end": 319,
+          "start": 310
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH05",
+      "knowledge_unit_id": "S001-CURATED-B10",
+      "local_id": "B10",
+      "pdf_pages": [
+        {
+          "end": 330,
+          "start": 320
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C1",
+      "local_id": "C1",
+      "pdf_pages": [
+        {
+          "end": 199,
+          "start": 198
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C2",
+      "local_id": "C2",
+      "pdf_pages": [
+        {
+          "end": 231,
+          "start": 230
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C3",
+      "local_id": "C3",
+      "pdf_pages": [
+        {
+          "end": 235,
+          "start": 233
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C4",
+      "local_id": "C4",
+      "pdf_pages": [
+        {
+          "end": 250,
+          "start": 248
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C5",
+      "local_id": "C5",
+      "pdf_pages": [
+        {
+          "end": 254,
+          "start": 253
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C6",
+      "local_id": "C6",
+      "pdf_pages": [
+        {
+          "end": 278,
+          "start": 273
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C7",
+      "local_id": "C7",
+      "pdf_pages": [
+        {
+          "end": 262,
+          "start": 262
+        },
+        {
+          "end": 280,
+          "start": 279
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C8",
+      "local_id": "C8",
+      "pdf_pages": [
+        {
+          "end": 287,
+          "start": 285
+        }
+      ]
+    },
+    {
+      "chapter_id": "S001-CURATED-CH04",
+      "knowledge_unit_id": "S001-CURATED-C9",
+      "local_id": "C9",
+      "pdf_pages": [
+        {
+          "end": 289,
+          "start": 287
+        }
+      ]
+    }
+  ],
+  "output_file_count": 8,
+  "output_file_hashes": {
+    "cross_bundle_references.jsonl": "9c2197b1c86119c4f78fa3ff49f539b92760382a2472bc3f3edabf5c35eb4efd",
+    "evidence_registry.jsonl": "dd0fac37e76c3a6742931edb962e59ea50ba4b74556390512c51c1c622c4bfe4",
+    "external_references.jsonl": "2e9c46883a79a85f2bffc04bfaa499d318dcedc6b82f3c3c0e2301d1475fcb34",
+    "kg_edges.jsonl": "915a39a57721d80d7af49ee3e64470f10ea592e9387295335f4b631ed4b98e69",
+    "kg_nodes.jsonl": "7ff6a79c88ffb3145cc9d0298a925c0d7e51ea320d5613406b070efbe2dacebc",
+    "knowledge_units.jsonl": "1e759bfa445c678509ab76da6de9bd4f99d163bdb277504904fb28297ecee9c0",
+    "source_manifest.json": "7dddff2f619d7499140d9ac7872f960c158e3dbb93324399f0dde5a822c1ee30"
+  },
+  "parent_input_hashes": {
+    "ROOT_ACCEPTED_INPUTS.json": {
+      "accepted_sha256": "07fc006f25283c629812146167f4a00988bd693820f5e524954ec1ff3df16c25",
+      "actual_sha256": "07fc006f25283c629812146167f4a00988bd693820f5e524954ec1ff3df16c25"
+    },
+    "accepted_parts": {
+      "part_a_revised_blocks.json": "eef695c15f7c84920b5867d8bca9a06dcc28665fb612a072361eb72cfb821f78",
+      "part_b_revised_blocks.json": "db0e80aafddfed3397e27a16f2f1d5b525f8a36b6541e0283ba0e16bc0730ea9",
+      "part_c_final_blocks.json": "05f0f8d223ae884dda7f445df9f9b1160da91d26b22d858e3db583070e6c4049"
+    },
+    "accepted_reviews": {
+      "A_REVISION_REVIEW.md": "385fd351fa70d1316909623fa977aca8934b22206fd16ff2ef1f40f71e2a138d",
+      "B_REVISION_REVIEW.md": "1c586c9082efd7ad43b0b63485f0ddf41486a50de5065aa9f3881fccf50dc26e",
+      "ROOT_C_ACCEPTANCE.json": "e6a3297b245946b56775bfb266017928bcd09f783fddb8cd77ecf9b80397b4f6"
+    },
+    "current_KG_knowledge_units.jsonl": {
+      "accepted_sha256": "0413d5ba942e6a66b9d8546f449a72e791028f9602db246e25ab709a01d51d6d",
+      "actual_sha256": "0413d5ba942e6a66b9d8546f449a72e791028f9602db246e25ab709a01d51d6d"
+    }
+  },
+  "production_activated": false,
+  "report_file_hash_embedded": false,
+  "schema_version": "s001-candidate-conversion-report-1.0",
+  "source_id_normalization": {
+    "aliases": [
+      "CEPR-UPPER-WANG-HE",
+      "core_upper"
+    ],
+    "canonical_source_id": "S001"
+  },
+  "status": "candidate_converted",
+  "vector_outputs_written": false
+}

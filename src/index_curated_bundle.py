@@ -22,6 +22,9 @@ from curated_vectors import CuratedOnnxEncoder, split_record
 MODEL_REVISION = "46fbe35fd4374a00fee7de77dfddaeb6dd6a2c59"
 DIMENSIONS = 512
 NORM_TOLERANCE = 0.00001
+DEFAULT_BUNDLE_ID = "curated-four-books-v1"
+BUNDLE_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
+SOURCE_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$")
 REQUIRED_KU_FIELDS = {
     "node_id",
     "knowledge_unit_id",
@@ -61,6 +64,24 @@ PRIVATE_PATH_PATTERN = re.compile(
 
 class BundleBuildError(RuntimeError):
     """Raised for any input, identity, or output-contract violation."""
+
+
+def _validate_identifier(value: Any, *, field: str, pattern: re.Pattern[str]) -> str:
+    if not isinstance(value, str) or not value:
+        raise BundleBuildError(f"{field} must be a non-empty string")
+    if pattern.fullmatch(value) is None:
+        raise BundleBuildError(
+            f"{field} contains illegal characters or separators"
+        )
+    return value
+
+
+def _validate_bundle_id(bundle_id: Any) -> str:
+    return _validate_identifier(bundle_id, field="bundle_id", pattern=BUNDLE_ID_PATTERN)
+
+
+def _validate_source_id(source_id: Any) -> str:
+    return _validate_identifier(source_id, field="source_id", pattern=SOURCE_ID_PATTERN)
 
 
 def _sha256_bytes(data: bytes) -> str:
@@ -123,7 +144,10 @@ def _require_string(record: dict[str, Any], field: str) -> str:
     return value
 
 
-def _validate_ku(record: dict[str, Any]) -> None:
+def _validate_ku(
+    record: dict[str, Any], *, bundle_id: str = DEFAULT_BUNDLE_ID
+) -> None:
+    validated_bundle_id = _validate_bundle_id(bundle_id)
     missing = sorted(REQUIRED_KU_FIELDS - record.keys())
     if missing:
         raise BundleBuildError(
@@ -136,7 +160,7 @@ def _validate_ku(record: dict[str, Any]) -> None:
     _require_string(record, "text")
     _require_string(record, "units_basis")
     _require_string(record, "knowledge_layer")
-    _require_string(record, "source_id")
+    source_id = _validate_source_id(_require_string(record, "source_id"))
     source_sha = _require_string(record, "source_sha256")
     if len(source_sha) != 64 or any(
         char not in "0123456789abcdef" for char in source_sha
@@ -151,8 +175,11 @@ def _validate_ku(record: dict[str, Any]) -> None:
         raise BundleBuildError(f"KU {node_id} has unknown subject_root")
     _require_string(record, "package_id")
     source_chain_id = _require_string(record, "source_chain_id")
-    if not source_chain_id.startswith("curated-four-books-v1:"):
-        raise BundleBuildError(f"KU {node_id} has invalid source_chain_id")
+    expected_source_chain_id = f"{validated_bundle_id}:{source_id}"
+    if source_chain_id != expected_source_chain_id:
+        raise BundleBuildError(
+            f"KU {node_id} source_chain_id must equal {expected_source_chain_id}"
+        )
     _require_string(record, "source_locator")
     if not isinstance(record.get("evidence_refs"), list) or not record["evidence_refs"]:
         raise BundleBuildError(f"KU {node_id} evidence_refs must be a non-empty array")
@@ -236,6 +263,7 @@ def _check_existing_identity(
     input_identity: str,
     input_file_sha: str,
     lock: dict[str, Any],
+    bundle_id: str,
 ) -> None:
     existing = bundle / "vector_manifest.json"
     existing_outputs = [bundle / name for name in OUTPUT_NAMES if (bundle / name).exists()]
@@ -251,6 +279,9 @@ def _check_existing_identity(
         raise BundleBuildError("existing vector_manifest is not valid JSON") from exc
     old_input = manifest.get("input", {})
     old_model = manifest.get("model", {})
+    old_bundle_id = old_input.get("bundle_id", DEFAULT_BUNDLE_ID)
+    if old_bundle_id != bundle_id:
+        raise BundleBuildError("existing bundle batch differs; refusing reuse")
     if old_input.get("knowledge_units_identity_sha256") != input_identity:
         raise BundleBuildError("existing bundle identity differs; refusing silent reuse")
     if old_input.get("knowledge_units_sha256") != input_file_sha:
@@ -293,9 +324,11 @@ def build_bundle(
     model_dir: str | Path,
     lock_path: str | Path,
     vendor_path: str | Path | None = None,
+    bundle_id: str = DEFAULT_BUNDLE_ID,
 ) -> dict[str, Any]:
     """Build the four candidate vector-bundle files under bundle."""
 
+    validated_bundle_id = _validate_bundle_id(bundle_id)
     bundle_path = Path(bundle).resolve()
     bundle_path.mkdir(parents=True, exist_ok=True)
     lock_file = Path(lock_path).resolve()
@@ -307,7 +340,7 @@ def build_bundle(
         raise BundleBuildError("knowledge_units.jsonl is empty")
     seen: set[str] = set()
     for record in records:
-        _validate_ku(record)
+        _validate_ku(record, bundle_id=validated_bundle_id)
         node_id = record["knowledge_unit_id"]
         if node_id in seen:
             raise BundleBuildError(f"duplicate knowledge_unit_id: {node_id}")
@@ -319,6 +352,7 @@ def build_bundle(
         input_identity=identity,
         input_file_sha=ku_file_sha,
         lock=lock,
+        bundle_id=validated_bundle_id,
     )
 
     encoder = CuratedOnnxEncoder(
@@ -400,6 +434,23 @@ def build_bundle(
     _write_jsonl(mapping_path, mapping_rows)
     matrix_path.write_bytes(matrix_bytes)
 
+    input_manifest: dict[str, Any] = {
+        "knowledge_units_file": "knowledge_units.jsonl",
+        "knowledge_units_sha256": ku_file_sha,
+        "knowledge_units_identity_sha256": identity,
+        "knowledge_unit_count": len(records),
+        "chunk_order": "chunk_id ascending",
+        "input_template": (
+            "title + LF + original_body[body_start:body_end] + LF + "
+            "applicability_joined_by_LF"
+        ),
+        "max_tokens_including_special_tokens": 512,
+        "truncation_allowed": False,
+        "body_character_coverage": "complete; overlapping spans allowed",
+    }
+    if validated_bundle_id != DEFAULT_BUNDLE_ID:
+        input_manifest["bundle_id"] = validated_bundle_id
+
     manifest = {
         "schema_version": "curated-vector-bundle-manifest-1.0",
         "status": "candidate_vector_preview",
@@ -421,20 +472,7 @@ def build_bundle(
             "tokenizer_truncation": False,
             "pooling": "CLS for rank-3 output; passthrough for rank-2 output",
         },
-        "input": {
-            "knowledge_units_file": "knowledge_units.jsonl",
-            "knowledge_units_sha256": ku_file_sha,
-            "knowledge_units_identity_sha256": identity,
-            "knowledge_unit_count": len(records),
-            "chunk_order": "chunk_id ascending",
-            "input_template": (
-                "title + LF + original_body[body_start:body_end] + LF + "
-                "applicability_joined_by_LF"
-            ),
-            "max_tokens_including_special_tokens": 512,
-            "truncation_allowed": False,
-            "body_character_coverage": "complete; overlapping spans allowed",
-        },
+        "input": input_manifest,
         "matrix": {
             "file": "embeddings.f32",
             "sha256": _sha256_bytes(matrix_bytes),
@@ -484,12 +522,14 @@ def _cli() -> int:
     parser.add_argument("--model-dir", type=Path, required=True)
     parser.add_argument("--lock", type=Path, required=True)
     parser.add_argument("--vendor", type=Path)
+    parser.add_argument("--bundle-id", default=DEFAULT_BUNDLE_ID)
     args = parser.parse_args()
     manifest = build_bundle(
         args.bundle,
         model_dir=args.model_dir,
         lock_path=args.lock,
         vendor_path=args.vendor,
+        bundle_id=args.bundle_id,
     )
     print(
         json.dumps(

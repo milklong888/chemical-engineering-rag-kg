@@ -1,0 +1,139 @@
+{
+  "schema_version": "s001-vector-audit-result-1.0",
+  "status": "pass",
+  "scope": "只读结构、字节、覆盖和真实模型重编码审计",
+  "bundle_id": "curated-s001-upper-v1",
+  "counts": {
+    "knowledge_units": 29,
+    "chunks": 31,
+    "matrix_rows": 31,
+    "matrix_dimensions": 512,
+    "original_conversion_files": 8,
+    "bundle_files": 12
+  },
+  "source": {
+    "source_id": "S001",
+    "source_volume_id": "volume:s001:chemical-engineering-principles:chemical-principles-upper",
+    "source_sha256": "c532a5f767fe40a0beef722048b22280bbcfca13d8bb160b3bdc0ffeb8ba7e12",
+    "subject_root": "chemical-engineering-principles",
+    "source_chain_id": "curated-s001-upper-v1:S001",
+    "source_payload_public": false
+  },
+  "original_eight_file_hashes": {
+    "conversion_report.json": {
+      "expected_sha256": "9c2cb32d2750d144addef68fa1aa170852a5c79b0d0d33a650ed7970c1d16725",
+      "actual_sha256": "9c2cb32d2750d144addef68fa1aa170852a5c79b0d0d33a650ed7970c1d16725",
+      "match": true
+    },
+    "cross_bundle_references.jsonl": {
+      "expected_sha256": "9c2197b1c86119c4f78fa3ff49f539b92760382a2472bc3f3edabf5c35eb4efd",
+      "actual_sha256": "9c2197b1c86119c4f78fa3ff49f539b92760382a2472bc3f3edabf5c35eb4efd",
+      "match": true
+    },
+    "evidence_registry.jsonl": {
+      "expected_sha256": "dd0fac37e76c3a6742931edb962e59ea50ba4b74556390512c51c1c622c4bfe4",
+      "actual_sha256": "dd0fac37e76c3a6742931edb962e59ea50ba4b74556390512c51c1c622c4bfe4",
+      "match": true
+    },
+    "external_references.jsonl": {
+      "expected_sha256": "2e9c46883a79a85f2bffc04bfaa499d318dcedc6b82f3c3c0e2301d1475fcb34",
+      "actual_sha256": "2e9c46883a79a85f2bffc04bfaa499d318dcedc6b82f3c3c0e2301d1475fcb34",
+      "match": true
+    },
+    "kg_edges.jsonl": {
+      "expected_sha256": "915a39a57721d80d7af49ee3e64470f10ea592e9387295335f4b631ed4b98e69",
+      "actual_sha256": "915a39a57721d80d7af49ee3e64470f10ea592e9387295335f4b631ed4b98e69",
+      "match": true
+    },
+    "kg_nodes.jsonl": {
+      "expected_sha256": "7ff6a79c88ffb3145cc9d0298a925c0d7e51ea320d5613406b070efbe2dacebc",
+      "actual_sha256": "7ff6a79c88ffb3145cc9d0298a925c0d7e51ea320d5613406b070efbe2dacebc",
+      "match": true
+    },
+    "knowledge_units.jsonl": {
+      "expected_sha256": "1e759bfa445c678509ab76da6de9bd4f99d163bdb277504904fb28297ecee9c0",
+      "actual_sha256": "1e759bfa445c678509ab76da6de9bd4f99d163bdb277504904fb28297ecee9c0",
+      "match": true
+    },
+    "source_manifest.json": {
+      "expected_sha256": "7dddff2f619d7499140d9ac7872f960c158e3dbb93324399f0dde5a822c1ee30",
+      "actual_sha256": "7dddff2f619d7499140d9ac7872f960c158e3dbb93324399f0dde5a822c1ee30",
+      "match": true
+    }
+  },
+  "bundle_file_hashes": {
+    "chunk_to_kg.jsonl": {"bytes": 2546, "sha256": "f8cccaa09d56e665b2ccae759d8037aa981261f41edba072acfb6582b0015d4c"},
+    "conversion_report.json": {"bytes": 20685, "sha256": "9c2cb32d2750d144addef68fa1aa170852a5c79b0d0d33a650ed7970c1d16725"},
+    "cross_bundle_references.jsonl": {"bytes": 3863, "sha256": "9c2197b1c86119c4f78fa3ff49f539b92760382a2472bc3f3edabf5c35eb4efd"},
+    "embeddings.f32": {"bytes": 63488, "sha256": "d33e83c9001d5ae97c64f0d47d6ec4eca7c0b1385f2bfcabee40125e958e4f66"},
+    "evidence_registry.jsonl": {"bytes": 14748, "sha256": "dd0fac37e76c3a6742931edb962e59ea50ba4b74556390512c51c1c622c4bfe4"},
+    "external_references.jsonl": {"bytes": 13571, "sha256": "2e9c46883a79a85f2bffc04bfaa499d318dcedc6b82f3c3c0e2301d1475fcb34"},
+    "kg_edges.jsonl": {"bytes": 11916, "sha256": "915a39a57721d80d7af49ee3e64470f10ea592e9387295335f4b631ed4b98e69"},
+    "kg_nodes.jsonl": {"bytes": 18737, "sha256": "7ff6a79c88ffb3145cc9d0298a925c0d7e51ea320d5613406b070efbe2dacebc"},
+    "knowledge_units.jsonl": {"bytes": 72164, "sha256": "1e759bfa445c678509ab76da6de9bd4f99d163bdb277504904fb28297ecee9c0"},
+    "rag_chunks.jsonl": {"bytes": 153917, "sha256": "0026d14dc952fd637b8925781bc4b1d569f0fbb5fc71b4b2c517c64803dbba47"},
+    "source_manifest.json": {"bytes": 2350, "sha256": "7dddff2f619d7499140d9ac7872f960c158e3dbb93324399f0dde5a822c1ee30"},
+    "vector_manifest.json": {"bytes": 12553, "sha256": "8c34f7b7c6d802baae4fab16f56baf56e84eb6f90b7c0b41b4d39df40e63ceb6"}
+  },
+  "model": {
+    "name": "BAAI/bge-small-zh-v1.5",
+    "revision": "46fbe35fd4374a00fee7de77dfddaeb6dd6a2c59",
+    "assets": {
+      "config.json": {"bytes": 739, "sha256": "9088751d39abbf86ec3d19ffca92ad62ad19075f7e59712e6c71217fa125d1d3", "match": true},
+      "model_optimized.onnx": {"bytes": 94781076, "sha256": "1294ea4b6331115a353d81f96b85e8c8d7fdcc284453d5b2fab5b016230aad38", "match": true},
+      "special_tokens_map.json": {"bytes": 125, "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3", "match": true},
+      "tokenizer.json": {"bytes": 439125, "sha256": "48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26", "match": true},
+      "tokenizer_config.json": {"bytes": 367, "sha256": "e6f3b96db926a37d4039995fbf5ad17de158dfb8f6343d607e4dbaad18d75f5a", "match": true},
+      "vocab.txt": {"bytes": 109540, "sha256": "45bbac6b341c319adc98a532532882e91a9cefc0329aa57bac9ae761c27b291c", "match": true}
+    },
+    "runtime": {
+      "tokenizers": "0.23.1",
+      "onnxruntime": "1.27.0",
+      "numpy": "2.5.1",
+      "provider": ["CPUExecutionProvider"],
+      "threads": 4,
+      "batch_size": 32,
+      "pooling_mode": "cls_rank3_first_token",
+      "tokenizer_truncation": false
+    }
+  },
+  "matrix": {
+    "file": "embeddings.f32",
+    "sha256": "d33e83c9001d5ae97c64f0d47d6ec4eca7c0b1385f2bfcabee40125e958e4f66",
+    "rows": 31,
+    "dimensions": 512,
+    "dtype": "<f4",
+    "bytes": 63488,
+    "finite": true,
+    "row_order": "chunk_id ascending",
+    "max_norm_absolute_error": 1.1920928955078125e-07,
+    "norm_absolute_tolerance": 1e-05,
+    "row_hashes_match": true
+  },
+  "reencode": {
+    "rows": 31,
+    "dimensions": 512,
+    "dtype": "float32",
+    "exact_byte_match": true,
+    "mismatched_rows": 0,
+    "max_abs_difference": 0.0,
+    "max_l2_difference": 0.0,
+    "mean_l2_difference": 0.0,
+    "minimum_cosine_similarity": 0.9999998807907104
+  },
+  "checks": {
+    "original_eight_file_hashes": {"passed": true, "matched": 8, "total": 8},
+    "bundle_manifest_payload_hashes": {"passed": true, "knowledge_units": 29, "chunks": 31, "chunk_to_kg": 31},
+    "query_reader_integrity": {"passed": true, "knowledge_units": 29, "chunks": 31, "mapping": 31, "matrix_shape": [31, 512], "matrix_finite": true},
+    "chunk_to_kg_closure": {"passed": true, "mapped_chunks": 31, "mapped_knowledge_units": 29},
+    "full_ku_body_coverage": {"passed": true, "knowledge_units_checked": 29, "failures": []},
+    "token_counts_and_no_truncation": {"passed": true, "max_actual_token_count": 511, "mismatches": []},
+    "source_fields_and_flags": {"passed": true, "source_id": "S001", "current_project_authority_false": true, "project_value_transfer_allowed_false": true, "content_available_true": true, "retrieval_eligible_true": true, "embedding_eligible_true": true, "exclusion_reasons": 0},
+    "no_source_payload_or_private_paths": {"passed": true, "payload_files": [], "payload_keys": [], "private_path_files": []},
+    "locked_model_assets": {"passed": true, "matched_files": 6},
+    "real_model_reencode": {"passed": true, "exact_byte_match": true, "mismatched_rows": 0}
+  },
+  "production_activated": false,
+  "human_approved_anchor_count": 0,
+  "failures": []
+}

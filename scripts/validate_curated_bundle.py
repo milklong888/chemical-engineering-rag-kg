@@ -25,6 +25,45 @@ SCHEMA_VERSION = "curated-selected-knowledge-1.0"
 ROOT_IDS = {"chemical-engineering-principles", "reaction-engineering"}
 SOURCE_COUNTS = {"RE01": 14, "OC02": 13, "TH03": 25, "EN04": 17}
 EXTERNAL_NAMESPACE = "chemical-engineering-skills"
+OLD_BUNDLE_ID = "curated-four-books-v1"
+S001_BUNDLE_ID = "curated-s001-upper-v1"
+S001_PROFILE = {
+    "source_counts": {"S001": 29},
+    "root_ids": {"chemical-engineering-principles"},
+    "record_count": 29,
+    "volume_count": 1,
+    "source_sha256": "c532a5f767fe40a0beef722048b22280bbcfca13d8bb160b3bdc0ffeb8ba7e12",
+    "source_bytes": 83845722,
+    "source_pages": 371,
+    "source_volume_id": "volume:s001:chemical-engineering-principles:chemical-principles-upper",
+    "source_chain": "curated-s001-upper-v1:S001",
+    "chapter_ids": {"S001-CURATED-CH02", "S001-CURATED-CH03", "S001-CURATED-CH04", "S001-CURATED-CH05"},
+    "chapter_ranges": {
+        "S001-CURATED-CH02": (18, 120),
+        "S001-CURATED-CH03": (121, 176),
+        "S001-CURATED-CH04": (177, 300),
+        "S001-CURATED-CH05": (301, 331),
+    },
+    "cross_bundle_count": 17,
+    "external_reference_count": 95,
+    "review_proofs": {
+        "A": "385fd351fa70d1316909623fa977aca8934b22206fd16ff2ef1f40f71e2a138d",
+        "B": "1c586c9082efd7ad43b0b63485f0ddf41486a50de5065aa9f3881fccf50dc26e",
+        "C": "e6a3297b245946b56775bfb266017928bcd09f783fddb8cd77ecf9b80397b4f6",
+    },
+    "root_inputs_sha256": "07fc006f25283c629812146167f4a00988bd693820f5e524954ec1ff3df16c25",
+    "old_knowledge_units_sha256": "0413d5ba942e6a66b9d8546f449a72e791028f9602db246e25ab709a01d51d6d",
+}
+PROFILES = {
+    OLD_BUNDLE_ID: {
+        "source_counts": SOURCE_COUNTS,
+        "root_ids": ROOT_IDS,
+        "source_chain_template": "curated-four-books-v1:{source_id}",
+        "record_count": 69,
+        "volume_count": 4,
+    },
+    S001_BUNDLE_ID: S001_PROFILE,
+}
 VECTOR_DIMENSIONS = 512
 VECTOR_DTYPE = "<f4"
 VECTOR_TOLERANCE = 1e-5
@@ -140,8 +179,13 @@ class BundleValidator:
         source_audit: Path | None = None,
         records_root: Path | None = None,
         require_vectors: bool = False,
+        bundle_id: str = OLD_BUNDLE_ID,
+        related_bundle: Path | None = None,
     ) -> None:
         self.bundle = bundle
+        self.bundle_id = bundle_id
+        self.profile = PROFILES.get(bundle_id)
+        self.related_bundle = related_bundle
         self.chapter_map_path = chapter_map
         self.source_audit_path = source_audit
         self.records_root = records_root
@@ -165,6 +209,9 @@ class BundleValidator:
         self.map_kus_by_unit: dict[tuple[str, str, str], set[str]] = defaultdict(set)
         self.expected_internal: set[tuple[str, str]] = set()
         self.expected_external: set[tuple[str, str]] = set()
+        self.cross_bundle: list[dict[str, Any]] = []
+        if self.profile is None:
+            self.error("unknown_bundle_profile", "bundle_id", "bundle_id is not a predefined profile")
 
     def error(self, code: str, location: str, message: str) -> None:
         self.errors.append({"code": code, "location": location, "message": message})
@@ -176,7 +223,10 @@ class BundleValidator:
         if not self.bundle.exists() or not self.bundle.is_dir():
             self.error("bundle_missing", "bundle", "bundle directory does not exist")
             return
-        for name in REQUIRED_BUNDLE_FILES:
+        required_files = list(REQUIRED_BUNDLE_FILES)
+        if self.bundle_id == S001_BUNDLE_ID:
+            required_files.append("cross_bundle_references.jsonl")
+        for name in required_files:
             path = self.bundle / name
             if not path.is_file():
                 self.error("required_file_missing", name, "required bundle file is missing")
@@ -296,16 +346,21 @@ class BundleValidator:
         if not isinstance(self.source_manifest, dict):
             self.error("source_manifest_shape", "source_manifest.json", "source manifest must be an object")
             return
+        if self.profile is None:
+            return
+        profile_counts = self.profile["source_counts"]
         if self.source_manifest.get("schema_version") != SCHEMA_VERSION:
             self.error("schema_version", "source_manifest.schema_version", "unexpected schema version")
         if self.source_manifest.get("scope") != "authored-selected-knowledge-preview":
             self.error("scope", "source_manifest.scope", "unexpected public scope")
+        if self.bundle_id == S001_BUNDLE_ID and self.source_manifest.get("canonical_project") != "chemical-engineering-rag-kg":
+            self.error("s001_project", "source_manifest.canonical_project", "S001 canonical project is unexpected")
         sources = self.source_manifest.get("sources")
         if not isinstance(sources, list):
             self.error("source_list", "source_manifest.sources", "sources must be an array")
             return
-        if len(sources) != len(SOURCE_COUNTS):
-            self.error("source_count", "source_manifest.sources", "exactly four sources are required")
+        if len(sources) != len(profile_counts):
+            self.error("source_count", "source_manifest.sources", "source count does not match the selected frozen profile")
         for index, source in enumerate(sources):
             location = f"source_manifest.sources[{index}]"
             if not isinstance(source, dict):
@@ -315,8 +370,8 @@ class BundleValidator:
             if source_id in self.sources:
                 self.error("duplicate_source_id", location, "duplicate source_id")
                 continue
-            if source_id not in SOURCE_COUNTS:
-                self.error("source_id", location, "source_id is outside the frozen four-source scope")
+            if source_id not in profile_counts:
+                self.error("source_id", location, "source_id is outside the selected frozen profile")
                 continue
             self.sources[source_id] = source
             required = (
@@ -345,22 +400,60 @@ class BundleValidator:
                 self.error("source_pages", f"{location}.total_pdf_pages", "total_pdf_pages must be positive")
             if not isinstance(source.get("is_encrypted"), bool):
                 self.error("source_encryption", f"{location}.is_encrypted", "is_encrypted must be boolean")
-            expected_root = "reaction-engineering" if source_id == "RE01" else "chemical-engineering-principles"
+            if self.bundle_id == S001_BUNDLE_ID:
+                expected_root = "chemical-engineering-principles"
+            else:
+                expected_root = "reaction-engineering" if source_id == "RE01" else "chemical-engineering-principles"
             if source.get("subject_root") != expected_root:
                 self.error("source_root", f"{location}.subject_root", "source is assigned to the wrong subject root")
-            if source.get("selected_knowledge_units_count") != SOURCE_COUNTS[source_id]:
+            if source.get("selected_knowledge_units_count") != profile_counts[source_id]:
                 self.error("source_record_count", f"{location}.selected_knowledge_units_count", "frozen source count mismatch")
             if source.get("source_payload_public") is not False:
                 self.error("public_payload", f"{location}.source_payload_public", "source payload must not be public")
             if source.get("full_source_digitization_complete") is not False:
                 self.error("full_digitization", f"{location}.full_source_digitization_complete", "full digitization cannot be claimed")
             self._check_review_provenance(source.get("review_provenance"), location)
-        if set(self.sources) != set(SOURCE_COUNTS):
-            self.error("source_set", "source_manifest.sources", "source IDs do not equal the frozen four-source set")
+        if set(self.sources) != set(profile_counts):
+            self.error("source_set", "source_manifest.sources", "source IDs do not equal the selected frozen profile")
+        if self.bundle_id == S001_BUNDLE_ID:
+            source = self.sources.get("S001", {})
+            expected = {
+                "source_sha256": S001_PROFILE["source_sha256"],
+                "bytes": S001_PROFILE["source_bytes"],
+                "total_pdf_pages": S001_PROFILE["source_pages"],
+                "is_encrypted": False,
+                "source_volume_id": S001_PROFILE["source_volume_id"],
+                "subject_root": "chemical-engineering-principles",
+                "selected_knowledge_units_count": 29,
+                "source_payload_public": False,
+                "full_source_digitization_complete": False,
+            }
+            for key, value in expected.items():
+                actual = source.get(key)
+                if (key == "source_sha256" and _norm_hash(actual) != value) or (key != "source_sha256" and actual != value):
+                    self.error("s001_source_identity", f"source_manifest.sources[S001].{key}", "S001 source identity differs from the fixed profile")
+            proof = source.get("review_provenance", {})
+            if isinstance(proof, dict):
+                if _norm_hash(proof.get("content_review_file_sha256")) != S001_PROFILE["root_inputs_sha256"] or _norm_hash(proof.get("candidate_manifest_sha256")) != S001_PROFILE["root_inputs_sha256"]:
+                    self.error("s001_review_identity", "source_manifest.sources[S001].review_provenance", "S001 review proof must bind ROOT_ACCEPTED_INPUTS")
+                expected_parts = {
+                    "part_a_revised_blocks.json": "eef695c15f7c84920b5867d8bca9a06dcc28665fb612a072361eb72cfb821f78",
+                    "part_b_revised_blocks.json": "db0e80aafddfed3397e27a16f2f1d5b525f8a36b6541e0283ba0e16bc0730ea9",
+                    "part_c_final_blocks.json": "05f0f8d223ae884dda7f445df9f9b1160da91d26b22d858e3db583070e6c4049",
+                }
+                expected_reviews = {
+                    "A_REVISION_REVIEW.md": S001_PROFILE["review_proofs"]["A"],
+                    "B_REVISION_REVIEW.md": S001_PROFILE["review_proofs"]["B"],
+                    "ROOT_C_ACCEPTANCE.json": S001_PROFILE["review_proofs"]["C"],
+                }
+                if proof.get("locked_candidate_part_hashes") != expected_parts:
+                    self.error("s001_part_identity", "source_manifest.sources[S001].review_provenance.locked_candidate_part_hashes", "S001 candidate part lock differs")
+                if proof.get("locked_candidate_review_hashes") != expected_reviews:
+                    self.error("s001_review_files", "source_manifest.sources[S001].review_provenance.locked_candidate_review_hashes", "S001 review-file lock differs")
         if self.chapter is not None:
-            if self.chapter.get("source_volume_count") != 4 or self.chapter.get("record_count") != 69:
+            if self.chapter.get("source_volume_count") != self.profile["volume_count"] or self.chapter.get("record_count") != self.profile["record_count"]:
                 self.error("chapter_map_counts", "chapter_map", "chapter map must describe four volumes and 69 records")
-            for source_id, expected in SOURCE_COUNTS.items():
+            for source_id, expected in profile_counts.items():
                 volume = self.map_sources.get(source_id)
                 source = self.sources.get(source_id)
                 if volume is not None and source is not None:
@@ -449,8 +542,9 @@ class BundleValidator:
 
     def check_knowledge_units(self) -> None:
         raw = self.rows.get("knowledge_units.jsonl", [])
-        if len(raw) != 69:
-            self.error("ku_count", "knowledge_units.jsonl", "exactly 69 knowledge units are required")
+        expected_count = self.profile["record_count"] if self.profile is not None else 69
+        if len(raw) != expected_count:
+            self.error("ku_count", "knowledge_units.jsonl", f"exactly {expected_count} knowledge units are required")
         seen_text: dict[str, str] = {}
         self.kus = {}
         for index, ku in enumerate(raw):
@@ -502,7 +596,11 @@ class BundleValidator:
                 for key in ("source_sha256", "source_volume_id", "subject_root"):
                     if ku.get(key) != source.get(key) and not (key == "source_sha256" and _norm_hash(ku.get(key)) == _norm_hash(source.get(key))):
                         self.error("ku_source_identity", f"{location}.{key}", "KU source metadata disagrees with manifest")
-                if ku.get("source_chain_id") != f"curated-four-books-v1:{source_id}":
+                expected_chain = (
+                    S001_PROFILE["source_chain"] if self.bundle_id == S001_BUNDLE_ID
+                    else f"curated-four-books-v1:{source_id}"
+                )
+                if ku.get("source_chain_id") != expected_chain:
                     self.error("ku_source_chain", f"{location}.source_chain_id", "unexpected source_chain_id")
             if not _nonempty_string(ku.get("package_id")):
                 self.error("ku_package", f"{location}.package_id", "package_id is required")
@@ -530,10 +628,23 @@ class BundleValidator:
                     self.error("ku_content_type", f"{location}.embedding_eligibility_basis.content_type", "unexpected content type")
                 if not _is_hash(basis.get("source_review_proof_sha256")):
                     self.error("ku_review_proof", f"{location}.embedding_eligibility_basis.source_review_proof_sha256", "source review proof must be SHA-256")
+                if self.bundle_id == S001_BUNDLE_ID and isinstance(node_id, str) and "-CURATED-" in node_id:
+                    part = node_id.split("-CURATED-", 1)[1][:1]
+                    expected_proof = S001_PROFILE["review_proofs"].get(part)
+                    if _norm_hash(basis.get("source_review_proof_sha256")) != expected_proof:
+                        self.error("s001_ku_review_proof", f"{location}.embedding_eligibility_basis.source_review_proof_sha256", "S001 KU review proof is not the locked part proof")
                 if basis.get("public_scope") != "authored_explanations_only":
                     self.error("ku_public_scope", f"{location}.embedding_eligibility_basis.public_scope", "unexpected embedding public scope")
             self._compare_ku_to_mapping(ku, location)
-        if self.chapter is not None and set(self.kus) != set(self.map_records):
+        if self.bundle_id == S001_BUNDLE_ID:
+            expected_ids = {
+                *(f"S001-CURATED-A{i}" for i in range(1, 11)),
+                *(f"S001-CURATED-B{i}" for i in range(1, 11)),
+                *(f"S001-CURATED-C{i}" for i in range(1, 10)),
+            }
+            if set(self.kus) != expected_ids:
+                self.error("s001_ku_id_set", "knowledge_units.jsonl", "KU IDs do not equal the fixed S001 29-ID set")
+        elif self.chapter is not None and set(self.kus) != set(self.map_records):
             self.error("ku_id_set", "knowledge_units.jsonl", "KU IDs do not equal the frozen chapter-map records")
         self._check_records_root()
         self._check_source_audit_records()
@@ -681,6 +792,11 @@ class BundleValidator:
                 self.error("evidence_locator", f"{location}.locator", "locator is required")
             if not _is_hash(item.get("reviewed_text_sha256")) or not _is_hash(item.get("review_proof_sha256")):
                 self.error("evidence_hash", location, "reviewed_text_sha256/review_proof_sha256 must be SHA-256")
+            if self.bundle_id == S001_BUNDLE_ID and _is_hash(item.get("review_proof_sha256")):
+                evidence_id = item.get("evidence_id")
+                part = evidence_id.split("-CURATED-", 1)[1][:1] if isinstance(evidence_id, str) and "-CURATED-" in evidence_id else ""
+                if _norm_hash(item.get("review_proof_sha256")) != self.profile["review_proofs"].get(part):
+                    self.error("s001_evidence_review_proof", f"{location}.review_proof_sha256", "evidence review proof is not the locked A/B/C proof")
             if item.get("page_media_sha256") is not None:
                 self.error("page_media_public", f"{location}.page_media_sha256", "page media must remain null")
             if item.get("public_source_payload") is not False:
@@ -745,6 +861,9 @@ class BundleValidator:
 
     def check_graph(self) -> None:
         raw_nodes = self.rows.get("kg_nodes.jsonl", [])
+        if self.bundle_id == S001_BUNDLE_ID:
+            if len(raw_nodes) != 64:
+                self.error("s001_node_count", "kg_nodes.jsonl", "S001 profile requires 64 graph nodes")
         self.nodes = {}
         for index, node in enumerate(raw_nodes):
             location = f"kg_nodes.jsonl:{index + 1}"
@@ -778,8 +897,9 @@ class BundleValidator:
                 ):
                     self.error("support_chapter_refs", f"{location}.chapter_refs", "support group must retain chapter reference IDs")
         root_nodes = {node_id for node_id, node in self.nodes.items() if node.get("node_type") == "subject_root"}
-        if root_nodes != ROOT_IDS:
-            self.error("root_set", "kg_nodes.jsonl", "exactly the two contract subject roots are required")
+        expected_roots = self.profile["root_ids"] if self.profile is not None else ROOT_IDS
+        if root_nodes != expected_roots:
+            self.error("root_set", "kg_nodes.jsonl", "subject-root set does not match the selected frozen profile")
         for root_id in root_nodes:
             if not _contains_cjk(self.nodes[root_id].get("label")):
                 self.error("root_label", root_id, "subject-root label must be a Chinese display label")
@@ -787,6 +907,19 @@ class BundleValidator:
         expected_volumes = {source.get("source_volume_id") for source in self.sources.values()}
         if set(volume_nodes) != expected_volumes:
             self.error("volume_set", "kg_nodes.jsonl", "source volume nodes do not equal manifest volumes")
+        if self.bundle_id == S001_BUNDLE_ID:
+            chapter_nodes = {node_id for node_id, node in self.nodes.items() if node.get("node_type") == "chapter"}
+            if chapter_nodes != S001_PROFILE["chapter_ids"]:
+                self.error("s001_chapter_set", "kg_nodes.jsonl", "S001 chapter nodes do not equal the fixed four-chapter set")
+            if len(volume_nodes) != 1:
+                self.error("s001_volume_count", "kg_nodes.jsonl", "S001 requires one source volume node")
+            for chapter_id in S001_PROFILE["chapter_ids"]:
+                chapter = self.nodes.get(chapter_id)
+                if chapter is None:
+                    continue
+                expected_number = int(chapter_id[-2:])
+                if chapter.get("chapter_number") != expected_number or chapter.get("source_id") != "S001" or chapter.get("source_volume_id") != S001_PROFILE["source_volume_id"] or chapter.get("subject_root") != "chemical-engineering-principles":
+                    self.error("s001_chapter_identity", chapter_id, "S001 chapter metadata differs from fixed profile")
         ku_nodes = {node_id: node for node_id, node in self.nodes.items() if node.get("node_type") == "knowledge_unit"}
         if set(ku_nodes) != set(self.kus):
             self.error("graph_ku_set", "kg_nodes.jsonl", "knowledge-unit nodes do not equal knowledge_units.jsonl")
@@ -818,6 +951,8 @@ class BundleValidator:
                     if expected_refs != actual_refs:
                         self.error("support_chapter_ref_identity", node_id, "support group chapter_refs disagree with map")
         raw_edges = self.rows.get("kg_edges.jsonl", [])
+        if self.bundle_id == S001_BUNDLE_ID and len(raw_edges) != 63:
+            self.error("s001_edge_count", "kg_edges.jsonl", "S001 profile requires 63 graph edges")
         self.edges = []
         edge_ids: set[str] = set()
         for index, edge in enumerate(raw_edges):
@@ -840,6 +975,37 @@ class BundleValidator:
         self._check_hierarchy_edges()
         self._check_package_ids()
         self._check_related_edges()
+
+    def check_s001_chapter_mapping(self) -> None:
+        """Keep S001's accepted KU-to-chapter/page map explicit and fail closed."""
+        if self.bundle_id != S001_BUNDLE_ID:
+            return
+        expected: dict[str, str] = {}
+        for prefix, numbers, chapter in (
+            ("A", range(1, 11), "S001-CURATED-CH02"),
+            ("B", range(1, 8), "S001-CURATED-CH03"),
+            ("C", range(1, 10), "S001-CURATED-CH04"),
+            ("B", range(8, 11), "S001-CURATED-CH05"),
+        ):
+            expected.update({f"S001-CURATED-{prefix}{number}": chapter for number in numbers})
+        contains_parents: dict[str, set[str]] = defaultdict(set)
+        for edge in self.edges:
+            if _normalize_relation(edge.get("relation")) == "contains" and self.nodes.get(edge.get("target_node_id"), {}).get("node_type") == "knowledge_unit":
+                contains_parents[edge.get("target_node_id")].add(edge.get("source_node_id"))
+        for ku_id, chapter_id in expected.items():
+            ku = self.kus.get(ku_id)
+            if ku is None:
+                continue
+            if ku.get("package_id") != chapter_id:
+                self.error("s001_package_chapter", f"knowledge_units[{ku_id}].package_id", "package_id disagrees with the accepted S001 chapter map")
+            if contains_parents.get(ku_id) != {chapter_id}:
+                self.error("s001_parent_chapter", f"kg_edges.jsonl[{ku_id}]", "KU contains-parent disagrees with the accepted S001 chapter map")
+            start, end = S001_PROFILE["chapter_ranges"][chapter_id]
+            for ref in _as_list(ku.get("evidence_refs")):
+                evidence = self.evidence.get(ref)
+                parsed = _intervals(evidence.get("pdf_pages")) if evidence is not None else None
+                if parsed is None or any(page_start < start or page_end > end for page_start, page_end in parsed):
+                    self.error("s001_evidence_chapter", f"evidence[{ref}]", "evidence pages fall outside the accepted S001 chapter range")
 
     def _check_package_ids(self) -> None:
         context_nodes: dict[tuple[str, str, str], dict[str, Any]] = {}
@@ -1002,10 +1168,85 @@ class BundleValidator:
         if self.chapter is not None and internal_actual != self.expected_internal:
             self.error("internal_relation_set", "kg_edges.jsonl", "internal related_to edges do not match frozen legacy IDs")
         if self.chapter is None and actual:
-            self.warn("relation_evidence_unavailable", "kg_edges.jsonl", "related_to edges cannot be identity-checked without chapter map")
+            if self.bundle_id == S001_BUNDLE_ID:
+                self.error("s001_local_related_edge", "kg_edges.jsonl", "S001 cross-bundle relations must remain in cross_bundle_references.jsonl")
+            else:
+                self.warn("relation_evidence_unavailable", "kg_edges.jsonl", "related_to edges cannot be identity-checked without chapter map")
+
+    def check_cross_bundle_references(self) -> None:
+        """Validate S001's explicit links against a supplied frozen old KU file."""
+        if self.bundle_id != S001_BUNDLE_ID:
+            return
+        raw = self.rows.get("cross_bundle_references.jsonl", [])
+        if len(raw) != S001_PROFILE["cross_bundle_count"]:
+            self.error("s001_cross_count", "cross_bundle_references.jsonl", "S001 profile requires exactly 17 cross-bundle references")
+        if self.related_bundle is None:
+            self.error("related_bundle_required", "cross_bundle_references.jsonl", "S001 cross-bundle checks require --related-bundle")
+            return
+        related_path = self.related_bundle / "knowledge_units.jsonl" if self.related_bundle.is_dir() else self.related_bundle
+        related_manifest = self.related_bundle / "manifest.json" if self.related_bundle.is_dir() else None
+        if related_manifest is not None and related_manifest.is_file():
+            try:
+                manifest = _read_json(related_manifest)
+                if manifest.get("bundle_id") != OLD_BUNDLE_ID:
+                    self.error("related_bundle_id", str(related_manifest), "related bundle is not the frozen old four-book bundle")
+            except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as exc:
+                self.error("related_bundle_unreadable", str(related_manifest), str(exc))
+        if not related_path.is_file():
+            self.error("related_knowledge_units_missing", str(related_path), "related frozen knowledge_units.jsonl is required")
+            return
+        try:
+            payload = related_path.read_bytes()
+        except OSError as exc:
+            self.error("related_knowledge_units_unreadable", str(related_path), str(exc))
+            return
+        if _hash_bytes(payload) != S001_PROFILE["old_knowledge_units_sha256"]:
+            self.error("related_knowledge_units_hash", str(related_path), "related KU file is not the frozen old four-book file")
+        try:
+            related_rows = _read_jsonl(related_path)
+        except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as exc:
+            self.error("related_knowledge_units_unreadable", str(related_path), str(exc))
+            return
+        related: dict[str, dict[str, Any]] = {}
+        for index, item in enumerate(related_rows):
+            node_id = item.get("node_id")
+            if not _nonempty_string(node_id) or node_id in related:
+                self.error("related_knowledge_unit_id", f"{related_path.name}:{index + 1}", "related KU ID is missing or duplicated")
+                continue
+            related[node_id] = item
+            if not isinstance(item.get("text"), str) or _norm_hash(item.get("text_sha256")) != _hash_text(item.get("text", "")):
+                self.error("related_body_hash", f"{related_path.name}:{index + 1}", "related KU body hash is invalid")
+        self.cross_bundle = []
+        seen: set[tuple[str, str, str]] = set()
+        for index, item in enumerate(raw):
+            location = f"cross_bundle_references.jsonl:{index + 1}"
+            source = item.get("from_knowledge_unit_id")
+            target_bundle = item.get("target_bundle_id")
+            target = item.get("target_node_id")
+            target_hash = item.get("target_text_sha256")
+            if source not in self.kus:
+                self.error("cross_source", location, "cross-bundle source must be a current S001 KU")
+            if item.get("relation") != "related_to":
+                self.error("cross_relation", location, "cross-bundle relation must be related_to")
+            if target_bundle != OLD_BUNDLE_ID:
+                self.error("cross_target_bundle", location, "cross-bundle target bundle must be curated-four-books-v1")
+            if not _nonempty_string(target) or not _is_hash(target_hash):
+                self.error("cross_target", location, "cross-bundle target and target body hash are required")
+            key = (source, target_bundle, target)
+            if key in seen:
+                self.error("duplicate_cross_reference", location, "duplicate cross-bundle reference")
+            seen.add(key)
+            old = related.get(target)
+            if old is None:
+                self.error("cross_target_dangling", location, "target node is absent from --related-bundle knowledge_units.jsonl")
+            elif _norm_hash(target_hash) != _norm_hash(old.get("text_sha256")) or (isinstance(old.get("text"), str) and _hash_text(old["text"]) != _norm_hash(target_hash)):
+                self.error("cross_target_body_hash", location, "target body hash does not match the supplied old KU")
+            self.cross_bundle.append(item)
 
     def check_external_references(self) -> None:
         raw = self.rows.get("external_references.jsonl", [])
+        if self.bundle_id == S001_BUNDLE_ID and len(raw) != S001_PROFILE["external_reference_count"]:
+            self.error("s001_external_count", "external_references.jsonl", "S001 profile requires 95 external references")
         self.external = []
         seen: set[tuple[str, str]] = set()
         for index, item in enumerate(raw):
@@ -1170,6 +1411,15 @@ class BundleValidator:
             self.error("vector_entry_set", "vector_manifest.entries", "vector entries are not exactly the chunk set")
 
     def run(self) -> dict[str, Any]:
+        if self.profile is None:
+            return {
+                "schema_version": "curated-bundle-validation-1.0",
+                "status": "FAIL",
+                "scope": "independent_candidate_bundle_validation",
+                "profile": self.bundle_id,
+                "errors": self.errors,
+                "warnings": self.warnings,
+            }
         self.load()
         self.check_public_strings()
         self.prepare_mapping()
@@ -1178,10 +1428,12 @@ class BundleValidator:
         self.check_knowledge_units()
         self.check_evidence()
         self.check_graph()
+        self.check_s001_chapter_mapping()
         self.check_external_references()
+        self.check_cross_bundle_references()
         self.check_vectors()
         status = "PASS" if not self.errors else "FAIL"
-        return {
+        result = {
             "schema_version": "curated-bundle-validation-1.0",
             "status": status,
             "scope": "independent_candidate_bundle_validation",
@@ -1202,6 +1454,11 @@ class BundleValidator:
             "errors": self.errors,
             "warnings": self.warnings,
         }
+        if self.bundle_id == S001_BUNDLE_ID:
+            result["profile"] = self.bundle_id
+            result["content_validation"] = "structure_only; source-content acceptance remains separate"
+            result["counts"]["cross_bundle_references"] = len(self.cross_bundle)
+        return result
 
 
 def validate_bundle(
@@ -1210,15 +1467,37 @@ def validate_bundle(
     source_audit: str | Path | None = None,
     records_root: str | Path | None = None,
     require_vectors: bool = False,
+    bundle_id: str = OLD_BUNDLE_ID,
+    related_bundle: str | Path | None = None,
 ) -> dict[str, Any]:
     """Validate a bundle and return a JSON-serializable report."""
 
+    if bundle_id not in PROFILES:
+        return {
+            "schema_version": "curated-bundle-validation-1.0",
+            "status": "FAIL",
+            "scope": "independent_candidate_bundle_validation",
+            "profile": bundle_id,
+            "errors": [{"code": "unknown_bundle_profile", "location": "bundle_id", "message": "bundle_id is not a predefined profile"}],
+            "warnings": [],
+        }
+    if bundle_id == S001_BUNDLE_ID and any(value is not None for value in (chapter_map, source_audit, records_root)):
+        return {
+            "schema_version": "curated-bundle-validation-1.0",
+            "status": "FAIL",
+            "scope": "independent_candidate_bundle_validation",
+            "profile": bundle_id,
+            "errors": [{"code": "s001_private_evidence_unsupported", "location": "arguments", "message": "S001 does not use the legacy chapter_map/source_audit/records_root routes"}],
+            "warnings": [],
+        }
     return BundleValidator(
         Path(bundle),
         Path(chapter_map) if chapter_map is not None else None,
         Path(source_audit) if source_audit is not None else None,
         Path(records_root) if records_root is not None else None,
         require_vectors,
+        bundle_id,
+        Path(related_bundle) if related_bundle is not None else None,
     ).run()
 
 
@@ -1229,6 +1508,8 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--source-audit", type=Path)
     parser.add_argument("--records-root", type=Path)
     parser.add_argument("--require-vectors", action="store_true")
+    parser.add_argument("--bundle-id", choices=tuple(PROFILES), default=OLD_BUNDLE_ID)
+    parser.add_argument("--related-bundle", type=Path, help="frozen old four-book bundle or knowledge_units.jsonl for S001")
     parser.add_argument("--json", action="store_true", help="emit the full JSON report (default)")
     return parser
 
@@ -1241,6 +1522,8 @@ def main(argv: list[str] | None = None) -> int:
         source_audit=args.source_audit,
         records_root=args.records_root,
         require_vectors=args.require_vectors,
+        bundle_id=args.bundle_id,
+        related_bundle=args.related_bundle,
     )
     print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
     return 0 if report["status"] == "PASS" else 1

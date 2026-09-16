@@ -1,0 +1,80 @@
+{
+  "as_of": "2026-09-16",
+  "bundle_id": "curated-s001-upper-v1",
+  "canonical_project": "chemical-engineering-rag-kg",
+  "content_scope": "29 selected authored explanations; source PDFs, scans and reconstructive source payload excluded",
+  "files": {
+    "chunk_to_kg.jsonl": {
+      "bytes": 2546,
+      "sha256": "f8cccaa09d56e665b2ccae759d8037aa981261f41edba072acfb6582b0015d4c"
+    },
+    "conversion_report.json": {
+      "bytes": 20685,
+      "sha256": "9c2cb32d2750d144addef68fa1aa170852a5c79b0d0d33a650ed7970c1d16725"
+    },
+    "cross_bundle_references.jsonl": {
+      "bytes": 3863,
+      "sha256": "9c2197b1c86119c4f78fa3ff49f539b92760382a2472bc3f3edabf5c35eb4efd"
+    },
+    "embeddings.f32": {
+      "bytes": 63488,
+      "sha256": "d33e83c9001d5ae97c64f0d47d6ec4eca7c0b1385f2bfcabee40125e958e4f66"
+    },
+    "evidence_registry.jsonl": {
+      "bytes": 14748,
+      "sha256": "dd0fac37e76c3a6742931edb962e59ea50ba4b74556390512c51c1c622c4bfe4"
+    },
+    "external_references.jsonl": {
+      "bytes": 13571,
+      "sha256": "2e9c46883a79a85f2bffc04bfaa499d318dcedc6b82f3c3c0e2301d1475fcb34"
+    },
+    "kg_edges.jsonl": {
+      "bytes": 11916,
+      "sha256": "915a39a57721d80d7af49ee3e64470f10ea592e9387295335f4b631ed4b98e69"
+    },
+    "kg_nodes.jsonl": {
+      "bytes": 18737,
+      "sha256": "7ff6a79c88ffb3145cc9d0298a925c0d7e51ea320d5613406b070efbe2dacebc"
+    },
+    "knowledge_units.jsonl": {
+      "bytes": 72164,
+      "sha256": "1e759bfa445c678509ab76da6de9bd4f99d163bdb277504904fb28297ecee9c0"
+    },
+    "qa_summary.json": {
+      "bytes": 3788,
+      "sha256": "c2c7084c70e00cab0cc894ed39dca73a60b9e5354f6070c4f6828055c46f8b0a"
+    },
+    "rag_chunks.jsonl": {
+      "bytes": 153917,
+      "sha256": "0026d14dc952fd637b8925781bc4b1d569f0fbb5fc71b4b2c517c64803dbba47"
+    },
+    "source_manifest.json": {
+      "bytes": 2350,
+      "sha256": "7dddff2f619d7499140d9ac7872f960c158e3dbb93324399f0dde5a822c1ee30"
+    },
+    "vector_manifest.json": {
+      "bytes": 12553,
+      "sha256": "8c34f7b7c6d802baae4fab16f56baf56e84eb6f90b7c0b41b4d39df40e63ceb6"
+    }
+  },
+  "legacy_snapshot_changed": false,
+  "prior_four_book_bundle_changed": false,
+  "production_activated": false,
+  "reports": {
+    "reports/s001-dev-evaluation.json": {
+      "bytes": 252488,
+      "sha256": "dae68a6f8d4ca717c6f8422aa7517b7b4677c058c2c4544225bf91ccc76632b9"
+    },
+    "reports/s001-independent-validation.json": {
+      "bytes": 742,
+      "sha256": "ef644758922a6662940350d304c3fc603a8d89f136bb123804edbfce0d14e5d1"
+    },
+    "reports/s001-vector-audit.json": {
+      "bytes": 7443,
+      "sha256": "368fa38d3ff9da18a58551f8421452e82209aca24666cd26353b423e3d38f153"
+    }
+  },
+  "schema_version": "curated-public-preview-release-1.0",
+  "status": "validated_public_preview",
+  "verification": "Run scripts/validate_public_release.py; full-source recheck requires lawfully held private originals and review inputs."
+}
